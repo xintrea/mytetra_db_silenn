@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mytetradoc>
+<root>
+ <format version="1" subversion="2"/>
+ <content>
+  <node crypt="" id="1300000000aaaaaaaaa1" name="Computer">
+   <recordtable>
+    <record id="1300000000aaaaaaaaa3" name="Welcome to MyTetra!" author="" url="" tags="MyTetra, Qt" ctime="20081210124656" dir="1300000000aaaaaaaaa2" file="text.html"/>
+   </recordtable>
+   <node crypt="" id="1481013794jndhvedcgx" name="Linux"/>
+   <node crypt="" id="1481013809j79ldxl1vn" name="Programming">
+    <node crypt="" id="1481013843cew1s2bqvn" name="C">
+     <recordtable>
+      <record id="1481014044jpzrta92uy" name="main.c" author="" url="" tags="main, c" ctime="20161206114724" dir="1481014044ji1s2s7xap" file="text.html"/>
+      <record id="1481015525hj04yq3czw" name="Размеры переменных" author="" url="" tags="переменные" ctime="20161206121205" dir="1481015525brxrsrub2a" file="text.html"/>
+      <record id="1481022237fty3e83wrw" name="getch() в Linux" author="" url="" tags="getch, linux, c" ctime="20161206140357" dir="1481022237bzucr47lv8" file="text.html"/>
+     </recordtable>
+    </node>
+    <node crypt="" id="1481013852b3tfajab2f" name="C++"/>
+    <node crypt="" id="1481013861qw420xxqrm" name="Asm"/>
+    <node crypt="" id="1481013875r818kh7l1u" name="Qt"/>
+    <node crypt="" id="1481013886moes3xg5kl" name="Python"/>
+    <node crypt="" id="148101574241cnpnkp2q" name="AVR GCC"/>
+   </node>
+  </node>
+  <node crypt="" id="1481013912mb6bh7lubx" name="Electronics"/>
+  <node crypt="" id="1481013724inr39junfd" name="Language"/>
+ </content>
+</root>
