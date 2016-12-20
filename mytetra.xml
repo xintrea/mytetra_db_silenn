@@ -4,11 +4,12 @@
  <format version="1" subversion="2"/>
  <content>
   <node crypt="" id="1300000000aaaaaaaaa1" name="Computer">
-   <recordtable>
-    <record id="1300000000aaaaaaaaa3" name="Welcome to MyTetra!" author="" url="" tags="MyTetra, Qt" ctime="20081210124656" dir="1300000000aaaaaaaaa2" file="text.html"/>
-   </recordtable>
    <node crypt="" id="1481013794jndhvedcgx" name="Linux"/>
    <node crypt="" id="1481013809j79ldxl1vn" name="Programming">
+    <recordtable>
+     <record id="1482246093z6a0uhnuln" name="Sublime Text 2 + GCC" author="" url="" tags="gcc, st, st2" ctime="20161220180133" dir="14822460937l2jwadehh" file="text.html"/>
+     <record id="1482246329awwq67zw53" name="Sublime Text 2 + GCC (2nd var)" author="" url="" tags="gcc, st, st2" ctime="20161220180529" dir="1482246329j31o5aphxl" file="text.html"/>
+    </recordtable>
     <node crypt="" id="1481013843cew1s2bqvn" name="C">
      <recordtable>
       <record id="1481014044jpzrta92uy" name="main.c" author="" url="" tags="main, c" ctime="20161206114724" dir="1481014044ji1s2s7xap" file="text.html"/>
