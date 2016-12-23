@@ -22,6 +22,7 @@
     <node crypt="" id="1481013852b3tfajab2f" name="C++">
      <recordtable>
       <record id="14817312767j47t0byyz" name="Сортировка массива через указатель" author="" url="" tags="сортировка, sort" ctime="20161214190116" dir="1481731276dkohsbohx6" file="text.html"/>
+      <record id="1482397800ak2ittr77e" name="Дружественные функции" author="" url="http://cppstudio.com/post/8423/" tags="cpp" ctime="20161222121000" dir="1482397800s61rnq1gil" file="text.html"/>
      </recordtable>
     </node>
     <node crypt="" id="1481013861qw420xxqrm" name="Asm"/>
