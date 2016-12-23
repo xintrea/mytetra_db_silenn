@@ -39,5 +39,12 @@
     </recordtable>
    </node>
   </node>
+  <node crypt="" id="1482485222gf7c4tnyd1" name="WoW 1.12.x">
+   <node crypt="" id="14824852300rduamghji" name="Rogue">
+    <recordtable>
+     <record id="1482485252e0oxtqa631" name="Macros" author="" url="" tags="rogue" ctime="20161223122732" dir="1482485252b3qlo8mxqf" file="text.html"/>
+    </recordtable>
+   </node>
+  </node>
  </content>
 </root>
