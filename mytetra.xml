@@ -25,6 +25,7 @@
       <record id="1482397800ak2ittr77e" name="Дружественные функции" author="" url="http://cppstudio.com/post/8423/" tags="cpp" ctime="20161222121000" dir="1482397800s61rnq1gil" file="text.html"/>
       <record id="1482683099upw0x0m3sz" name="Наследование классов" author="" url="" tags="cpp, c++" ctime="20161225192459" dir="1482683099l0fcfcaxoj" file="text.html"/>
       <record id="14826853863rp2nlu13c" name="Перегрузка функций" author="" url="" tags="сpp, c++" ctime="20161225200306" dir="1482685386yij6bfru43" file="text.html"/>
+      <record id="14829400601tnxupm4ol" name="Перегрузка операторов" author="" url="http://cppstudio.com/post/7958/" tags="cpp, c++, перегрузка" ctime="20161228184740" dir="1482940060pgwxmem9dq" file="text.html"/>
      </recordtable>
     </node>
     <node crypt="" id="1481013861qw420xxqrm" name="Asm"/>
@@ -42,6 +43,7 @@
    </node>
   </node>
   <node crypt="" id="1482485222gf7c4tnyd1" name="Vanilla">
+   <node crypt="" id="1482940014s4kodthacm" name="Addons"/>
    <node crypt="" id="1482687225h8q46bzm6j" name="Mage">
     <recordtable>
      <record id="1482687244tls5j8xr4z" name="Macros" author="" url="" tags="" ctime="20161225203404" dir="1482687244ldvx666ze2" file="text.html"/>
