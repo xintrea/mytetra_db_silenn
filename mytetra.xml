@@ -17,6 +17,7 @@
       <record id="1481015525hj04yq3czw" name="Размеры переменных" author="" url="" tags="переменные" ctime="20161206121205" dir="1481015525brxrsrub2a" file="text.html"/>
       <record id="1481022237fty3e83wrw" name="getch() в Linux" author="" url="" tags="getch, linux, c" ctime="20161206140357" dir="1481022237bzucr47lv8" file="text.html"/>
       <record id="1481028557a11il8thfy" name="Указатели и const" author="" url="" tags="pointers, const" ctime="20161206154917" dir="1481028557websul7ndh" file="text.html"/>
+      <record id="1483014357phtzwlsjqp" name="Двумерный массив" author="" url="" tags="си" ctime="20161229152557" dir="1483014357intgortxm4" file="text.html"/>
      </recordtable>
     </node>
     <node crypt="" id="1481013852b3tfajab2f" name="C++">
@@ -39,6 +40,9 @@
    <node crypt="" id="148130524392pip6ipv2" name="English">
     <recordtable>
      <record id="1481305280oqp6a4h7fb" name="Времена" author="" url="" tags="времена, english" ctime="20161209204120" dir="14813052806qlwoqi6fd" file="text.html"/>
+     <record id="14831032977xelhzxv5e" name="Модальные глаголы" author="" url="" tags="" ctime="20161230160817" dir="1483103297jvk3dvoys0" file="text.html"/>
+     <record id="1483102851cr5s8fwh0c" name="Модальный глагол can" author="" url="" tags="can" ctime="20161230160051" dir="1483102851gegb7103oh" file="text.html"/>
+     <record id="14831029894sn90rh569" name="Модальный глагол May" author="" url="" tags="may" ctime="20161230160309" dir="14831029898jf6r8n9tp" file="text.html"/>
     </recordtable>
    </node>
   </node>
