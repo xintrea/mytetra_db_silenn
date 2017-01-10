@@ -48,6 +48,16 @@
     </node>
     <node crypt="" id="148338311076c5dcu1bg" name="STM32"/>
    </node>
+   <node crypt="" id="1484036595ktssl9bxyh" name="FPGA">
+    <node crypt="" id="1484049489faje6japcx" name="Xilinx"/>
+   </node>
+   <node crypt="" id="1484036619aeoxz8fxg7" name="Theory">
+    <recordtable>
+     <record id="1484049400jdnljhp197" name="MOSFET" author="" url="" tags="mosfet" ctime="20170110145640" dir="1484049400g1zofcjvbk" file="text.html"/>
+     <record id="14840505604aha1p5yh2" name="Logical gates (логические элементы)" author="" url="" tags="" ctime="20170110151600" dir="1484050560dpl7mqusd6" file="text.html"/>
+     <record id="1484049963qcatorrf5l" name="НЕ (NOT, Inverter)" author="" url="" tags="not, inverter, не" ctime="20170110150603" dir="1484049963ahs85sgc0j" file="text.html"/>
+    </recordtable>
+   </node>
   </node>
   <node crypt="" id="1481013724inr39junfd" name="Language">
    <node crypt="" id="148130524392pip6ipv2" name="English">
