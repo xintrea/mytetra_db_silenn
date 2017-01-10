@@ -72,5 +72,21 @@
     </recordtable>
    </node>
   </node>
+  <node crypt="" id="1484035670ndx0sf5zf9" name="Networks">
+   <node crypt="" id="14840360333b23pvvnm8" name="Cisco">
+    <node crypt="" id="1484036043t664a6tlm5" name="Routers">
+     <recordtable>
+      <record id="14840361464ey167hsls" name="cs1841 / cs2821 IPsec" author="" url="" tags="18xx, 28xx, 1841, 2821" ctime="20170110111546" dir="1484036146dyfm52vpvo" file="text.html"/>
+     </recordtable>
+    </node>
+   </node>
+  </node>
+  <node crypt="" id="1484035680rfu1p83ftk" name="Auto">
+   <node crypt="" id="1484035760rcdudnq150" name="Audi 80">
+    <recordtable>
+     <record id="1484035862jy2la72zxz" name="Проверка датчика температуры приборки" author="" url="" tags="a80" ctime="20170110111102" dir="148403586265kh6j7zrd" file="text.html"/>
+    </recordtable>
+   </node>
+  </node>
  </content>
 </root>
