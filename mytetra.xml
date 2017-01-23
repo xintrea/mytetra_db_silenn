@@ -9,7 +9,7 @@
     <recordtable>
      <record id="1482246329awwq67zw53" name="Sublime Text 2 + GCC (for C only)" author="" url="" tags="gcc, st, st2" ctime="20161220180529" dir="1482246329j31o5aphxl" file="text.html"/>
      <record id="1482249853yeqwmij3ru" name="Sublime Text 2 + G++ (for C++ only)" author="" url="" tags="g++, gpp, gcc, linux" ctime="20161220190413" dir="1482249853do3951hbmn" file="text.html"/>
-     <record id="1482246093z6a0uhnuln" name="Sublime Text 2 + AVRGCC (don't work)" author="" url="" tags="gcc, st, st2" ctime="20161220180133" dir="14822460937l2jwadehh" file="text.html"/>
+     <record id="1482246093z6a0uhnuln" name="Sublime Text 2 + AVRGCC" author="" url="" tags="gcc, st, st2" ctime="20161220180133" dir="14822460937l2jwadehh" file="text.html"/>
     </recordtable>
     <node crypt="" id="1481013843cew1s2bqvn" name="C">
      <recordtable>
@@ -42,6 +42,7 @@
      <recordtable>
       <record id="1483383308ex9x5y96h3" name="avrdude" author="" url="" tags="" ctime="20170102215508" dir="148338330818il249115" file="text.html"/>
       <record id="1484746681lqu1l3qadk" name="Советы по GCC" author="" url="" tags="avr" ctime="20170118163801" dir="14847466811re3tn34u8" file="text.html"/>
+      <record id="148500136116o1amzkl9" name="Прерывания" author="" url="" tags="" ctime="20170121152241" dir="1485001361uvrqadqt7e" file="text.html"/>
      </recordtable>
     </node>
    </node>
