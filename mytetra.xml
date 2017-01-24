@@ -40,9 +40,12 @@
     <node crypt="" id="1481013886moes3xg5kl" name="Python"/>
     <node crypt="" id="148101574241cnpnkp2q" name="AVR GCC">
      <recordtable>
-      <record id="1483383308ex9x5y96h3" name="avrdude" author="" url="" tags="" ctime="20170102215508" dir="148338330818il249115" file="text.html"/>
+      <record id="1483383308ex9x5y96h3" name="AVRdude" author="" url="" tags="" ctime="20170102215508" dir="148338330818il249115" file="text.html"/>
       <record id="1484746681lqu1l3qadk" name="Советы по GCC" author="" url="" tags="avr" ctime="20170118163801" dir="14847466811re3tn34u8" file="text.html"/>
+      <record id="14852538064xalhyztmm" name="Методы оптимизации кода на С" author="" url="" tags="" ctime="20170124133006" dir="1485253806wftdygcga2" file="text.html"/>
+      <record id="1485253147d529rwq5r0" name="Основные конструкции" author="" url="" tags="" ctime="20170124131942" dir="1485253147p5ajkj3d4b" file="text.html"/>
       <record id="148500136116o1amzkl9" name="Прерывания" author="" url="" tags="" ctime="20170121152241" dir="1485001361uvrqadqt7e" file="text.html"/>
+      <record id="14852582822mngv3rvpm" name="Volatile" author="" url="" tags="" ctime="20170124144442" dir="14852582820ven1ye891" file="text.html"/>
      </recordtable>
     </node>
    </node>
