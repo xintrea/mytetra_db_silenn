@@ -32,6 +32,12 @@
       <recordtable>
        <record id="1484916797fmdlnu29gj" name="Двумерный динамический массив через foo" author="" url="" tags="" ctime="20170120155317" dir="1484916797xpkun8jnnk" file="text.html"/>
        <record id="14817312767j47t0byyz" name="Сортировка массива через указатель" author="" url="" tags="сортировка, sort" ctime="20170120160345" dir="1481731276dkohsbohx6" file="text.html"/>
+       <record id="1485424423l69fwytk4z" name="Рамка вокруг произвольного текста" author="" url="" tags="" ctime="20170126125343" dir="1485424423is3wvsvmb5" file="text.html"/>
+       <record id="1485424517h2smeuybzc" name="Алгебраическая сумма через for" author="" url="" tags="" ctime="20170126125517" dir="1485424517s3ayiz880i" file="text.html"/>
+       <record id="1485425760qioymenh2y" name="Наибольшая цифра в числе" author="" url="" tags="" ctime="20170126131600" dir="14854257603ldguxc5mm" file="text.html"/>
+       <record id="1485427948v3xtu8fnl1" name="Выбор из списка (switch)" author="" url="" tags="" ctime="20170126135228" dir="14854279488h0jvx23gk" file="text.html"/>
+       <record id="14854325601oznhitmjy" name="Значение функции без pow()" author="" url="" tags="" ctime="20170126150920" dir="1485432560uzsapplwaw" file="text.html"/>
+       <record id="1485439042n3wiaweaky" name="Модуль числа и srand()" author="" url="" tags="" ctime="20170126165722" dir="1485439042m9zx9qowvd" file="text.html"/>
       </recordtable>
      </node>
     </node>
