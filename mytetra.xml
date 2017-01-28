@@ -19,6 +19,11 @@
       <record id="1481028557a11il8thfy" name="Указатели и const" author="" url="" tags="pointers, const" ctime="20161206154917" dir="1481028557websul7ndh" file="text.html"/>
       <record id="1483014357phtzwlsjqp" name="Двумерный массив" author="" url="" tags="си" ctime="20161229152557" dir="1483014357intgortxm4" file="text.html"/>
      </recordtable>
+     <node crypt="" id="1485597677axytdh3tn4" name="Тетерин Вячеслав Гертрудович">
+      <recordtable>
+       <record id="1485599492b19xzjmtu0" name="Переменные и константы" author="" url="" tags="" ctime="20170128133132" dir="14855994923fbhooyry1" file="text.html"/>
+      </recordtable>
+     </node>
     </node>
     <node crypt="" id="1481013852b3tfajab2f" name="C++">
      <recordtable>
@@ -64,6 +69,11 @@
      </recordtable>
     </node>
     <node crypt="" id="148338311076c5dcu1bg" name="STM32"/>
+    <node crypt="" id="148560091729yuzhdzav" name="Other">
+     <recordtable>
+      <record id="1485600960k6rk17hfos" name="74HC595" author="" url="" tags="" ctime="20170128135600" dir="14856009604112v00p0a" file="text.html"/>
+     </recordtable>
+    </node>
    </node>
    <node crypt="" id="1484036595ktssl9bxyh" name="FPGA">
     <node crypt="" id="1484049489faje6japcx" name="Xilinx"/>
