@@ -24,6 +24,11 @@
        <record id="1485599492b19xzjmtu0" name="Переменные и константы" author="" url="" tags="" ctime="20170128133132" dir="14855994923fbhooyry1" file="text.html"/>
       </recordtable>
      </node>
+     <node crypt="" id="14859474781fanxwbnzu" name="Ncurses">
+      <recordtable>
+       <record id="1485947493fr64der385" name="Подключение" author="" url="" tags="" ctime="20170201141133" dir="1485947493q47rsvkzv3" file="text.html"/>
+      </recordtable>
+     </node>
     </node>
     <node crypt="" id="1481013852b3tfajab2f" name="C++">
      <recordtable>
