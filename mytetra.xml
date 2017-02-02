@@ -84,11 +84,18 @@
     <node crypt="" id="1484049489faje6japcx" name="Xilinx"/>
    </node>
    <node crypt="" id="1484036619aeoxz8fxg7" name="Theory">
-    <recordtable>
-     <record id="1484049400jdnljhp197" name="MOSFET" author="" url="" tags="mosfet" ctime="20170110145640" dir="1484049400g1zofcjvbk" file="text.html"/>
-     <record id="14840505604aha1p5yh2" name="Logical gates (логические элементы)" author="" url="" tags="" ctime="20170110151600" dir="1484050560dpl7mqusd6" file="text.html"/>
-     <record id="1484131425xyvc1iqtel" name="Потребляемая мощность" author="" url="" tags="" ctime="20170111134345" dir="1484131425qnp2els0p0" file="text.html"/>
-    </recordtable>
+    <node crypt="" id="1486021899us896bwgh9" name="Physics">
+     <recordtable>
+      <record id="1486024105wq1kgov1wt" name="Биполярный транзистор, СОК" author="" url="" tags="" ctime="20170202112825" dir="1486024105bpubtdcm0x" file="text.html"/>
+     </recordtable>
+    </node>
+    <node crypt="" id="1486021934ocakj3ovg0" name="Digital">
+     <recordtable>
+      <record id="1484049400jdnljhp197" name="MOSFET" author="" url="" tags="mosfet" ctime="20170202105222" dir="1484049400g1zofcjvbk" file="text.html"/>
+      <record id="14840505604aha1p5yh2" name="Logical gates (логические элементы)" author="" url="" tags="" ctime="20170202105226" dir="1484050560dpl7mqusd6" file="text.html"/>
+      <record id="1484131425xyvc1iqtel" name="Потребляемая мощность" author="" url="" tags="" ctime="20170202105228" dir="1484131425qnp2els0p0" file="text.html"/>
+     </recordtable>
+    </node>
    </node>
   </node>
   <node crypt="" id="1481013724inr39junfd" name="Language">
