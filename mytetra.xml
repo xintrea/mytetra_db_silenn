@@ -72,6 +72,11 @@
      <recordtable>
       <record id="1483382395otc7zse2mp" name="USBASP 2.0" author="" url="" tags="asp usbasp" ctime="20170102213955" dir="14833823956pqcteihvy" file="text.html"/>
      </recordtable>
+     <node crypt="" id="1486914118tytqq8er6h" name="Programm">
+      <recordtable>
+       <record id="1486914133vwu47uy073" name="74HC595N" author="" url="" tags="" ctime="20170212184213" dir="1486914133jt1sj70dz6" file="text.html"/>
+      </recordtable>
+     </node>
     </node>
     <node crypt="" id="148338311076c5dcu1bg" name="STM32"/>
     <node crypt="" id="148560091729yuzhdzav" name="Other">
