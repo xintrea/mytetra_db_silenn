@@ -72,7 +72,12 @@
      <recordtable>
       <record id="1483382395otc7zse2mp" name="USBASP 2.0" author="" url="" tags="asp usbasp" ctime="20170102213955" dir="14833823956pqcteihvy" file="text.html"/>
      </recordtable>
-     <node crypt="" id="1486914118tytqq8er6h" name="Programm">
+     <node crypt="" id="1488903895qisq3ils4r" name="Theory">
+      <recordtable>
+       <record id="148890391071o4cvku76" name="I/O Ports" author="" url="" tags="" ctime="20170307192510" dir="1488903910b0m6k1jq49" file="text.html"/>
+      </recordtable>
+     </node>
+     <node crypt="" id="1486914118tytqq8er6h" name="Programs">
       <recordtable>
        <record id="1486914133vwu47uy073" name="74HC595N" author="" url="" tags="" ctime="20170212184213" dir="1486914133jt1sj70dz6" file="text.html"/>
        <record id="1487611212giedeohkl6" name="Clock with 7-segments" author="" url="" tags="" ctime="20170220202012" dir="1487611212de1tzry2ol" file="text.html"/>
@@ -80,13 +85,6 @@
      </node>
     </node>
     <node crypt="" id="148338311076c5dcu1bg" name="STM32"/>
-    <node crypt="" id="148560091729yuzhdzav" name="Other">
-     <recordtable>
-      <record id="1485600960k6rk17hfos" name="74HC595" author="" url="" tags="" ctime="20170128135600" dir="14856009604112v00p0a" file="text.html"/>
-      <record id="14870090951t231asyns" name="7-segments для часов" author="" url="" tags="" ctime="20170213210455" dir="14870090959b3n1litjo" file="text.html"/>
-      <record id="1487526131bffrjgs186" name="BC547 / BC548" author="" url="" tags="" ctime="20170219204211" dir="1487526131afgd5irvv4" file="text.html"/>
-     </recordtable>
-    </node>
    </node>
    <node crypt="" id="1484036595ktssl9bxyh" name="FPGA">
     <node crypt="" id="1484049489faje6japcx" name="Xilinx"/>
@@ -105,6 +103,13 @@
       <record id="14862326333vg6i0nmuj" name="Boolean" author="" url="" tags="bool" ctime="20170204212353" dir="14862326334pfn51j5j8" file="text.html"/>
      </recordtable>
     </node>
+   </node>
+   <node crypt="" id="1488902784fe0kavpl5i" name="Other">
+    <recordtable>
+     <record id="1485600960k6rk17hfos" name="74HC595" author="" url="" tags="" ctime="20170307190624" dir="14856009604112v00p0a" file="text.html"/>
+     <record id="14870090951t231asyns" name="7-segments для часов" author="" url="" tags="" ctime="20170307190624" dir="14870090959b3n1litjo" file="text.html"/>
+     <record id="1487526131bffrjgs186" name="BC547 / BC548" author="" url="" tags="" ctime="20170307190624" dir="1487526131afgd5irvv4" file="text.html"/>
+    </recordtable>
    </node>
   </node>
   <node crypt="" id="1481013724inr39junfd" name="Language">
