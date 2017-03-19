@@ -7,7 +7,12 @@
    <recordtable>
     <record id="14898567418br5oxs679" name="FF Shortkeys" author="" url="" tags="" ctime="20170318200541" dir="1489856741ub1zjyl9di" file="text.html"/>
    </recordtable>
-   <node crypt="" id="1481013794jndhvedcgx" name="Linux"/>
+   <node crypt="" id="1481013794jndhvedcgx" name="Linux">
+    <recordtable>
+     <record id="14899432728nsmwtws6t" name="conky" author="" url="" tags="" ctime="20170319200752" dir="1489943272144mfovtqw" file="text.html"/>
+     <record id="1489944227rhz3g5zikv" name="xbindkeay" author="" url="" tags="" ctime="20170319202347" dir="1489944227g7n2renjg1" file="text.html"/>
+    </recordtable>
+   </node>
    <node crypt="" id="1481013809j79ldxl1vn" name="Programming">
     <recordtable>
      <record id="1482246329awwq67zw53" name="Sublime Text 2 + GCC (for C only)" author="" url="" tags="gcc, st, st2" ctime="20161220180529" dir="1482246329j31o5aphxl" file="text.html"/>
