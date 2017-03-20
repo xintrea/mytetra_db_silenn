@@ -84,6 +84,8 @@
      <node crypt="" id="1488903895qisq3ils4r" name="Theory">
       <recordtable>
        <record id="148890391071o4cvku76" name="I/O Ports" author="" url="" tags="" ctime="20170307192510" dir="1488903910b0m6k1jq49" file="text.html"/>
+       <record id="14900111565y4b79kn4q" name="EEPROM" author="" url="" tags="" ctime="20170320145916" dir="1490011156qb6nsdgmfi" file="text.html"/>
+       <record id="14900147383lwtnp58x7" name="FUSE &amp; AVRDUDE" author="" url="" tags="" ctime="20170320155858" dir="1490014738nxcfioser9" file="text.html"/>
       </recordtable>
      </node>
      <node crypt="" id="1486914118tytqq8er6h" name="Programs">
