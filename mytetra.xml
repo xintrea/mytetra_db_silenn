@@ -66,11 +66,6 @@
     <node crypt="" id="148101574241cnpnkp2q" name="AVR GCC">
      <recordtable>
       <record id="1483383308ex9x5y96h3" name="AVRdude" author="" url="" tags="" ctime="20170102215508" dir="148338330818il249115" file="text.html"/>
-      <record id="1484746681lqu1l3qadk" name="Советы по GCC" author="" url="" tags="avr" ctime="20170118163801" dir="14847466811re3tn34u8" file="text.html"/>
-      <record id="14852538064xalhyztmm" name="Методы оптимизации кода на С" author="" url="" tags="" ctime="20170124133006" dir="1485253806wftdygcga2" file="text.html"/>
-      <record id="1485253147d529rwq5r0" name="Основные конструкции" author="" url="" tags="" ctime="20170124131942" dir="1485253147p5ajkj3d4b" file="text.html"/>
-      <record id="148500136116o1amzkl9" name="Прерывания" author="" url="" tags="" ctime="20170121152241" dir="1485001361uvrqadqt7e" file="text.html"/>
-      <record id="14852582822mngv3rvpm" name="Volatile" author="" url="" tags="" ctime="20170124144442" dir="14852582820ven1ye891" file="text.html"/>
      </recordtable>
     </node>
    </node>
@@ -80,12 +75,18 @@
     <node crypt="" id="14833823556d5onqo10r" name="AVR8">
      <recordtable>
       <record id="1483382395otc7zse2mp" name="USBASP 2.0" author="" url="" tags="asp usbasp" ctime="20170102213955" dir="14833823956pqcteihvy" file="text.html"/>
+      <record id="1490291746czzwbsse4i" name="AVRDUDE" author="" url="" tags="" ctime="20170323205546" dir="1490291746hk183urxu9" file="text.html"/>
+      <record id="1484746681lqu1l3qadk" name="Советы по GCC" author="" url="" tags="avr" ctime="20170323205401" dir="14847466811re3tn34u8" file="text.html"/>
+      <record id="14852538064xalhyztmm" name="Методы оптимизации кода на С" author="" url="" tags="" ctime="20170323205418" dir="1485253806wftdygcga2" file="text.html"/>
+      <record id="148500136116o1amzkl9" name="Прерывания" author="" url="" tags="" ctime="20170323205425" dir="1485001361uvrqadqt7e" file="text.html"/>
+      <record id="1485253147d529rwq5r0" name="Основные конструкции" author="" url="" tags="" ctime="20170323205430" dir="1485253147p5ajkj3d4b" file="text.html"/>
+      <record id="14852582822mngv3rvpm" name="Volatile" author="" url="" tags="" ctime="20170323205433" dir="14852582820ven1ye891" file="text.html"/>
      </recordtable>
      <node crypt="" id="1488903895qisq3ils4r" name="Theory">
       <recordtable>
        <record id="148890391071o4cvku76" name="I/O Ports" author="" url="" tags="" ctime="20170307192510" dir="1488903910b0m6k1jq49" file="text.html"/>
        <record id="14900111565y4b79kn4q" name="EEPROM" author="" url="" tags="" ctime="20170320145916" dir="1490011156qb6nsdgmfi" file="text.html"/>
-       <record id="14900147383lwtnp58x7" name="FUSE &amp; AVRDUDE" author="" url="" tags="" ctime="20170320155858" dir="1490014738nxcfioser9" file="text.html"/>
+       <record id="14900147383lwtnp58x7" name="FUSEs" author="" url="" tags="" ctime="20170320155858" dir="1490014738nxcfioser9" file="text.html"/>
       </recordtable>
      </node>
      <node crypt="" id="1486914118tytqq8er6h" name="Programs">
@@ -94,6 +95,7 @@
        <record id="1487611212giedeohkl6" name="Clock with 7-segments" author="" url="" tags="" ctime="20170220202012" dir="1487611212de1tzry2ol" file="text.html"/>
        <record id="14889817655d32gjrgs4" name="Clock with 7-segments ver.2" author="" url="" tags="" ctime="20170308170245" dir="1488981765q226mpcpw7" file="text.html"/>
        <record id="1489600517lwcq14fqfx" name="Clock with 7-segments ver.3" author="" url="" tags="" ctime="20170315205517" dir="1489600517fm1l4newfc" file="text.html"/>
+       <record id="1490291845gv6p3q2w34" name="Clock with 7-segments ver.4" author="" url="" tags="" ctime="20170323205725" dir="1490291845gt6unagwyb" file="text.html"/>
       </recordtable>
      </node>
     </node>
