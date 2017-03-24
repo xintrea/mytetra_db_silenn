@@ -103,6 +103,9 @@
     <node crypt="" id="1484049489faje6japcx" name="Xilinx"/>
    </node>
    <node crypt="" id="1484036619aeoxz8fxg7" name="Theory">
+    <recordtable>
+     <record id="1490252529t0kla0yo9k" name="Проходные выключатели" author="" url="" tags="" ctime="20170323100209" dir="14902525297c0tapsu71" file="text.html"/>
+    </recordtable>
     <node crypt="" id="1486021899us896bwgh9" name="Physics">
      <recordtable>
       <record id="1486024105wq1kgov1wt" name="Биполярный транзистор, СОК" author="" url="" tags="" ctime="20170202112825" dir="1486024105bpubtdcm0x" file="text.html"/>
