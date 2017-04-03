@@ -110,6 +110,8 @@
    <node crypt="" id="1484036619aeoxz8fxg7" name="Theory">
     <recordtable>
      <record id="1490252529t0kla0yo9k" name="Проходные выключатели" author="" url="" tags="" ctime="20170323100209" dir="14902525297c0tapsu71" file="text.html"/>
+     <record id="14912145218i9v6pajx8" name="Триггер Шмитта" author="" url="" tags="" ctime="20170403131521" dir="1491214521ny9crskv8h" file="text.html"/>
+     <record id="1491216202741g83lcg3" name="NE555 таймер" author="" url="" tags="" ctime="20170403134322" dir="14912162024guz6q6vh7" file="text.html"/>
     </recordtable>
     <node crypt="" id="1486021899us896bwgh9" name="Physics">
      <recordtable>
@@ -143,6 +145,7 @@
    <node crypt="" id="148130524392pip6ipv2" name="English">
     <recordtable>
      <record id="1481305280oqp6a4h7fb" name="Времена" author="" url="" tags="времена, english" ctime="20161209204120" dir="14813052806qlwoqi6fd" file="text.html"/>
+     <record id="1491226899idnxaxcyu6" name="Participle II" author="" url="" tags="" ctime="20170403164139" dir="1491226899uuijnsadaf" file="text.html"/>
      <record id="14831032977xelhzxv5e" name="Модальные глаголы" author="" url="" tags="" ctime="20161230160817" dir="1483103297jvk3dvoys0" file="text.html"/>
      <record id="1483102851cr5s8fwh0c" name="Модальный глагол can" author="" url="" tags="can" ctime="20161230160051" dir="1483102851gegb7103oh" file="text.html"/>
      <record id="14831029894sn90rh569" name="Модальный глагол May" author="" url="" tags="may" ctime="20161230160309" dir="14831029898jf6r8n9tp" file="text.html"/>
@@ -189,6 +192,9 @@
    <recordtable>
     <record id="1486367791wo976fiun3" name="Boston Dynamics (Jobs)" author="" url="" tags="" ctime="20170206105631" dir="1486367791bdncxnh6by" file="text.html"/>
     <record id="14863693476y2gvghw8q" name="NASA" author="" url="" tags="" ctime="20170206112227" dir="1486369347qchzkc7ytv" file="text.html"/>
+    <record id="1491204558pk98vf2f5d" name="ComAp (Cz)" author="" url="http://comap-control.jobs.cz/detail/?id=G2-1181449584-aden_brand0&amp;rps=233&amp;cse-lang=en" tags="" ctime="20170403102918" dir="1491204558l5c72ekr84" file="text.html"/>
+    <record id="1491204597nl9hjle9jr" name="projekt ELI-Beamlines (Cz)" author="" url="http://www.jobs.cz/rpd/1097946309/?rps=233&amp;lang=en" tags="" ctime="20170403102957" dir="1491204597y0jz2kae9u" file="text.html"/>
+    <record id="14912059615j1ejwtbr9" name="GIT Consult Czech s.r.o. (Praha)" author="" url="http://www.jobs.cz/rpd/1192737896/?rps=233&amp;lang=en" tags="" ctime="20170403105241" dir="149120596171e9tgyd2z" file="text.html"/>
    </recordtable>
   </node>
  </content>
