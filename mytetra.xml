@@ -9,6 +9,7 @@
    </recordtable>
    <node crypt="" id="1481013794jndhvedcgx" name="Linux">
     <recordtable>
+     <record id="1491306860w88yh8dcde" name="cmd line" author="" url="" tags="" ctime="20170404145420" dir="14913068607g18ip5owu" file="text.html"/>
      <record id="14899432728nsmwtws6t" name="conky" author="" url="" tags="" ctime="20170319200752" dir="1489943272144mfovtqw" file="text.html"/>
      <record id="1489944227rhz3g5zikv" name="xbindkeay" author="" url="" tags="" ctime="20170319202347" dir="1489944227g7n2renjg1" file="text.html"/>
      <record id="1490439250q3tfoyais3" name="Долгая загрузка" author="" url="" tags="" ctime="20170325135410" dir="14904392502lzpjwonk4" file="text.html"/>
@@ -111,7 +112,7 @@
     <recordtable>
      <record id="1490252529t0kla0yo9k" name="Проходные выключатели" author="" url="" tags="" ctime="20170323100209" dir="14902525297c0tapsu71" file="text.html"/>
      <record id="14912145218i9v6pajx8" name="Триггер Шмитта" author="" url="" tags="" ctime="20170403131521" dir="1491214521ny9crskv8h" file="text.html"/>
-     <record id="1491216202741g83lcg3" name="NE555 таймер" author="" url="" tags="" ctime="20170403134322" dir="14912162024guz6q6vh7" file="text.html"/>
+     <record id="1491216202741g83lcg3" name="NE555" author="" url="" tags="" ctime="20170403134322" dir="14912162024guz6q6vh7" file="text.html"/>
     </recordtable>
     <node crypt="" id="1486021899us896bwgh9" name="Physics">
      <recordtable>
