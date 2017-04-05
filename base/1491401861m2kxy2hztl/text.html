@@ -1,0 +1,7 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'Georgia'; font-size:11pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">It always amazes me when I see I2C functions used without any testing of return values.<br />Most I2C functions return a status code, which can be used to identify problems.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">When I2C slave devices are returning values to the master they expect to receive a ACK/NAK from the master to let them know the master is or is not expecting any more data from them so they can release the bus back to the master. Usually the last byte expected by the master needs a NAK to be sent in order for the master to issue a bus STOP condition, without this NAK the slave holds onto the bus waiting for the master to request more data. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Read the data sheet and see if this is not true.<br />Then rewrite your code to look at and test returned status codes.</p></body></html>

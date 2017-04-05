@@ -90,6 +90,7 @@
        <record id="14900111565y4b79kn4q" name="EEPROM" author="" url="" tags="" ctime="20170320145916" dir="1490011156qb6nsdgmfi" file="text.html"/>
        <record id="14900147383lwtnp58x7" name="FUSEs" author="" url="" tags="" ctime="20170320155858" dir="1490014738nxcfioser9" file="text.html"/>
        <record id="1490880884fmkigxkc61" name="Analog Comparator" author="" url="" tags="" ctime="20170330163444" dir="14908808841shivxfv61" file="text.html"/>
+       <record id="14914018611xxbhffobq" name="I2C (TWI)" author="" url="" tags="" ctime="20170405171741" dir="1491401861m2kxy2hztl" file="text.html"/>
       </recordtable>
      </node>
      <node crypt="" id="1486914118tytqq8er6h" name="Programs">
@@ -113,7 +114,6 @@
      <record id="1490252529t0kla0yo9k" name="Проходные выключатели" author="" url="" tags="" ctime="20170323100209" dir="14902525297c0tapsu71" file="text.html"/>
      <record id="14912145218i9v6pajx8" name="Триггер Шмитта" author="" url="" tags="" ctime="20170403131521" dir="1491214521ny9crskv8h" file="text.html"/>
      <record id="1491331033zci7i0ynrt" name="Фотодатчик" author="" url="" tags="" ctime="20170404213713" dir="1491331033lc61g74of1" file="text.html"/>
-     <record id="1491216202741g83lcg3" name="NE555" author="" url="" tags="" ctime="20170403134322" dir="14912162024guz6q6vh7" file="text.html"/>
     </recordtable>
     <node crypt="" id="1486021899us896bwgh9" name="Physics">
      <recordtable>
@@ -134,6 +134,8 @@
      <record id="1485600960k6rk17hfos" name="74HC595" author="" url="" tags="" ctime="20170307190624" dir="14856009604112v00p0a" file="text.html"/>
      <record id="14870090951t231asyns" name="7-segments для часов" author="" url="" tags="" ctime="20170307190624" dir="14870090959b3n1litjo" file="text.html"/>
      <record id="1487526131bffrjgs186" name="BC547 / BC548" author="" url="" tags="" ctime="20170307190624" dir="1487526131afgd5irvv4" file="text.html"/>
+     <record id="1491216202741g83lcg3" name="NE555" author="" url="" tags="" ctime="20170405120952" dir="14912162024guz6q6vh7" file="text.html"/>
+     <record id="149138340918dttrpjkp" name="DS3231" author="" url="" tags="" ctime="20170405121009" dir="1491383409vqffrzkrzi" file="text.html"/>
     </recordtable>
    </node>
    <node crypt="" id="148914926872tr3kszrm" name="Eagle CAD">
@@ -192,6 +194,7 @@
   </node>
   <node crypt="" id="1486367771wea04ocr51" name="Other">
    <recordtable>
+    <record id="1491383066pfuira44ok" name="To Do" author="" url="" tags="" ctime="20170405120426" dir="1491383066h48mzft4k0" file="text.html"/>
     <record id="1486367791wo976fiun3" name="Boston Dynamics (Jobs)" author="" url="" tags="" ctime="20170206105631" dir="1486367791bdncxnh6by" file="text.html"/>
     <record id="14863693476y2gvghw8q" name="NASA" author="" url="" tags="" ctime="20170206112227" dir="1486369347qchzkc7ytv" file="text.html"/>
     <record id="1491204558pk98vf2f5d" name="ComAp (Cz)" author="" url="http://comap-control.jobs.cz/detail/?id=G2-1181449584-aden_brand0&amp;rps=233&amp;cse-lang=en" tags="" ctime="20170403102918" dir="1491204558l5c72ekr84" file="text.html"/>
