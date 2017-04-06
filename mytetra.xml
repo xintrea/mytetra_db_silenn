@@ -20,6 +20,7 @@
      <record id="1482246329awwq67zw53" name="Sublime Text 2 + GCC (for C only)" author="" url="" tags="gcc, st, st2" ctime="20161220180529" dir="1482246329j31o5aphxl" file="text.html"/>
      <record id="1482249853yeqwmij3ru" name="Sublime Text 2 + G++ (for C++ only)" author="" url="" tags="g++, gpp, gcc, linux" ctime="20161220190413" dir="1482249853do3951hbmn" file="text.html"/>
      <record id="1482246093z6a0uhnuln" name="Sublime Text 2 + AVRGCC" author="" url="" tags="gcc, st, st2" ctime="20161220180133" dir="14822460937l2jwadehh" file="text.html"/>
+     <record id="1491483071ufz47wrh6i" name="C make files" author="" url="" tags="" ctime="20170406155111" dir="1491483071sc36ayxnqx" file="text.html"/>
     </recordtable>
     <node crypt="" id="1481013843cew1s2bqvn" name="C">
      <recordtable>
