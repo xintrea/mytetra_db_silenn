@@ -133,11 +133,12 @@
    </node>
    <node crypt="" id="1488902784fe0kavpl5i" name="Components">
     <recordtable>
-     <record id="1485600960k6rk17hfos" name="74HC595" author="" url="" tags="" ctime="20170307190624" dir="14856009604112v00p0a" file="text.html"/>
+     <record id="1485600960k6rk17hfos" name="74HC595 (Shift Register)" author="" url="" tags="" ctime="20170307190624" dir="14856009604112v00p0a" file="text.html"/>
      <record id="14870090951t231asyns" name="7-segments для часов" author="" url="" tags="" ctime="20170307190624" dir="14870090959b3n1litjo" file="text.html"/>
      <record id="1487526131bffrjgs186" name="BC547 / BC548" author="" url="" tags="" ctime="20170307190624" dir="1487526131afgd5irvv4" file="text.html"/>
      <record id="1491216202741g83lcg3" name="NE555" author="" url="" tags="" ctime="20170405120952" dir="14912162024guz6q6vh7" file="text.html"/>
      <record id="149138340918dttrpjkp" name="DS3231" author="" url="" tags="" ctime="20170405121009" dir="1491383409vqffrzkrzi" file="text.html"/>
+     <record id="14919202192pbw18wox3" name="74HC14N (Schmitt Trigger)" author="" url="" tags="" ctime="20170411171659" dir="14919202191harfz8r0x" file="text.html"/>
     </recordtable>
    </node>
    <node crypt="" id="148914926872tr3kszrm" name="Eagle CAD">
