@@ -161,7 +161,9 @@
    </node>
    <node crypt="" id="14924963811y9lpga22b" name="Deutsch">
     <recordtable>
-     <record id="1492496601uhqm72ix16" name="Fonetika" author="" url="" tags="" ctime="20170418092321" dir="14924966012wxsn5p8vd" file="text.html"/>
+     <record id="1492496601uhqm72ix16" name="Phonetik" author="" url="" tags="" ctime="20170418092321" dir="14924966012wxsn5p8vd" file="text.html"/>
+     <record id="14925211358j3jcl93a0" name="Числительные" author="" url="" tags="" ctime="20170418161215" dir="1492521135s3e4j3dya8" file="text.html"/>
+     <record id="14925231058s6mqidbjg" name="Время" author="" url="" tags="" ctime="20170418164505" dir="1492523105ewh5dnl3qc" file="text.html"/>
     </recordtable>
    </node>
   </node>
