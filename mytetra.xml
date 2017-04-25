@@ -76,7 +76,9 @@
       <record id="1483382395otc7zse2mp" name="USBASP 2.0" author="" url="" tags="asp usbasp" ctime="20170102213955" dir="14833823956pqcteihvy" file="text.html"/>
       <record id="1490291746czzwbsse4i" name="AVRDUDE" author="" url="" tags="" ctime="20170323205546" dir="1490291746hk183urxu9" file="text.html"/>
       <record id="148500136116o1amzkl9" name="Прерывания" author="" url="" tags="" ctime="20170323205425" dir="1485001361uvrqadqt7e" file="text.html"/>
-      <record id="1493042807n7dyhb8mez" name="PowerSup, Reset" author="" url="" tags="" ctime="20170424170647" dir="1493042807s2q019wre6" file="text.html"/>
+      <record id="1493042807n7dyhb8mez" name="Power supply and Reset" author="" url="" tags="" ctime="20170424170647" dir="1493042807s2q019wre6" file="text.html"/>
+      <record id="14931229372eyf6kl51i" name="Buttons and LED" author="" url="" tags="" ctime="20170425152217" dir="14931229375xljddy5i9" file="text.html"/>
+      <record id="14931081002dkw7gn7do" name="AVR + DC Mototrs" author="" url="" tags="" ctime="20170425111500" dir="1493108100qkvr2zgfwa" file="text.html"/>
      </recordtable>
      <node crypt="" id="1488903895qisq3ils4r" name="Functional">
       <recordtable>
