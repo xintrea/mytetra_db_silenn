@@ -100,13 +100,30 @@
      <node crypt="" id="1486914118tytqq8er6h" name="Programs">
       <recordtable>
        <record id="1486914133vwu47uy073" name="74HC595N" author="" url="" tags="" ctime="20170212184213" dir="1486914133jt1sj70dz6" file="text.html"/>
-       <record id="1487611212giedeohkl6" name="Clock with 7-segments" author="" url="" tags="" ctime="20170220202012" dir="1487611212de1tzry2ol" file="text.html"/>
-       <record id="14889817655d32gjrgs4" name="Clock with 7-segments ver.2" author="" url="" tags="" ctime="20170308170245" dir="1488981765q226mpcpw7" file="text.html"/>
-       <record id="1489600517lwcq14fqfx" name="Clock with 7-segments ver.3" author="" url="" tags="" ctime="20170315205517" dir="1489600517fm1l4newfc" file="text.html"/>
-       <record id="1490291845gv6p3q2w34" name="Clock with 7-segments ver.4" author="" url="" tags="" ctime="20170323205725" dir="1490291845gt6unagwyb" file="text.html"/>
-       <record id="1490725532jz54xxqg34" name="Clock with 7-segments ver.5" author="" url="" tags="" ctime="20170328212532" dir="1490725532s6qf1h365o" file="text.html"/>
-       <record id="14928762737pre84nn12" name="Clock with 7-segments ver.6" author="" url="" tags="" ctime="20170422185113" dir="1492876273gj6hsv6mlo" file="text.html"/>
       </recordtable>
+      <node crypt="" id="1493317563tm6q9znbiw" name="Clock 7sgm (blue)">
+       <recordtable>
+        <record id="1487611212giedeohkl6" name="Clock with 7-segments" author="" url="" tags="" ctime="20170427212616" dir="1487611212de1tzry2ol" file="text.html"/>
+        <record id="14889817655d32gjrgs4" name="Clock with 7-segments ver.2" author="" url="" tags="" ctime="20170427212626" dir="1488981765q226mpcpw7" file="text.html"/>
+        <record id="1489600517lwcq14fqfx" name="Clock with 7-segments ver.3" author="" url="" tags="" ctime="20170427212622" dir="1489600517fm1l4newfc" file="text.html"/>
+        <record id="1490291845gv6p3q2w34" name="Clock with 7-segments ver.4" author="" url="" tags="" ctime="20170427212630" dir="1490291845gt6unagwyb" file="text.html"/>
+        <record id="1490725532jz54xxqg34" name="Clock with 7-segments ver.5" author="" url="" tags="" ctime="20170427212635" dir="1490725532s6qf1h365o" file="text.html"/>
+        <record id="14928762737pre84nn12" name="Clock with 7-segments ver.6" author="" url="" tags="" ctime="20170427212639" dir="1492876273gj6hsv6mlo" file="text.html"/>
+       </recordtable>
+      </node>
+      <node crypt="" id="1493317627cwg7qnhtlo" name="Clock 7sgm (red)">
+       <recordtable>
+        <record id="14933179152mvvrikk49" name="fuses" author="" url="" tags="" ctime="20170427213155" dir="1493317915meg8n0mdch" file="text.html"/>
+       </recordtable>
+       <node crypt="" id="1493317649gatjn1tfwn" name="ver.1">
+        <recordtable>
+         <record id="14933177172g31xz7h86" name="main.c" author="" url="" tags="" ctime="20170427212837" dir="1493317717sqxmp03yff" file="text.html"/>
+         <record id="1493317793s8ww915q9d" name="definitions.h" author="" url="" tags="" ctime="20170427212953" dir="149331779348kd6nzu4t" file="text.html"/>
+         <record id="149331781664funi9c7m" name="functionz.h" author="" url="" tags="" ctime="20170427213016" dir="1493317816jb3wnsdti3" file="text.html"/>
+         <record id="1493317862jgeekfwg98" name="functionz.c" author="" url="" tags="" ctime="20170427213102" dir="149331786235uof93zf9" file="text.html"/>
+        </recordtable>
+       </node>
+      </node>
      </node>
     </node>
     <node crypt="" id="148338311076c5dcu1bg" name="STM32"/>
