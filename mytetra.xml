@@ -100,6 +100,8 @@
      <node crypt="" id="1486914118tytqq8er6h" name="Programs">
       <recordtable>
        <record id="1486914133vwu47uy073" name="74HC595N" author="" url="" tags="" ctime="20170212184213" dir="1486914133jt1sj70dz6" file="text.html"/>
+       <record id="1493714360rcv6xnyrul" name="UART without interrupts" author="" url="" tags="" ctime="20170502113920" dir="1493714360crod80y2kz" file="text.html"/>
+       <record id="1493714581q4vmynms0m" name="UART" author="" url="" tags="" ctime="20170502114301" dir="1493714581fqdeg2yans" file="text.html"/>
       </recordtable>
       <node crypt="" id="1493317563tm6q9znbiw" name="Clock 7sgm (blue)">
        <recordtable>
@@ -113,7 +115,7 @@
       </node>
       <node crypt="" id="1493317627cwg7qnhtlo" name="Clock 7sgm (red)">
        <recordtable>
-        <record id="14933179152mvvrikk49" name="fuses" author="" url="" tags="" ctime="20170427213155" dir="1493317915meg8n0mdch" file="text.html"/>
+        <record id="14933179152mvvrikk49" name="Scheme" author="" url="" tags="" ctime="20170427213155" dir="1493317915meg8n0mdch" file="text.html"/>
        </recordtable>
        <node crypt="" id="1493317649gatjn1tfwn" name="ver.1">
         <recordtable>
