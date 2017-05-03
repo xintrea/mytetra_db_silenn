@@ -73,6 +73,7 @@
    <node crypt="" id="1483382339yb719hyn1i" name="Microcontrollers">
     <node crypt="" id="14833823556d5onqo10r" name="AVR8">
      <recordtable>
+      <record id="14938268725m1f9wm9o1" name="Pins" author="" url="" tags="" ctime="20170503185432" dir="1493826872362hocbokn" file="text.html"/>
       <record id="1483382395otc7zse2mp" name="USBASP 2.0" author="" url="" tags="asp usbasp" ctime="20170102213955" dir="14833823956pqcteihvy" file="text.html"/>
       <record id="1490291746czzwbsse4i" name="AVRDUDE" author="" url="" tags="" ctime="20170323205546" dir="1490291746hk183urxu9" file="text.html"/>
       <record id="148500136116o1amzkl9" name="Прерывания" author="" url="" tags="" ctime="20170323205425" dir="1485001361uvrqadqt7e" file="text.html"/>
