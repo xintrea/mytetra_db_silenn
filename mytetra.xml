@@ -63,6 +63,11 @@
        <record id="1485439042n3wiaweaky" name="Модуль числа и srand()" author="" url="" tags="" ctime="20170126165722" dir="1485439042m9zx9qowvd" file="text.html"/>
       </recordtable>
      </node>
+     <node crypt="" id="1493888699f7hey0pekb" name="Libraries">
+      <recordtable>
+       <record id="1493887124k430ixeu4s" name="fopen" author="" url="" tags="" ctime="20170504120505" dir="1493887124ot969nwrle" file="text.html"/>
+      </recordtable>
+     </node>
     </node>
     <node crypt="" id="1481013861qw420xxqrm" name="Asm"/>
     <node crypt="" id="1481013875r818kh7l1u" name="Qt"/>
