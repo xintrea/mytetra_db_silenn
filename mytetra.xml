@@ -65,6 +65,8 @@
      </node>
      <node crypt="" id="1493888699f7hey0pekb" name="Libraries">
       <recordtable>
+       <record id="14939819843m8r1phq24" name="printf" author="" url="" tags="" ctime="20170505135944" dir="1493981984w0wv0bkmvu" file="text.html"/>
+       <record id="14939819930cq3ntk0xz" name="scanf" author="" url="" tags="" ctime="20170505135953" dir="1493981993yf0rj58adf" file="text.html"/>
        <record id="1493887124k430ixeu4s" name="fopen" author="" url="" tags="" ctime="20170504120505" dir="1493887124ot969nwrle" file="text.html"/>
       </recordtable>
      </node>
