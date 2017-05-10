@@ -79,7 +79,7 @@
   <node crypt="" id="1481013912mb6bh7lubx" name="Electronics">
    <node crypt="" id="1483382339yb719hyn1i" name="Microcontrollers">
     <recordtable>
-     <record id="14931081002dkw7gn7do" name="Помехи" author="" url="" tags="" ctime="20170510111352" dir="1493108100qkvr2zgfwa" file="text.html"/>
+     <record id="14931081002dkw7gn7do" name="Noises" author="" url="" tags="" ctime="20170510111352" dir="1493108100qkvr2zgfwa" file="text.html"/>
     </recordtable>
     <node crypt="" id="14833823556d5onqo10r" name="AVR8">
      <recordtable>
