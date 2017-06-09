@@ -85,22 +85,18 @@
     </recordtable>
     <node crypt="" id="14833823556d5onqo10r" name="AVR8">
      <recordtable>
-      <record id="14938268725m1f9wm9o1" name="Pins" author="" url="" tags="" ctime="20170503185432" dir="1493826872362hocbokn" file="text.html"/>
+      <record id="14938268725m1f9wm9o1" name="Pins and I/O ports" author="" url="" tags="" ctime="20170503185432" dir="1493826872362hocbokn" file="text.html"/>
       <record id="1483382395otc7zse2mp" name="USBASP 2.0" author="" url="" tags="asp usbasp" ctime="20170102213955" dir="14833823956pqcteihvy" file="text.html"/>
       <record id="1490291746czzwbsse4i" name="AVRDUDE" author="" url="" tags="" ctime="20170323205546" dir="1490291746hk183urxu9" file="text.html"/>
-      <record id="148500136116o1amzkl9" name="Прерывания" author="" url="" tags="" ctime="20170323205425" dir="1485001361uvrqadqt7e" file="text.html"/>
+      <record id="1497009029nem2z6depn" name="Sleep Modes" author="" url="" tags="" ctime="20170609145029" dir="1497009029abafyrlxzw" file="text.html"/>
       <record id="1493042807n7dyhb8mez" name="Power supply and Reset" author="" url="" tags="" ctime="20170424170647" dir="1493042807s2q019wre6" file="text.html"/>
       <record id="14931229372eyf6kl51i" name="Buttons and LED" author="" url="" tags="" ctime="20170425152217" dir="14931229375xljddy5i9" file="text.html"/>
+      <record id="148500136116o1amzkl9" name="Прерывания" author="" url="" tags="" ctime="20170323205425" dir="1485001361uvrqadqt7e" file="text.html"/>
+      <record id="14900111565y4b79kn4q" name="EEPROM" author="" url="" tags="" ctime="20170609145341" dir="1490011156qb6nsdgmfi" file="text.html"/>
+      <record id="14900147383lwtnp58x7" name="FUSEs" author="" url="" tags="" ctime="20170609145344" dir="1490014738nxcfioser9" file="text.html"/>
+      <record id="1490880884fmkigxkc61" name="Analog Comparator" author="" url="" tags="" ctime="20170609145346" dir="14908808841shivxfv61" file="text.html"/>
+      <record id="14914018611xxbhffobq" name="I2C (TWI)" author="" url="" tags="" ctime="20170609145347" dir="1491401861m2kxy2hztl" file="text.html"/>
      </recordtable>
-     <node crypt="" id="1488903895qisq3ils4r" name="Functional">
-      <recordtable>
-       <record id="148890391071o4cvku76" name="I/O Ports" author="" url="" tags="" ctime="20170307192510" dir="1488903910b0m6k1jq49" file="text.html"/>
-       <record id="14900111565y4b79kn4q" name="EEPROM" author="" url="" tags="" ctime="20170320145916" dir="1490011156qb6nsdgmfi" file="text.html"/>
-       <record id="14900147383lwtnp58x7" name="FUSEs" author="" url="" tags="" ctime="20170320155858" dir="1490014738nxcfioser9" file="text.html"/>
-       <record id="1490880884fmkigxkc61" name="Analog Comparator" author="" url="" tags="" ctime="20170330163444" dir="14908808841shivxfv61" file="text.html"/>
-       <record id="14914018611xxbhffobq" name="I2C (TWI)" author="" url="" tags="" ctime="20170405171741" dir="1491401861m2kxy2hztl" file="text.html"/>
-      </recordtable>
-     </node>
      <node crypt="" id="1493025300f5b4a6eo5s" name="AVR GCC">
       <recordtable>
        <record id="1484746681lqu1l3qadk" name="Советы по GCC" author="" url="" tags="avr" ctime="20170424121526" dir="14847466811re3tn34u8" file="text.html"/>
