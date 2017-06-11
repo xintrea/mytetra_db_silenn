@@ -88,7 +88,7 @@
       <record id="14938268725m1f9wm9o1" name="Pins and I/O ports" author="" url="" tags="" ctime="20170503185432" dir="1493826872362hocbokn" file="text.html"/>
       <record id="1483382395otc7zse2mp" name="USBASP 2.0" author="" url="" tags="asp usbasp" ctime="20170102213955" dir="14833823956pqcteihvy" file="text.html"/>
       <record id="1490291746czzwbsse4i" name="AVRDUDE" author="" url="" tags="" ctime="20170323205546" dir="1490291746hk183urxu9" file="text.html"/>
-      <record id="1497009029nem2z6depn" name="Sleep Modes" author="" url="" tags="" ctime="20170609145029" dir="1497009029abafyrlxzw" file="text.html"/>
+      <record id="1497009029nem2z6depn" name="Sleep Modes and Power Save" author="" url="" tags="" ctime="20170609145029" dir="1497009029abafyrlxzw" file="text.html"/>
       <record id="1493042807n7dyhb8mez" name="Power supply and Reset" author="" url="" tags="" ctime="20170424170647" dir="1493042807s2q019wre6" file="text.html"/>
       <record id="14931229372eyf6kl51i" name="Buttons and LED" author="" url="" tags="" ctime="20170425152217" dir="14931229375xljddy5i9" file="text.html"/>
       <record id="148500136116o1amzkl9" name="Прерывания" author="" url="" tags="" ctime="20170323205425" dir="1485001361uvrqadqt7e" file="text.html"/>
@@ -139,6 +139,14 @@
          <record id="1496343716p0x2sx1kbv" name="definitions.h" author="" url="" tags="" ctime="20170601220156" dir="1496343716jy5q4hx92s" file="text.html"/>
          <record id="1496343716i76nxbka0m" name="functionz.h" author="" url="" tags="" ctime="20170601220156" dir="1496343716xfp5a9vj88" file="text.html"/>
          <record id="14963437160tkpfaea9m" name="functionz.c" author="" url="" tags="" ctime="20170601220156" dir="1496343716ip3g7vdpw4" file="text.html"/>
+        </recordtable>
+       </node>
+       <node crypt="" id="1497189367c3isb6cmz4" name="ver.3">
+        <recordtable>
+         <record id="149718936769oltsq274" name="main.c" author="" url="" tags="" ctime="20170611165607" dir="1497189367kk6oqk0wn2" file="text.html"/>
+         <record id="1497189367nl7aqyuqah" name="definitions.h" author="" url="" tags="" ctime="20170611165607" dir="14971893673z8mrz831n" file="text.html"/>
+         <record id="1497189367s2c044fcnx" name="functionz.h" author="" url="" tags="" ctime="20170611165607" dir="14971893678g7xh058id" file="text.html"/>
+         <record id="1497189367t36ggowlcu" name="functionz.c" author="" url="" tags="" ctime="20170611165607" dir="1497189367zrim1o0bua" file="text.html"/>
         </recordtable>
        </node>
       </node>
