@@ -1,0 +1,12 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">v.4 я попробовал реализовать через sleep mode (IDLE) после каждого полного цикла программы. Выход из спящего режима осуществляется через прерывание Т0. Приследовалась цель снижения энергопотребления, но получилось следующее:</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">- пришлось уменьшить предделитель таймера, иначе программа не могла отсчитывать циклы динамической индикации;</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">- при уходе в сон по какой-то причине переставали работать порты I/O, хотя даташит говорит о том, что они должны работать. Из-за чего пропала возможность использовать ночной режим. Независимо от сигнала с датчика освещенности дисплей горит всегда с одинаковой яркостью, но при попытке понизить частоту обновления он начинает мерцать.</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">В итоге энергопотребление и вовсе выросло, ведь дисплей горит в полную силу и отжирает большую часть батарейки.</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Делаю откат до версии 3 и продолжаю пилить ее.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">P.S. не хватает какой-нибудь графической CVS, ибо читать код в MyTetra с ее форматированием - лютый трэш... ):</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p></body></html>

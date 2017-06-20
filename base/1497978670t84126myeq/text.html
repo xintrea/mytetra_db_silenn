@@ -1,0 +1,12 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">v.2 - <span style=" font-weight:600;">[47mA]</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">v.3 - <span style=" font-weight:600;">[46.5mA]</span> разбил всю программу на 2 больших цикла: выполнение каждую секунду и после каждого прерывания Т0 (прескаллер 256). Логично было бы запихнуть МК в сон до прерывания Т0, чтобы не гонять его в холостую.</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">v.4</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">[51.5mA]</span>. Включил спящий режим IDLE. В итоге при уходе в сон по какой-то причине переставали работать порты I/O, хотя даташит говорит о том, что они должны работать. Из-за чего пропала возможность использовать ночной режим. Независимо от сигнала с датчика освещенности дисплей горит всегда с одинаковой яркостью, но при попытке понизить частоту обновления он начинает мерцать.</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">[50.9mA]</span>. Поскольку ночной режим не работает, решил отключить датчик света и траггер шмитта.</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">[43.8mA]</span>. Сколько можно сэкономить, если отключить дисплей? - 8mA в моем случае. Совсем не густо.</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">v.5</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p></body></html>
