@@ -22,6 +22,7 @@
      <record id="1482249853yeqwmij3ru" name="Sublime Text 2 + G++ (for C++ only)" author="" url="" tags="g++, gpp, gcc, linux" ctime="20161220190413" dir="1482249853do3951hbmn" file="text.html"/>
      <record id="1482246093z6a0uhnuln" name="Sublime Text 2 + AVRGCC" author="" url="" tags="gcc, st, st2" ctime="20161220180133" dir="14822460937l2jwadehh" file="text.html"/>
      <record id="1491483071ufz47wrh6i" name="C make files" author="" url="" tags="" ctime="20170406155111" dir="1491483071sc36ayxnqx" file="text.html"/>
+     <record id="1499413342yp0gdqne26" name="MinGW" author="" url="" tags="" ctime="20170707104222" dir="14994133421m199wfh2f" file="text.html"/>
     </recordtable>
     <node crypt="" id="1481013843cew1s2bqvn" name="C">
      <recordtable>
@@ -185,6 +186,7 @@
      <record id="1491331033zci7i0ynrt" name="Фотодатчик" author="" url="" tags="" ctime="20170404213713" dir="1491331033lc61g74of1" file="text.html"/>
      <record id="1492671666stv7deyjkv" name="Транзисторный усилитель" author="" url="" tags="" ctime="20170420100106" dir="1492671666w73fw0gq8c" file="text.html"/>
      <record id="1496238823oof2iqh68b" name="Операционный усилитель" author="" url="" tags="" ctime="20170531165343" dir="1496238823eu3z524aja" file="text.html"/>
+     <record id="1499425626d2uy3hskye" name="Операционный усилитель с однополярным питанием" author="" url="" tags="" ctime="20170707140706" dir="1499425626en8xx8allk" file="text.html"/>
      <record id="1490252529t0kla0yo9k" name="Проходные выключатели" author="" url="" tags="" ctime="20170323100209" dir="14902525297c0tapsu71" file="text.html"/>
     </recordtable>
     <node crypt="" id="1486021899us896bwgh9" name="Physics">
