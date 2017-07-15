@@ -33,14 +33,17 @@
       <record id="1483014357phtzwlsjqp" name="Двумерный массив" author="" url="" tags="си" ctime="20161229152557" dir="1483014357intgortxm4" file="text.html"/>
       <record id="1489319023o4intaum88" name="printf - scanf" author="" url="" tags="" ctime="20170312144343" dir="148931902352w6dxuz5s" file="text.html"/>
      </recordtable>
-     <node crypt="" id="1485597677axytdh3tn4" name="Тетерин Вячеслав Гертрудович">
-      <recordtable>
-       <record id="1485599492b19xzjmtu0" name="Переменные и константы" author="" url="" tags="" ctime="20170128133132" dir="14855994923fbhooyry1" file="text.html"/>
-      </recordtable>
-     </node>
      <node crypt="" id="14859474781fanxwbnzu" name="Ncurses">
       <recordtable>
        <record id="1485947493fr64der385" name="Подключение" author="" url="" tags="" ctime="20170201141133" dir="1485947493q47rsvkzv3" file="text.html"/>
+      </recordtable>
+     </node>
+     <node crypt="" id="15001252288xpcwoj1u0" name="Libraries">
+      <recordtable>
+       <record id="14939819843m8r1phq24" name="printf" author="" url="" tags="" ctime="20170715162708" dir="1493981984w0wv0bkmvu" file="text.html"/>
+       <record id="14939819930cq3ntk0xz" name="scanf" author="" url="" tags="" ctime="20170715162708" dir="1493981993yf0rj58adf" file="text.html"/>
+       <record id="1493887124k430ixeu4s" name="fopen" author="" url="" tags="" ctime="20170715162708" dir="1493887124ot969nwrle" file="text.html"/>
+       <record id="1495708879xb7y5rh8fh" name="cstring (string.h)" author="" url="" tags="" ctime="20170715162708" dir="14957088792cql6z6f6t" file="text.html"/>
       </recordtable>
      </node>
     </node>
@@ -63,14 +66,7 @@
        <record id="1485427948v3xtu8fnl1" name="Выбор из списка (switch)" author="" url="" tags="" ctime="20170126135228" dir="14854279488h0jvx23gk" file="text.html"/>
        <record id="14854325601oznhitmjy" name="Значение функции без pow()" author="" url="" tags="" ctime="20170126150920" dir="1485432560uzsapplwaw" file="text.html"/>
        <record id="1485439042n3wiaweaky" name="Модуль числа и srand()" author="" url="" tags="" ctime="20170126165722" dir="1485439042m9zx9qowvd" file="text.html"/>
-      </recordtable>
-     </node>
-     <node crypt="" id="1493888699f7hey0pekb" name="Libraries">
-      <recordtable>
-       <record id="14939819843m8r1phq24" name="printf" author="" url="" tags="" ctime="20170505135944" dir="1493981984w0wv0bkmvu" file="text.html"/>
-       <record id="14939819930cq3ntk0xz" name="scanf" author="" url="" tags="" ctime="20170505135953" dir="1493981993yf0rj58adf" file="text.html"/>
-       <record id="1493887124k430ixeu4s" name="fopen" author="" url="" tags="" ctime="20170504120505" dir="1493887124ot969nwrle" file="text.html"/>
-       <record id="1495708879xb7y5rh8fh" name="cstring (string.h)" author="" url="" tags="" ctime="20170525134119" dir="14957088792cql6z6f6t" file="text.html"/>
+       <record id="15001253149edltdabnr" name="Поиск и замена текста в файле" author="" url="" tags="" ctime="20170715162834" dir="1500125314bhqh9m593g" file="text.html"/>
       </recordtable>
      </node>
     </node>
