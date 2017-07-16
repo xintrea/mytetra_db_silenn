@@ -49,12 +49,14 @@
     </node>
     <node crypt="" id="1481013852b3tfajab2f" name="C++">
      <recordtable>
+      <record id="15002224782fpy0w1bva" name="Типы данных" author="" url="" tags="" ctime="20170716192758" dir="1500222478j073inygoz" file="text.html"/>
       <record id="1482397800ak2ittr77e" name="Дружественные функции" author="" url="http://cppstudio.com/post/8423/" tags="cpp" ctime="20161222121000" dir="1482397800s61rnq1gil" file="text.html"/>
       <record id="1482683099upw0x0m3sz" name="Наследование классов" author="" url="" tags="cpp, c++" ctime="20161225192459" dir="1482683099l0fcfcaxoj" file="text.html"/>
       <record id="14826853863rp2nlu13c" name="Перегрузка функций" author="" url="" tags="сpp, c++" ctime="20161225200306" dir="1482685386yij6bfru43" file="text.html"/>
       <record id="14829400601tnxupm4ol" name="Перегрузка операторов" author="" url="http://cppstudio.com/post/7958/" tags="cpp, c++, перегрузка" ctime="20161228184740" dir="1482940060pgwxmem9dq" file="text.html"/>
       <record id="1484898747cang9zku7g" name="Динамические массивы" author="" url="" tags="" ctime="20170120105227" dir="1484898747mq9st62rqv" file="text.html"/>
       <record id="14957105696nih0ekmxx" name="Строки" author="" url="" tags="" ctime="20170525140929" dir="1495710569ygxc419t1s" file="text.html"/>
+      <record id="1500223482pffnijpx76" name="Count и Sort &lt;algorithm&gt;" author="" url="" tags="" ctime="20170716194442" dir="150022348277qkx71opf" file="text.html"/>
      </recordtable>
      <node crypt="" id="14849167744wrr7zknkb" name="Lessons">
       <recordtable>
