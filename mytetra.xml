@@ -71,6 +71,11 @@
        <record id="15001253149edltdabnr" name="Поиск и замена текста в файле" author="" url="" tags="" ctime="20170715162834" dir="1500125314bhqh9m593g" file="text.html"/>
       </recordtable>
      </node>
+     <node crypt="" id="1500400883t4m13vfzt0" name="Coursera White_Belt">
+      <recordtable>
+       <record id="1500400899w1jhsyxsye" name="Квадратное уравнение" author="" url="" tags="" ctime="20170718210139" dir="1500400899vjgh0zdgzm" file="text.html"/>
+      </recordtable>
+     </node>
     </node>
     <node crypt="" id="1481013861qw420xxqrm" name="Asm"/>
     <node crypt="" id="1481013875r818kh7l1u" name="Qt"/>
