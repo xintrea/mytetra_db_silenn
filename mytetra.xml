@@ -247,6 +247,11 @@
     <record id="1500278887xop7en2ezl" name="Телескоп" author="" url="" tags="" ctime="20170717110807" dir="15002788873c7gk92r3a" file="text.html"/>
    </recordtable>
   </node>
+  <node crypt="" id="1500386806c8ht1fm2vw" name="Math">
+   <recordtable>
+    <record id="1500386828mhyz8wr826" name="Квадратное уровнение" author="" url="" tags="" ctime="20170718170708" dir="1500386828uq0inb79b3" file="text.html"/>
+   </recordtable>
+  </node>
   <node crypt="" id="1482485222gf7c4tnyd1" name="Vanilla">
    <node crypt="" id="1482940014s4kodthacm" name="Addons"/>
    <node crypt="" id="1482687225h8q46bzm6j" name="Mage">
