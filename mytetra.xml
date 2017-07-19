@@ -31,6 +31,7 @@
       <record id="1481022237fty3e83wrw" name="getch() в Linux" author="" url="" tags="getch, linux, c" ctime="20161206140357" dir="1481022237bzucr47lv8" file="text.html"/>
       <record id="1481028557a11il8thfy" name="Указатели и const" author="" url="" tags="pointers, const" ctime="20161206154917" dir="1481028557websul7ndh" file="text.html"/>
       <record id="1483014357phtzwlsjqp" name="Двумерный массив" author="" url="" tags="си" ctime="20161229152557" dir="1483014357intgortxm4" file="text.html"/>
+      <record id="14957105696nih0ekmxx" name="Строки" author="" url="" tags="" ctime="20170719154101" dir="1495710569ygxc419t1s" file="text.html"/>
       <record id="1489319023o4intaum88" name="printf - scanf" author="" url="" tags="" ctime="20170312144343" dir="148931902352w6dxuz5s" file="text.html"/>
      </recordtable>
      <node crypt="" id="14859474781fanxwbnzu" name="Ncurses">
@@ -55,7 +56,6 @@
       <record id="14826853863rp2nlu13c" name="Перегрузка функций" author="" url="" tags="сpp, c++" ctime="20161225200306" dir="1482685386yij6bfru43" file="text.html"/>
       <record id="14829400601tnxupm4ol" name="Перегрузка операторов" author="" url="http://cppstudio.com/post/7958/" tags="cpp, c++, перегрузка" ctime="20161228184740" dir="1482940060pgwxmem9dq" file="text.html"/>
       <record id="1484898747cang9zku7g" name="Динамические массивы" author="" url="" tags="" ctime="20170120105227" dir="1484898747mq9st62rqv" file="text.html"/>
-      <record id="14957105696nih0ekmxx" name="Строки" author="" url="" tags="" ctime="20170525140929" dir="1495710569ygxc419t1s" file="text.html"/>
       <record id="1500223482pffnijpx76" name="Count и Sort &lt;algorithm&gt;" author="" url="" tags="" ctime="20170716194442" dir="150022348277qkx71opf" file="text.html"/>
      </recordtable>
      <node crypt="" id="14849167744wrr7zknkb" name="Lessons">
@@ -74,6 +74,7 @@
      <node crypt="" id="1500400883t4m13vfzt0" name="Coursera White_Belt">
       <recordtable>
        <record id="1500400899w1jhsyxsye" name="Квадратное уравнение" author="" url="" tags="" ctime="20170718210139" dir="1500400899vjgh0zdgzm" file="text.html"/>
+       <record id="15004747053y0gxci8vo" name="Поиск символа в строке" author="" url="" tags="" ctime="20170719173145" dir="1500474705hheirrvabv" file="text.html"/>
       </recordtable>
      </node>
     </node>
@@ -258,17 +259,10 @@
    </recordtable>
   </node>
   <node crypt="" id="1482485222gf7c4tnyd1" name="Vanilla">
-   <node crypt="" id="1482940014s4kodthacm" name="Addons"/>
-   <node crypt="" id="1482687225h8q46bzm6j" name="Mage">
-    <recordtable>
-     <record id="1482687244tls5j8xr4z" name="Macros" author="" url="" tags="" ctime="20161225203404" dir="1482687244ldvx666ze2" file="text.html"/>
-    </recordtable>
-   </node>
-   <node crypt="" id="14824852300rduamghji" name="Rogue">
-    <recordtable>
-     <record id="1482485252e0oxtqa631" name="Macros" author="" url="" tags="rogue" ctime="20161223122732" dir="1482485252b3qlo8mxqf" file="text.html"/>
-    </recordtable>
-   </node>
+   <recordtable>
+    <record id="1500446755nxeo4wb9dg" name="Addons" author="" url="" tags="" ctime="20170719094555" dir="1500446755scv5ppf39u" file="text.html"/>
+    <record id="15004467617f4hf1nn5w" name="Macroses" author="" url="" tags="" ctime="20170719094601" dir="1500446761u1piyclbwk" file="text.html"/>
+   </recordtable>
   </node>
   <node crypt="" id="1484035670ndx0sf5zf9" name="Networks">
    <node crypt="1" icon="" id="14840360333b23pvvnm8" name="UkM1U0lNUAM06Z+u3Wzd3PNEbDsAD9N/MKxDOv46vxjNvVCbSdTJTDaVQdw7FTzc">
