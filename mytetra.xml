@@ -51,6 +51,7 @@
     <node crypt="" id="1481013852b3tfajab2f" name="C++">
      <recordtable>
       <record id="15002224782fpy0w1bva" name="Типы данных" author="" url="" tags="" ctime="20170716192758" dir="1500222478j073inygoz" file="text.html"/>
+      <record id="1500899343335ua3anle" name="Векторы" author="" url="" tags="" ctime="20170724152903" dir="1500899343s4mjeslebw" file="text.html"/>
       <record id="1482397800ak2ittr77e" name="Дружественные функции" author="" url="http://cppstudio.com/post/8423/" tags="cpp" ctime="20161222121000" dir="1482397800s61rnq1gil" file="text.html"/>
       <record id="1482683099upw0x0m3sz" name="Наследование классов" author="" url="" tags="cpp, c++" ctime="20161225192459" dir="1482683099l0fcfcaxoj" file="text.html"/>
       <record id="14826853863rp2nlu13c" name="Перегрузка функций" author="" url="" tags="сpp, c++" ctime="20161225200306" dir="1482685386yij6bfru43" file="text.html"/>
