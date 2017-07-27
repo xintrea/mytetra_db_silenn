@@ -52,6 +52,7 @@
      <recordtable>
       <record id="15002224782fpy0w1bva" name="Типы данных" author="" url="" tags="" ctime="20170716192758" dir="1500222478j073inygoz" file="text.html"/>
       <record id="1500899343335ua3anle" name="Векторы" author="" url="" tags="" ctime="20170724152903" dir="1500899343s4mjeslebw" file="text.html"/>
+      <record id="1501078065254z3cydmk" name="Словари (map)" author="" url="" tags="" ctime="20170726170745" dir="1501078065cll4zkc1n7" file="text.html"/>
       <record id="1482397800ak2ittr77e" name="Дружественные функции" author="" url="http://cppstudio.com/post/8423/" tags="cpp" ctime="20161222121000" dir="1482397800s61rnq1gil" file="text.html"/>
       <record id="1482683099upw0x0m3sz" name="Наследование классов" author="" url="" tags="cpp, c++" ctime="20161225192459" dir="1482683099l0fcfcaxoj" file="text.html"/>
       <record id="14826853863rp2nlu13c" name="Перегрузка функций" author="" url="" tags="сpp, c++" ctime="20161225200306" dir="1482685386yij6bfru43" file="text.html"/>
@@ -249,6 +250,7 @@
     <node crypt="" id="1498657368rbljhlta7v" name="Grammatik">
      <recordtable>
       <record id="1492496601uhqm72ix16" name="Phonetik" author="" url="" tags="" ctime="20170628164310" dir="14924966012wxsn5p8vd" file="text.html"/>
+      <record id="1501067505322p1wwpih" name="Местоимения" author="" url="" tags="" ctime="20170726141145" dir="15010675053ibggdji5h" file="text.html"/>
       <record id="14925211358j3jcl93a0" name="Числительные" author="" url="" tags="" ctime="20170628164309" dir="1492521135s3e4j3dya8" file="text.html"/>
       <record id="14925231058s6mqidbjg" name="Время" author="" url="" tags="" ctime="20170628164307" dir="1492523105ewh5dnl3qc" file="text.html"/>
       <record id="149865741290yfzu28mj" name="Артикли" author="" url="" tags="" ctime="20170628164332" dir="1498657412bw8goa4ndk" file="text.html"/>
