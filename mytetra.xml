@@ -31,6 +31,7 @@
       <record id="1481022237fty3e83wrw" name="getch() в Linux" author="" url="" tags="getch, linux, c" ctime="20161206140357" dir="1481022237bzucr47lv8" file="text.html"/>
       <record id="1481028557a11il8thfy" name="Указатели и const" author="" url="" tags="pointers, const" ctime="20161206154917" dir="1481028557websul7ndh" file="text.html"/>
       <record id="1483014357phtzwlsjqp" name="Двумерный массив" author="" url="" tags="си" ctime="20161229152557" dir="1483014357intgortxm4" file="text.html"/>
+      <record id="15011632739hj6sqtldr" name="Динамические массивы" author="" url="" tags="" ctime="20170727164753" dir="1501163273t1pqmq91ta" file="text.html"/>
       <record id="14957105696nih0ekmxx" name="Строки" author="" url="" tags="" ctime="20170719154101" dir="1495710569ygxc419t1s" file="text.html"/>
       <record id="1489319023o4intaum88" name="printf - scanf" author="" url="" tags="" ctime="20170312144343" dir="148931902352w6dxuz5s" file="text.html"/>
      </recordtable>
@@ -57,7 +58,6 @@
       <record id="1482683099upw0x0m3sz" name="Наследование классов" author="" url="" tags="cpp, c++" ctime="20161225192459" dir="1482683099l0fcfcaxoj" file="text.html"/>
       <record id="14826853863rp2nlu13c" name="Перегрузка функций" author="" url="" tags="сpp, c++" ctime="20161225200306" dir="1482685386yij6bfru43" file="text.html"/>
       <record id="14829400601tnxupm4ol" name="Перегрузка операторов" author="" url="http://cppstudio.com/post/7958/" tags="cpp, c++, перегрузка" ctime="20161228184740" dir="1482940060pgwxmem9dq" file="text.html"/>
-      <record id="1484898747cang9zku7g" name="Динамические массивы" author="" url="" tags="" ctime="20170120105227" dir="1484898747mq9st62rqv" file="text.html"/>
       <record id="1500636958y9yn27ti35" name="Указатели, ссылки и const в C++11" author="" url="" tags="" ctime="20170721143558" dir="15006369586gumr96abm" file="text.html"/>
       <record id="1500223482pffnijpx76" name="Count и Sort &lt;algorithm&gt;" author="" url="" tags="" ctime="20170716194442" dir="150022348277qkx71opf" file="text.html"/>
       <record id="15006368239mqp2jivlt" name="Время работы программы" author="" url="" tags="" ctime="20170721143343" dir="1500636823qsmc08w9dw" file="text.html"/>
@@ -85,6 +85,9 @@
        <record id="1500584421ig8d7qh6cy" name="Палиндром из вектора" author="" url="" tags="" ctime="20170721000021" dir="1500584421lrq4hpedcv" file="text.html"/>
        <record id="1500929595gog2vejhbm" name="Очередь" author="" url="" tags="" ctime="20170724235315" dir="1500929595ztjar3hk8h" file="text.html"/>
        <record id="1500991673ousdvg92d9" name="Дела на месяц" author="" url="" tags="" ctime="20170725170753" dir="1500991673prjpzzlaem" file="text.html"/>
+       <record id="1501153873fe3de3k3xm" name="Анаграммы" author="" url="" tags="" ctime="20170727141113" dir="1501153873tx3a4cjmit" file="text.html"/>
+       <record id="15011623832xuxa6qdi2" name="Каталог столиц" author="" url="" tags="" ctime="20170727163303" dir="1501162383tt5wwukv0z" file="text.html"/>
+       <record id="1501247970mdjrus9816" name="Автобусные остановки" author="" url="" tags="" ctime="20170728161930" dir="1501247970fqi0hussr2" file="text.html"/>
       </recordtable>
      </node>
     </node>
