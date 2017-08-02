@@ -92,6 +92,8 @@
        <record id="1501247970mdjrus9816" name="Автобусные остановки" author="" url="" tags="" ctime="20170728161930" dir="1501247970fqi0hussr2" file="text.html"/>
        <record id="150159726395vkqom5ak" name="Синонимы" author="" url="" tags="" ctime="20170801172103" dir="1501597263nnedmw2xo3" file="text.html"/>
        <record id="1501663296yiwkqz7ch6" name="Автобусные остановки 3 (через set)" author="" url="" tags="" ctime="20170802114136" dir="1501663296rejj1cvzjm" file="text.html"/>
+       <record id="1501691799rwzhi4zj6x" name="Сортировка по модулю через лямбду" author="" url="" tags="" ctime="20170802193639" dir="1501691799qfatx3dk2b" file="text.html"/>
+       <record id="1501692849eivdqjtxk9" name="Сортировка без учета регистра по лямбде" author="" url="" tags="" ctime="20170802195409" dir="15016928491bll307akg" file="text.html"/>
       </recordtable>
      </node>
     </node>
