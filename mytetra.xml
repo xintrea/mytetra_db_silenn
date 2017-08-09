@@ -64,6 +64,8 @@
       <record id="15006368239mqp2jivlt" name="Время работы программы" author="" url="" tags="" ctime="20170721143343" dir="1500636823qsmc08w9dw" file="text.html"/>
       <record id="1501684185tvlhvwmfda" name="Лямбда функции" author="" url="" tags="" ctime="20170802172945" dir="1501684185sppfb4w4ul" file="text.html"/>
       <record id="15017574844kdkvwe6vd" name="Структуры, классы, константные методы, конструктор" author="" url="" tags="" ctime="20170803135124" dir="15017574844fg7glmn4f" file="text.html"/>
+      <record id="150226363488d39476j5" name="Explicit" author="" url="" tags="" ctime="20170809102714" dir="1502263634v2j4k425al" file="text.html"/>
+      <record id="1502285782o15qzvf9yi" name="Работа с файлами" author="" url="" tags="" ctime="20170809163622" dir="1502285782hssyynxtly" file="text.html"/>
      </recordtable>
      <node crypt="" id="14849167744wrr7zknkb" name="Lessons">
       <recordtable>
@@ -98,6 +100,7 @@
        <record id="1502048227gsrkljrlxq" name="Сортировка вектора через класс" author="" url="" tags="" ctime="20170806223707" dir="1502048227gczsox15u7" file="text.html"/>
        <record id="15020984514e6kwkgkg7" name="История имен и фамилий через класс" author="" url="" tags="" ctime="20170807123411" dir="1502098451me36x2192q" file="text.html"/>
        <record id="1502107948ocaiwwxinj" name="История имен и фамилий через класс 2" author="" url="" tags="" ctime="20170807151228" dir="15021079480vqaslh6b7" file="text.html"/>
+       <record id="1502285358fp883mf4zy" name="Реверсивная функция-структура" author="" url="" tags="" ctime="20170809162918" dir="150228535811lq07ojzj" file="text.html"/>
       </recordtable>
      </node>
     </node>
