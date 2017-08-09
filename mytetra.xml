@@ -54,6 +54,7 @@
       <record id="15002224782fpy0w1bva" name="Типы данных" author="" url="" tags="" ctime="20170716192758" dir="1500222478j073inygoz" file="text.html"/>
       <record id="1500899343335ua3anle" name="Векторы" author="" url="" tags="" ctime="20170724152903" dir="1500899343s4mjeslebw" file="text.html"/>
       <record id="1501078065254z3cydmk" name="Словари (map)" author="" url="" tags="" ctime="20170726170745" dir="1501078065cll4zkc1n7" file="text.html"/>
+      <record id="1501601170ce8ckgs5lp" name="Set (множества)" author="" url="" tags="" ctime="20170801182610" dir="1501601170pslb80qnv4" file="text.html"/>
       <record id="1482397800ak2ittr77e" name="Дружественные функции" author="" url="http://cppstudio.com/post/8423/" tags="cpp" ctime="20161222121000" dir="1482397800s61rnq1gil" file="text.html"/>
       <record id="1482683099upw0x0m3sz" name="Наследование классов" author="" url="" tags="cpp, c++" ctime="20161225192459" dir="1482683099l0fcfcaxoj" file="text.html"/>
       <record id="14826853863rp2nlu13c" name="Перегрузка функций" author="" url="" tags="сpp, c++" ctime="20161225200306" dir="1482685386yij6bfru43" file="text.html"/>
@@ -61,9 +62,8 @@
       <record id="1500636958y9yn27ti35" name="Указатели, ссылки и const в C++11" author="" url="" tags="" ctime="20170721143558" dir="15006369586gumr96abm" file="text.html"/>
       <record id="1500223482pffnijpx76" name="Count и Sort &lt;algorithm&gt;" author="" url="" tags="" ctime="20170716194442" dir="150022348277qkx71opf" file="text.html"/>
       <record id="15006368239mqp2jivlt" name="Время работы программы" author="" url="" tags="" ctime="20170721143343" dir="1500636823qsmc08w9dw" file="text.html"/>
-      <record id="1501601170ce8ckgs5lp" name="Set (множества)" author="" url="" tags="" ctime="20170801182610" dir="1501601170pslb80qnv4" file="text.html"/>
       <record id="1501684185tvlhvwmfda" name="Лямбда функции" author="" url="" tags="" ctime="20170802172945" dir="1501684185sppfb4w4ul" file="text.html"/>
-      <record id="15017574844kdkvwe6vd" name="Структуры" author="" url="" tags="" ctime="20170803135124" dir="15017574844fg7glmn4f" file="text.html"/>
+      <record id="15017574844kdkvwe6vd" name="Структуры, классы, константные методы, конструктор" author="" url="" tags="" ctime="20170803135124" dir="15017574844fg7glmn4f" file="text.html"/>
      </recordtable>
      <node crypt="" id="14849167744wrr7zknkb" name="Lessons">
       <recordtable>
@@ -96,6 +96,8 @@
        <record id="1501691799rwzhi4zj6x" name="Сортировка по модулю через лямбду" author="" url="" tags="" ctime="20170802193639" dir="1501691799qfatx3dk2b" file="text.html"/>
        <record id="1501692849eivdqjtxk9" name="Сортировка без учета регистра по лямбде" author="" url="" tags="" ctime="20170802195409" dir="15016928491bll307akg" file="text.html"/>
        <record id="1502048227gsrkljrlxq" name="Сортировка вектора через класс" author="" url="" tags="" ctime="20170806223707" dir="1502048227gczsox15u7" file="text.html"/>
+       <record id="15020984514e6kwkgkg7" name="История имен и фамилий через класс" author="" url="" tags="" ctime="20170807123411" dir="1502098451me36x2192q" file="text.html"/>
+       <record id="1502107948ocaiwwxinj" name="История имен и фамилий через класс 2" author="" url="" tags="" ctime="20170807151228" dir="15021079480vqaslh6b7" file="text.html"/>
       </recordtable>
      </node>
     </node>
@@ -305,6 +307,7 @@
      <record id="14950187556fdvgxecw8" name="Метки ГРМ" author="" url="" tags="" ctime="20170517135915" dir="14950187552hjdqajtz5" file="text.html"/>
      <record id="1498739073pj1l89i7rm" name="Ремонт" author="" url="" tags="" ctime="20170629152433" dir="1498739073y02ul3g9hu" file="text.html"/>
      <record id="15016791976z2j3k8w2r" name="Центральный замок" author="" url="" tags="" ctime="20170802160637" dir="1501679197yw6zupi3j6" file="text.html"/>
+     <record id="1502113181gixyf9846i" name="Проаисшие двери" author="" url="" tags="" ctime="20170807163941" dir="1502113181noxkyjr2hu" file="text.html"/>
     </recordtable>
    </node>
   </node>
