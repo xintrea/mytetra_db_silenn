@@ -67,6 +67,7 @@
       <record id="150226363488d39476j5" name="Explicit" author="" url="" tags="" ctime="20170809102714" dir="1502263634v2j4k425al" file="text.html"/>
       <record id="1502285782o15qzvf9yi" name="Работа с файлами" author="" url="" tags="" ctime="20170809163622" dir="1502285782hssyynxtly" file="text.html"/>
       <record id="1502304016tjiyzhsksl" name="Манипуляторы потока" author="" url="" tags="" ctime="20170809214016" dir="1502304016wu3xz4bw10" file="text.html"/>
+      <record id="1502371710xohw5s5tu3" name="Перегрузка еще раз" author="" url="" tags="" ctime="20170810162830" dir="1502371710bm28dvqjz8" file="text.html"/>
      </recordtable>
      <node crypt="" id="14849167744wrr7zknkb" name="Lessons">
       <recordtable>
@@ -102,6 +103,8 @@
        <record id="15020984514e6kwkgkg7" name="История имен и фамилий через класс" author="" url="" tags="" ctime="20170807123411" dir="1502098451me36x2192q" file="text.html"/>
        <record id="1502107948ocaiwwxinj" name="История имен и фамилий через класс 2" author="" url="" tags="" ctime="20170807151228" dir="15021079480vqaslh6b7" file="text.html"/>
        <record id="1502285358fp883mf4zy" name="Реверсивная функция-структура" author="" url="" tags="" ctime="20170809162918" dir="150228535811lq07ojzj" file="text.html"/>
+       <record id="15023744238e75yyn01j" name="Форматирование файла в таблицу (ппц)" author="" url="" tags="" ctime="20170810171343" dir="1502374423bk1af8sdmd" file="text.html"/>
+       <record id="15023702335m7rxx2ob9" name="Списки студентов" author="" url="" tags="" ctime="20170810160353" dir="1502370233b0dognrwxz" file="text.html"/>
       </recordtable>
      </node>
     </node>
