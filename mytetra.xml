@@ -68,6 +68,7 @@
       <record id="1502285782o15qzvf9yi" name="Работа с файлами" author="" url="" tags="" ctime="20170809163622" dir="1502285782hssyynxtly" file="text.html"/>
       <record id="1502304016tjiyzhsksl" name="Манипуляторы потока" author="" url="" tags="" ctime="20170809214016" dir="1502304016wu3xz4bw10" file="text.html"/>
       <record id="1502371710xohw5s5tu3" name="Перегрузка еще раз" author="" url="" tags="" ctime="20170810162830" dir="1502371710bm28dvqjz8" file="text.html"/>
+      <record id="15028799148epn6gj91b" name="Исключение (Exception)" author="" url="" tags="" ctime="20170816133834" dir="15028799141vyc6axq1x" file="text.html"/>
      </recordtable>
      <node crypt="" id="14849167744wrr7zknkb" name="Lessons">
       <recordtable>
@@ -109,6 +110,9 @@
        <record id="1502717609imgwb6dnt4" name="Класс Rational с перегрузкой (часть 2)" author="" url="" tags="" ctime="20170814163329" dir="15027176099rbzqjsmbc" file="text.html"/>
        <record id="15027377667gxfx29i79" name="Класс Rational с перегрузкой (часть 3)" author="" url="" tags="" ctime="20170814220926" dir="1502737766hg890ww4d5" file="text.html"/>
        <record id="15027416933h5y9nxbgk" name="Класс Rational с перегрузкой (часть 4)" author="" url="" tags="" ctime="20170814231453" dir="1502741693jnc77i8ud7" file="text.html"/>
+       <record id="1502883901xw8z8iqoo3" name="Класс Rational с перегрузкой и исключениями" author="" url="" tags="" ctime="20170816144501" dir="15028839019zsdhkak3d" file="text.html"/>
+       <record id="1502890333nmqegwavjk" name="Калькулятор дробей" author="" url="" tags="" ctime="20170816163213" dir="1502890333iy3eznpk77" file="text.html"/>
+       <record id="1502893329fjobjualc9" name="Сервер времени" author="" url="" tags="" ctime="20170816172209" dir="1502893329mv6zbo48uf" file="text.html"/>
       </recordtable>
      </node>
     </node>
@@ -342,6 +346,7 @@
    <recordtable>
     <record id="1491827150g0y5j0717s" name="UkM1U0lNUAPI+XPRh2SAAou7EZPlQtdo98NzqdUxaxgYf+wGWJi5+xIAPsWPpDkzt5+Zl2pDvl51f9joLtCM1Q==" author="" url="" tags="" ctime="20170410152550" dir="1491827150vazgvrner1" file="text.html" crypt="1"/>
     <record id="1491829924j1ohsfe9lb" name="UkM1U0lNUAOsNZGLorsGVg02PpZ0FxB95If0U8czTXYfk9ccsgxCWkE2gxL5ekHQSQjZ0FDQWj2hPXBxVI6swQ==" author="" url="UkM1U0lNUAPWjcEKsqLORoLqc1ZZs+tV0St+skcKe2/AhMNbWdrTetYkr82fljBCVNwPvokm6SKk3xeQfSsAEoDZMJHFsGt1GXYkHvqLMvPtx5E9BfebyYKfbOVFvoyYi16/I9YVjQyzC+ONGNISqRCQmnGEa0NwCrJkkzqkdfGabVKQwsNctg==" tags="" ctime="20170410161204" dir="1491829924785geevoli" file="text.html" crypt="1"/>
+    <record id="1502869332rsw1qtpl6s" name="UkM1U0lNUAMEGNbZhg+4JMeF0GUCqhIJmGKItI7yBuHV08YLSwKyAosQxsLKSMRq" author="" url="" tags="" ctime="20170816104212" dir="1502869332yfxmhowej4" file="text.html" crypt="1"/>
    </recordtable>
    <node crypt="1" icon="" id="1491828255iltgjyh2z9" name="UkM1U0lNUAMJy+TvecZSxcBd6jZ9JiXFklpt2+JJmsSqsX28b5r5vrofjC6UvE6P">
     <recordtable>
