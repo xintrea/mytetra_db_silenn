@@ -116,6 +116,13 @@
        <record id="15029055817t8qprxx8m" name="База данных (финаллочка)" author="" url="" tags="" ctime="20170816204621" dir="15029055817i1xrxdjpx" file="text.html"/>
        <record id="1503062920gtdudmmc57" name="Final" author="" url="" tags="" ctime="20170818162840" dir="15030629205aloxfe8cd" file="text.html"/>
       </recordtable>
+      <node crypt="" id="1503323498hgo9ftvecb" name="Final">
+       <recordtable>
+        <record id="1503323508jvujsr6xkw" name="База данных (условие)" author="" url="" tags="" ctime="20170821165148" dir="1503323508i7461uaimp" file="text.html"/>
+        <record id="15033235683zj177dol3" name="Решение" author="" url="" tags="" ctime="20170821165248" dir="1503323568wynwmm7tow" file="text.html"/>
+        <record id="1503323580s97c0jjzc9" name="Решение от составителей" author="" url="" tags="" ctime="20170821165300" dir="1503323580wzcjgh8k1u" file="text.html"/>
+       </recordtable>
+      </node>
      </node>
     </node>
     <node crypt="" id="1481013875r818kh7l1u" name="Qt"/>
