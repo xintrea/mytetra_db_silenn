@@ -288,15 +288,15 @@
     </recordtable>
    </node>
    <node crypt="" id="14924963811y9lpga22b" name="Deutsch">
-    <node crypt="" id="1498657368rbljhlta7v" name="Grammatik">
-     <recordtable>
-      <record id="1492496601uhqm72ix16" name="Phonetik" author="" url="" tags="" ctime="20170628164310" dir="14924966012wxsn5p8vd" file="text.html"/>
-      <record id="1501067505322p1wwpih" name="Местоимения" author="" url="" tags="" ctime="20170726141145" dir="15010675053ibggdji5h" file="text.html"/>
-      <record id="14925211358j3jcl93a0" name="Числительные" author="" url="" tags="" ctime="20170628164309" dir="1492521135s3e4j3dya8" file="text.html"/>
-      <record id="14925231058s6mqidbjg" name="Время" author="" url="" tags="" ctime="20170628164307" dir="1492523105ewh5dnl3qc" file="text.html"/>
-      <record id="149865741290yfzu28mj" name="Артикли" author="" url="" tags="" ctime="20170628164332" dir="1498657412bw8goa4ndk" file="text.html"/>
-     </recordtable>
-    </node>
+    <recordtable>
+     <record id="1492496601uhqm72ix16" name="Phonetik" author="" url="" tags="" ctime="20170825112519" dir="14924966012wxsn5p8vd" file="text.html"/>
+     <record id="14925211358j3jcl93a0" name="Числительные" author="" url="" tags="" ctime="20170825112521" dir="1492521135s3e4j3dya8" file="text.html"/>
+     <record id="1501067505322p1wwpih" name="Местоимения" author="" url="" tags="" ctime="20170825112523" dir="15010675053ibggdji5h" file="text.html"/>
+     <record id="14925231058s6mqidbjg" name="Время" author="" url="" tags="" ctime="20170825112524" dir="1492523105ewh5dnl3qc" file="text.html"/>
+     <record id="149865741290yfzu28mj" name="Артикли" author="" url="" tags="" ctime="20170825112526" dir="1498657412bw8goa4ndk" file="text.html"/>
+     <record id="1503650004dlfvmilmuc" name="Спряжение глаголов" author="" url="" tags="" ctime="20170825113324" dir="1503650004f11a1pqulz" file="text.html"/>
+     <record id="1503664832zjt7izovpg" name="Образование существительных" author="" url="" tags="" ctime="20170825154032" dir="1503664832yrtwan7b7t" file="text.html"/>
+    </recordtable>
    </node>
   </node>
   <node crypt="" id="1500278868ztfuwz7mhe" name="Astro">
