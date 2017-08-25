@@ -270,6 +270,11 @@
      <record id="1489149276lkgnix08vy" name="Libraries" author="" url="" tags="" ctime="20170310153436" dir="1489149276eztyo11i1o" file="text.html"/>
     </recordtable>
    </node>
+   <node crypt="" id="15035831320h55ji9lhj" name="Real-Time Systems">
+    <recordtable>
+     <record id="1503583144dyse00sg7y" name="PID controller in C" author="" url="" tags="" ctime="20170824165904" dir="1503583144daqf2ww7cp" file="text.html"/>
+    </recordtable>
+   </node>
   </node>
   <node crypt="" id="1481013724inr39junfd" name="Language">
    <node crypt="" id="148130524392pip6ipv2" name="English">
