@@ -16,6 +16,7 @@
      <record id="1491737601i8kcx8yd7r" name="elantech touchpad" author="" url="" tags="" ctime="20170409143321" dir="1491737601uju0zxcp37" file="text.html"/>
      <record id="1503741536uczbdmpbc7" name="MC - привязка расширений" author="" url="" tags="" ctime="20170826125856" dir="1503741536s0g7094s7j" file="text.html"/>
     </recordtable>
+    <node crypt="" id="15041626276v5u6s8eki" name="vim"/>
    </node>
    <node crypt="" id="1481013809j79ldxl1vn" name="Programming">
     <recordtable>
@@ -128,7 +129,11 @@
     <node crypt="" id="1481013875r818kh7l1u" name="Qt"/>
     <node crypt="" id="1481013886moes3xg5kl" name="Python"/>
    </node>
-   <node crypt="" id="1504014650dwxieaqsi1" name="Git"/>
+   <node crypt="" id="1504014650dwxieaqsi1" name="Git">
+    <recordtable>
+     <record id="1504161025r62mmsrxqx" name="Short List" author="" url="" tags="" ctime="20170831093025" dir="1504161025vtphfa78mc" file="text.html"/>
+    </recordtable>
+   </node>
   </node>
   <node crypt="" id="1481013912mb6bh7lubx" name="Electronics">
    <node crypt="" id="1483382339yb719hyn1i" name="Microcontrollers">
@@ -322,7 +327,7 @@
   <node crypt="" id="1482485222gf7c4tnyd1" name="Vanilla">
    <recordtable>
     <record id="1500446755nxeo4wb9dg" name="Addons" author="" url="" tags="" ctime="20170719094555" dir="1500446755scv5ppf39u" file="text.html"/>
-    <record id="15004467617f4hf1nn5w" name="Macroses" author="" url="" tags="" ctime="20170719094601" dir="1500446761u1piyclbwk" file="text.html"/>
+    <record id="15004467617f4hf1nn5w" name="Rogue" author="" url="" tags="" ctime="20170719094601" dir="1500446761u1piyclbwk" file="text.html"/>
     <record id="1503943538huutwx5anh" name="Mage" author="" url="" tags="" ctime="20170828210538" dir="1503943538qctg361vit" file="text.html"/>
    </recordtable>
   </node>
