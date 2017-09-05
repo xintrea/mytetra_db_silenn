@@ -16,7 +16,11 @@
      <record id="1491737601i8kcx8yd7r" name="elantech touchpad" author="" url="" tags="" ctime="20170409143321" dir="1491737601uju0zxcp37" file="text.html"/>
      <record id="1503741536uczbdmpbc7" name="MC - привязка расширений" author="" url="" tags="" ctime="20170826125856" dir="1503741536s0g7094s7j" file="text.html"/>
     </recordtable>
-    <node crypt="" id="15041626276v5u6s8eki" name="vim"/>
+    <node crypt="" id="15041626276v5u6s8eki" name="vim">
+     <recordtable>
+      <record id="1504628503zg4phx8bax" name="Command mode" author="" url="" tags="" ctime="20170905192143" dir="1504628503c8vowceb6a" file="text.html"/>
+     </recordtable>
+    </node>
    </node>
    <node crypt="" id="1481013809j79ldxl1vn" name="Programming">
     <recordtable>
@@ -252,11 +256,7 @@
      <record id="1503742957jm1t2t13ik" name="Датчик звука / хлопка" author="" url="" tags="" ctime="20170826132237" dir="1503742957qgen7r03il" file="text.html"/>
      <record id="1503758581esjyx0a2dk" name="Компаратор" author="" url="" tags="" ctime="20170826174301" dir="1503758581uv7f6crm3t" file="text.html"/>
     </recordtable>
-    <node crypt="" id="1486021899us896bwgh9" name="Physics">
-     <recordtable>
-      <record id="1486024105wq1kgov1wt" name="Биполярный транзистор, СОК" author="" url="" tags="" ctime="20170202112825" dir="1486024105bpubtdcm0x" file="text.html"/>
-     </recordtable>
-    </node>
+    <node crypt="" id="1486021899us896bwgh9" name="Physics"/>
     <node crypt="" id="1486021934ocakj3ovg0" name="Digital">
      <recordtable>
       <record id="1484049400jdnljhp197" name="MOSFET" author="" url="" tags="mosfet" ctime="20170202105222" dir="1484049400g1zofcjvbk" file="text.html"/>
