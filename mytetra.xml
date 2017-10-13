@@ -231,7 +231,11 @@
       </node>
      </node>
     </node>
-    <node crypt="" id="148338311076c5dcu1bg" name="STM32"/>
+    <node crypt="" id="148338311076c5dcu1bg" name="STM32">
+     <recordtable>
+      <record id="15078820139rcvbeuthv" name="Моргалка" author="" url="" tags="" ctime="20171013110653" dir="15078820131bydb6tz3n" file="text.html"/>
+     </recordtable>
+    </node>
     <node crypt="" id="150401235046gqhby3bi" name="ARM">
      <recordtable>
       <record id="1504012373nl01rz2pnk" name="Development Kits" author="" url="" tags="" ctime="20170829161253" dir="15040123735d7rrcog80" file="text.html"/>
