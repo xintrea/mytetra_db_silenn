@@ -232,9 +232,11 @@
      </node>
     </node>
     <node crypt="" id="148338311076c5dcu1bg" name="STM32">
-     <recordtable>
-      <record id="15078820139rcvbeuthv" name="Моргалка" author="" url="" tags="" ctime="20171013110653" dir="15078820131bydb6tz3n" file="text.html"/>
-     </recordtable>
+     <node crypt="" id="15084108276594vk6mqb" name="STM32F407xx">
+      <recordtable>
+       <record id="15078820139rcvbeuthv" name="LED мигание и кнопка" author="" url="" tags="" ctime="20171019140031" dir="15078820131bydb6tz3n" file="text.html"/>
+      </recordtable>
+     </node>
     </node>
     <node crypt="" id="150401235046gqhby3bi" name="ARM">
      <recordtable>
