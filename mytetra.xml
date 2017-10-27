@@ -27,6 +27,7 @@
      <record id="1482246329awwq67zw53" name="Sublime Text 2 + GCC (for C only)" author="" url="" tags="gcc, st, st2" ctime="20161220180529" dir="1482246329j31o5aphxl" file="text.html"/>
      <record id="1482249853yeqwmij3ru" name="Sublime Text 2 + G++ (for C++ only)" author="" url="" tags="g++, gpp, gcc, linux" ctime="20161220190413" dir="1482249853do3951hbmn" file="text.html"/>
      <record id="1482246093z6a0uhnuln" name="Sublime Text 2 + AVRGCC" author="" url="" tags="gcc, st, st2" ctime="20161220180133" dir="14822460937l2jwadehh" file="text.html"/>
+     <record id="1509008954b2e83equ6t" name="Sublime Text 2 and Russo" author="" url="" tags="" ctime="20171026120914" dir="15090089541ofeov2pb8" file="text.html"/>
      <record id="1491483071ufz47wrh6i" name="C make files" author="" url="" tags="" ctime="20170406155111" dir="1491483071sc36ayxnqx" file="text.html"/>
      <record id="1499413342yp0gdqne26" name="MinGW" author="" url="" tags="" ctime="20170707104222" dir="14994133421m199wfh2f" file="text.html"/>
     </recordtable>
@@ -159,6 +160,11 @@
       <record id="1490880884fmkigxkc61" name="Analog Comparator" author="" url="" tags="" ctime="20170609145346" dir="14908808841shivxfv61" file="text.html"/>
       <record id="14914018611xxbhffobq" name="I2C (TWI)" author="" url="" tags="" ctime="20170609145347" dir="1491401861m2kxy2hztl" file="text.html"/>
      </recordtable>
+     <node crypt="" id="1509009126u0lsyj5xaj" name="AVR ASM">
+      <recordtable>
+       <record id="15090091581d8u44g17j" name="Commands" author="" url="" tags="" ctime="20171026121238" dir="1509009158sns53al31w" file="text.html"/>
+      </recordtable>
+     </node>
      <node crypt="" id="1493025300f5b4a6eo5s" name="AVR GCC">
       <recordtable>
        <record id="1484746681lqu1l3qadk" name="Советы по GCC" author="" url="" tags="avr" ctime="20170424121526" dir="14847466811re3tn34u8" file="text.html"/>
