@@ -150,6 +150,7 @@
     <node crypt="" id="14833823556d5onqo10r" name="AVR8">
      <recordtable>
       <record id="14938268725m1f9wm9o1" name="Pins and I/O ports" author="" url="" tags="" ctime="20170503185432" dir="1493826872362hocbokn" file="text.html"/>
+      <record id="1509459556b3uisekogh" name="Память и SREG" author="" url="" tags="" ctime="20171031171916" dir="1509459556vlvlx0vxlg" file="text.html"/>
       <record id="1483382395otc7zse2mp" name="USBASP 2.0" author="" url="" tags="asp usbasp" ctime="20170102213955" dir="14833823956pqcteihvy" file="text.html"/>
       <record id="1490291746czzwbsse4i" name="AVRDUDE" author="" url="" tags="" ctime="20170323205546" dir="1490291746hk183urxu9" file="text.html"/>
       <record id="1497009029nem2z6depn" name="Sleep Modes and Power Save" author="" url="" tags="" ctime="20170609145029" dir="1497009029abafyrlxzw" file="text.html"/>
