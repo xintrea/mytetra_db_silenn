@@ -299,6 +299,7 @@
      <record id="1491216202741g83lcg3" name="NE555" author="" url="" tags="" ctime="20170405120952" dir="14912162024guz6q6vh7" file="text.html"/>
      <record id="149138340918dttrpjkp" name="DS3231" author="" url="" tags="" ctime="20170405121009" dir="1491383409vqffrzkrzi" file="text.html"/>
      <record id="14919202192pbw18wox3" name="74HC14N (Schmitt Trigger)" author="" url="" tags="" ctime="20170411171659" dir="14919202191harfz8r0x" file="text.html"/>
+     <record id="1510337596tjh3tiqnxd" name="ADS7846 for WF43BTIBED0 (TFT Display)" author="" url="" tags="" ctime="20171110211316" dir="1510337596mnsxpmoo5t" file="text.html"/>
     </recordtable>
    </node>
    <node crypt="" id="148914926872tr3kszrm" name="Eagle CAD">
