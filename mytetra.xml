@@ -168,6 +168,11 @@
        <record id="1510422253g0qelu6bm6" name="My Notes" author="" url="" tags="" ctime="20171111204413" dir="1510422253xvnha5eepa" file="text.html"/>
        <record id="15092098494qttahj67t" name="USART для ATmega8" author="" url="" tags="" ctime="20171028195729" dir="1509209849ptfe6gih25" file="text.html"/>
       </recordtable>
+      <node crypt="" id="1510770786vfakpm1bg1" name="ASM_PROJ">
+       <recordtable>
+        <record id="1510770805a4asw8elca" name="Hunter v.4" author="" url="" tags="" ctime="20171115213325" dir="1510770805fs4psts9ko" file="text.html"/>
+       </recordtable>
+      </node>
      </node>
      <node crypt="" id="1493025300f5b4a6eo5s" name="AVR GCC">
       <recordtable>
@@ -300,7 +305,7 @@
      <record id="1491216202741g83lcg3" name="NE555" author="" url="" tags="" ctime="20170405120952" dir="14912162024guz6q6vh7" file="text.html"/>
      <record id="149138340918dttrpjkp" name="DS3231" author="" url="" tags="" ctime="20170405121009" dir="1491383409vqffrzkrzi" file="text.html"/>
      <record id="14919202192pbw18wox3" name="74HC14N (Schmitt Trigger)" author="" url="" tags="" ctime="20170411171659" dir="14919202191harfz8r0x" file="text.html"/>
-     <record id="1510337596tjh3tiqnxd" name="ADS7846 for WF43BTIBED0 (TFT Display)" author="" url="" tags="" ctime="20171110211316" dir="1510337596mnsxpmoo5t" file="text.html"/>
+     <record id="1510337596tjh3tiqnxd" name="WF43BTIBED0 (TFT Display)" author="" url="" tags="" ctime="20171110211316" dir="1510337596mnsxpmoo5t" file="text.html"/>
     </recordtable>
    </node>
    <node crypt="" id="148914926872tr3kszrm" name="Eagle CAD">
