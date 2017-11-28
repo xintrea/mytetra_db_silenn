@@ -256,6 +256,9 @@
      </node>
     </node>
     <node crypt="" id="148338311076c5dcu1bg" name="STM32">
+     <recordtable>
+      <record id="1511869974gwbeghickd" name="CMSIS" author="" url="" tags="" ctime="20171128145254" dir="1511869974c7lk5h1jls" file="text.html"/>
+     </recordtable>
      <node crypt="" id="15084108276594vk6mqb" name="STM32F407xx">
       <recordtable>
        <record id="15078820139rcvbeuthv" name="LED мигание и кнопка" author="" url="" tags="" ctime="20171019140031" dir="15078820131bydb6tz3n" file="text.html"/>
