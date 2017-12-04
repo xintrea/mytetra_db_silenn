@@ -11,7 +11,7 @@
     <recordtable>
      <record id="1491306860w88yh8dcde" name="cmd line" author="" url="" tags="" ctime="20170404145420" dir="14913068607g18ip5owu" file="text.html"/>
      <record id="14899432728nsmwtws6t" name="conky" author="" url="" tags="" ctime="20170319200752" dir="1489943272144mfovtqw" file="text.html"/>
-     <record id="1489944227rhz3g5zikv" name="xbindkeay" author="" url="" tags="" ctime="20170319202347" dir="1489944227g7n2renjg1" file="text.html"/>
+     <record id="1489944227rhz3g5zikv" name="xbindkeay и aliases" author="" url="" tags="" ctime="20170319202347" dir="1489944227g7n2renjg1" file="text.html"/>
      <record id="1490439250q3tfoyais3" name="Долгая загрузка" author="" url="" tags="" ctime="20170325135410" dir="14904392502lzpjwonk4" file="text.html"/>
      <record id="1491737601i8kcx8yd7r" name="elantech touchpad" author="" url="" tags="" ctime="20170409143321" dir="1491737601uju0zxcp37" file="text.html"/>
      <record id="1503741536uczbdmpbc7" name="MC - привязка расширений" author="" url="" tags="" ctime="20170826125856" dir="1503741536s0g7094s7j" file="text.html"/>
@@ -19,6 +19,11 @@
     <node crypt="" id="15041626276v5u6s8eki" name="vim">
      <recordtable>
       <record id="1504628503zg4phx8bax" name="Command mode" author="" url="" tags="" ctime="20170905192143" dir="1504628503c8vowceb6a" file="text.html"/>
+     </recordtable>
+    </node>
+    <node crypt="" id="1512386851nqi34q4hfq" name="Код и Команды">
+     <recordtable>
+      <record id="151238685917iq72qjct" name="Базис" author="" url="" tags="" ctime="20171204142739" dir="15123868594ww22kfaif" file="text.html"/>
      </recordtable>
     </node>
    </node>
