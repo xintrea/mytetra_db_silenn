@@ -177,12 +177,30 @@
        <recordtable>
         <record id="1512042981qdqd60fsab" name="DS18B20" author="" url="" tags="" ctime="20171130145621" dir="1512042981v4u4jp194b" file="text.html"/>
        </recordtable>
-       <node crypt="" id="1512126287y414ks2xr2" name="DS18B20">
-        <recordtable>
-         <record id="1512126294w09nn555hg" name="main.asm" author="" url="" tags="" ctime="20171201140454" dir="1512126294fg1q6zogyj" file="text.html"/>
-         <record id="1512126321skdm55i84l" name="memory.asm" author="" url="" tags="" ctime="20171201140521" dir="1512126321lu0ncv3wkh" file="text.html"/>
-         <record id="15121263404vzf985y91" name="macro.inc" author="" url="" tags="" ctime="20171201140540" dir="1512126340f79mwht0j6" file="text.html"/>
-        </recordtable>
+       <node crypt="" id="1512477887h8o1g5ib81" name="DS18B20">
+        <node crypt="" id="1512477922kqbgsu3uzq" name="DS18B20 v.1">
+         <recordtable>
+          <record id="1512477922hz1ejxevi5" name="main.asm" author="" url="" tags="" ctime="20171205154522" dir="1512477922m1qtd754f7" file="text.html"/>
+          <record id="15124779221pfnefdeom" name="memory.asm" author="" url="" tags="" ctime="20171205154522" dir="15124779229qb61x4kgk" file="text.html"/>
+          <record id="1512477922fbl8w8zegz" name="macro.inc" author="" url="" tags="" ctime="20171205154522" dir="1512477922a1sgp3y3dc" file="text.html"/>
+         </recordtable>
+        </node>
+        <node crypt="" id="1512477914bfwu8ua7wc" name="DS18B20 v.2">
+         <recordtable>
+          <record id="1512477914olt0ogg5ck" name="main.asm" author="" url="" tags="" ctime="20171205154514" dir="1512477914z2ic4wpk50" file="text.html"/>
+          <record id="1512477914k05u000mlm" name="memory.asm" author="" url="" tags="" ctime="20171205154514" dir="1512477914ldt9ooz0ds" file="text.html"/>
+          <record id="1512477915s2koyx8fe1" name="macro.inc" author="" url="" tags="" ctime="20171205154515" dir="1512477915wu08qtnped" file="text.html"/>
+         </recordtable>
+        </node>
+        <node crypt="" id="1512478125j5nr58p1l5" name="DS18B20 v.3">
+         <recordtable>
+          <record id="1512478125mp9y2c014c" name="main.asm" author="" url="" tags="" ctime="20171205154845" dir="151247812567fr5hbvy6" file="text.html"/>
+          <record id="151247812599r4bnk4x0" name="memory.asm" author="" url="" tags="" ctime="20171205154845" dir="1512478125gox7qscxe8" file="text.html"/>
+          <record id="1512478125zxf860e7h9" name="macro.inc" author="" url="" tags="" ctime="20171205154845" dir="1512478125ytwe8q00sd" file="text.html"/>
+          <record id="1512478157vum6w8pipg" name="sensor_ds18b20.asm" author="" url="" tags="" ctime="20171205154917" dir="15124781577rmyt7nkzj" file="text.html"/>
+          <record id="1512478173e77yzrrizj" name="math.asm" author="" url="" tags="" ctime="20171205154933" dir="1512478173mrqxftt2x3" file="text.html"/>
+         </recordtable>
+        </node>
        </node>
       </node>
      </node>
