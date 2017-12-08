@@ -174,9 +174,6 @@
        <record id="15092098494qttahj67t" name="USART для ATmega8" author="" url="" tags="" ctime="20171028195729" dir="1509209849ptfe6gih25" file="text.html"/>
       </recordtable>
       <node crypt="" id="1510770786vfakpm1bg1" name="ASM_PROJ">
-       <recordtable>
-        <record id="1512042981qdqd60fsab" name="DS18B20" author="" url="" tags="" ctime="20171130145621" dir="1512042981v4u4jp194b" file="text.html"/>
-       </recordtable>
        <node crypt="" id="1512477887h8o1g5ib81" name="DS18B20">
         <node crypt="" id="1512477922kqbgsu3uzq" name="DS18B20 v.1">
          <recordtable>
@@ -199,6 +196,16 @@
           <record id="1512478125zxf860e7h9" name="macro.inc" author="" url="" tags="" ctime="20171205154845" dir="1512478125ytwe8q00sd" file="text.html"/>
           <record id="1512478157vum6w8pipg" name="sensor_ds18b20.asm" author="" url="" tags="" ctime="20171205154917" dir="15124781577rmyt7nkzj" file="text.html"/>
           <record id="1512478173e77yzrrizj" name="math.asm" author="" url="" tags="" ctime="20171205154933" dir="1512478173mrqxftt2x3" file="text.html"/>
+         </recordtable>
+        </node>
+        <node crypt="" id="1512758508q1kdpbtdzv" name="DS18B20 v.4">
+         <recordtable>
+          <record id="1512758508nr7g3aqqh9" name="main.asm" author="" url="" tags="" ctime="20171208214148" dir="1512758508vkw04cx2w7" file="text.html"/>
+          <record id="15127585087ssz1pxvqb" name="memory.asm" author="" url="" tags="" ctime="20171208214148" dir="1512758508urlzyrtbau" file="text.html"/>
+          <record id="1512758508pl2u2xpk3v" name="macro.inc" author="" url="" tags="" ctime="20171208214148" dir="1512758508j2ug2geehy" file="text.html"/>
+          <record id="1512758508h6zkfd2s1j" name="sensor_ds18b20.asm" author="" url="" tags="" ctime="20171208214148" dir="15127585089fedzoy520" file="text.html"/>
+          <record id="1512758508l38gmz45lh" name="math.asm" author="" url="" tags="" ctime="20171208214148" dir="15127585082ky6yzlh31" file="text.html"/>
+          <record id="1512758549woww269do6" name="indicator.asm" author="" url="" tags="" ctime="20171208214229" dir="1512758549qxz49tznj8" file="text.html"/>
          </recordtable>
         </node>
        </node>
