@@ -208,6 +208,16 @@
           <record id="1512758549woww269do6" name="indicator.asm" author="" url="" tags="" ctime="20171208214229" dir="1512758549qxz49tznj8" file="text.html"/>
          </recordtable>
         </node>
+        <node crypt="" id="1513008031h3372v8m4x" name="DS18B20 v.5">
+         <recordtable>
+          <record id="1513008031s19wyy0mv3" name="main.asm" author="" url="" tags="" ctime="20171211190031" dir="1513008031n2hc2vvu1d" file="text.html"/>
+          <record id="1513008031ke8h6ad15e" name="memory.asm" author="" url="" tags="" ctime="20171211190031" dir="1513008031rsmazp67bq" file="text.html"/>
+          <record id="15130080318npvy4kksb" name="macro.inc" author="" url="" tags="" ctime="20171211190031" dir="1513008031fdwo9umpwx" file="text.html"/>
+          <record id="1513008031htsdxhoznk" name="sensor_ds18b20.asm" author="" url="" tags="" ctime="20171211190031" dir="1513008031asqjact3ee" file="text.html"/>
+          <record id="1513008031iw78vx050e" name="math.asm" author="" url="" tags="" ctime="20171211190031" dir="1513008031xv82qm7qmf" file="text.html"/>
+          <record id="15130080310x7ozeqm4c" name="indicator.asm" author="" url="" tags="" ctime="20171211190031" dir="1513008031jynrrkpfkc" file="text.html"/>
+         </recordtable>
+        </node>
        </node>
       </node>
      </node>
