@@ -306,9 +306,15 @@
      <recordtable>
       <record id="1511869974gwbeghickd" name="CMSIS" author="" url="" tags="" ctime="20171128145254" dir="1511869974c7lk5h1jls" file="text.html"/>
      </recordtable>
-     <node crypt="" id="15084108276594vk6mqb" name="STM32F407xx">
+     <node crypt="" id="15084108276594vk6mqb" name="CMSIS (STM32F407xx)">
       <recordtable>
        <record id="15078820139rcvbeuthv" name="LED мигание и кнопка" author="" url="" tags="" ctime="20171019140031" dir="15078820131bydb6tz3n" file="text.html"/>
+      </recordtable>
+     </node>
+     <node crypt="" id="1515236460uh1aiis6ay" name="HAL">
+      <recordtable>
+       <record id="1515236675xa2e95gadw" name="leds and button" author="" url="" tags="" ctime="20180106140435" dir="1515236675cqvkl9amty" file="text.html"/>
+       <record id="1515236491e82e12l408" name="timers (tim6)" author="" url="" tags="" ctime="20180106140131" dir="15152364917rmnjx8gh4" file="text.html"/>
       </recordtable>
      </node>
     </node>
