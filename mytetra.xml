@@ -313,8 +313,9 @@
      </node>
      <node crypt="" id="1515236460uh1aiis6ay" name="HAL">
       <recordtable>
-       <record id="1515236675xa2e95gadw" name="leds and button" author="" url="" tags="" ctime="20180106140435" dir="1515236675cqvkl9amty" file="text.html"/>
-       <record id="1515236491e82e12l408" name="timers (tim6)" author="" url="" tags="" ctime="20180106140131" dir="15152364917rmnjx8gh4" file="text.html"/>
+       <record id="1515236675xa2e95gadw" name="LEDs and Button" author="" url="" tags="" ctime="20180106140435" dir="1515236675cqvkl9amty" file="text.html"/>
+       <record id="1515236491e82e12l408" name="Timers (tim6)" author="" url="" tags="" ctime="20180106140131" dir="15152364917rmnjx8gh4" file="text.html"/>
+       <record id="15155784776qqu2no9gm" name="LCD44780 (1602)" author="" url="" tags="" ctime="20180110130117" dir="1515578477mfal0yj1ii" file="text.html"/>
       </recordtable>
      </node>
     </node>
