@@ -320,7 +320,7 @@
        <record id="15155820301t1i32cxw4" name="PWM" author="" url="" tags="" ctime="20180110140030" dir="1515582030e5qt1pylt7" file="text.html"/>
        <record id="1515747325twhggj59ll" name="USART + CP2102" author="" url="" tags="" ctime="20180112115525" dir="1515747325n0ss4dycsg" file="text.html"/>
        <record id="1516001885i7nd4c79ls" name="USART_DMA" author="" url="" tags="" ctime="20180115103805" dir="1516001885kc151uo0k0" file="text.html"/>
-       <record id="15160253298w1u9xorfb" name="ADC" author="" url="" tags="" ctime="20180115170849" dir="1516025329nfabx2m0f6" file="text.html"/>
+       <record id="15160253298w1u9xorfb" name="ADC (Regular Channel)" author="" url="" tags="" ctime="20180115170849" dir="1516025329nfabx2m0f6" file="text.html"/>
       </recordtable>
      </node>
     </node>
