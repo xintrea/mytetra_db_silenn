@@ -172,6 +172,7 @@
        <record id="15090091581d8u44g17j" name="Commands" author="" url="" tags="" ctime="20171026121238" dir="1509009158sns53al31w" file="text.html"/>
        <record id="1510422253g0qelu6bm6" name="My Notes" author="" url="" tags="" ctime="20171111204413" dir="1510422253xvnha5eepa" file="text.html"/>
        <record id="15092098494qttahj67t" name="USART для ATmega8" author="" url="" tags="" ctime="20171028195729" dir="1509209849ptfe6gih25" file="text.html"/>
+       <record id="1516342388m1yiqfigpj" name="UART с автоколибровкой" author="" url="" tags="" ctime="20180119091308" dir="1516342388zk2rjd685r" file="text.html"/>
       </recordtable>
       <node crypt="" id="1510770786vfakpm1bg1" name="ASM_PROJ">
        <node crypt="" id="1512477887h8o1g5ib81" name="DS18B20">
@@ -321,6 +322,7 @@
        <record id="1515747325twhggj59ll" name="USART + CP2102" author="" url="" tags="" ctime="20180112115525" dir="1515747325n0ss4dycsg" file="text.html"/>
        <record id="1516001885i7nd4c79ls" name="USART_DMA" author="" url="" tags="" ctime="20180115103805" dir="1516001885kc151uo0k0" file="text.html"/>
        <record id="15160253298w1u9xorfb" name="ADC (Regular Channel)" author="" url="" tags="" ctime="20180115170849" dir="1516025329nfabx2m0f6" file="text.html"/>
+       <record id="15163514870ntkqjvfy4" name="ADC (Injected Channel)" author="" url="" tags="" ctime="20180119114447" dir="1516351487kau2gynxjp" file="text.html"/>
       </recordtable>
      </node>
     </node>
@@ -397,6 +399,7 @@
    </node>
    <node crypt="" id="14924963811y9lpga22b" name="Deutsch">
     <recordtable>
+     <record id="1516366770ctbwm3e91d" name="Диалекты" author="" url="" tags="" ctime="20180119155930" dir="1516366770drungl53sb" file="text.html"/>
      <record id="1492496601uhqm72ix16" name="Phonetik" author="" url="" tags="" ctime="20170825112519" dir="14924966012wxsn5p8vd" file="text.html"/>
      <record id="14925211358j3jcl93a0" name="Числительные" author="" url="" tags="" ctime="20170825112521" dir="1492521135s3e4j3dya8" file="text.html"/>
      <record id="1501067505322p1wwpih" name="Местоимения" author="" url="" tags="" ctime="20170825112523" dir="15010675053ibggdji5h" file="text.html"/>
@@ -496,6 +499,12 @@
    <node crypt="1" icon="" id="1507189049urdp59x6aj" name="UkM1U0lNUAP8CdVFatCMP0lQTMJOt1dU2eF4pavI0H03FSutV4+Arb3UY5Y1Hmtl">
     <recordtable>
      <record id="1507189056n27lhv8m19" name="UkM1U0lNUAPOEKzijlGm/SPHof9t6FM7uxWmJoR0Hw9yMkcxJhlIk1S0G8PIdUPAWLL5dUSTzVY=" author="" url="" tags="" ctime="20171005103736" dir="1507189056ocnlcjitoh" file="text.html" crypt="1"/>
+    </recordtable>
+   </node>
+   <node crypt="1" icon="" id="1516366750linidkcdiz" name="UkM1U0lNUAM1hNRfuWcd7ObRE7fvV6c5zhFBct1IQq9juVSXyTHcbxWQpd8xG5Ii">
+    <recordtable>
+     <record id="1516367431xsmct8nl0x" name="UkM1U0lNUAOFVwERa60hiFiALNNSOQc3VS1s/0UfQSwsd7Zhb4Pt008ORpGKHRqO0Pcn/GuTzTd3GOGc3U6D8wVqDI1ilCSPIKMSn8O6GIQ=" author="" url="UkM1U0lNUAPlah3rvcOxlpOzuA5B2x1KHsNgOH3GkM/I80wzT0jX7QKWi1YIoXnQNTDIeQEMMQsRM6NWt5Ds7mzfVsYHccy1ZeIj4bC7kAmQo7sbeU4+JvPrpgpcxiHUVXZHyIhvsaepB9D4Dp7KO4C+2q+vwHugVeCSoRPOw2D3rS2/2dWjVuXOit/HPRhhYzIQmKLCiKL6bz8Fbi1vAQ==" tags="" ctime="20180119161031" dir="1516367431fcempkc0vi" file="text.html" crypt="1"/>
+     <record id="1516367582xdljit9r0u" name="UkM1U0lNUAMhOChuUbfFhhPCGRnrXnQHe9pbVa64BJ7PG+4lZqO3PaKcUsZp0P98ffwuSqwuQGamXiSG8PfI5PKfeCaqOO4P" author="" url="" tags="" ctime="20180119161302" dir="151636758285tr2zq9t3" file="text.html" crypt="1"/>
     </recordtable>
    </node>
   </node>
