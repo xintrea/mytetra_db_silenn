@@ -323,6 +323,7 @@
        <record id="1516001885i7nd4c79ls" name="USART_DMA" author="" url="" tags="" ctime="20180115103805" dir="1516001885kc151uo0k0" file="text.html"/>
        <record id="15160253298w1u9xorfb" name="ADC (Regular Channel)" author="" url="" tags="" ctime="20180115170849" dir="1516025329nfabx2m0f6" file="text.html"/>
        <record id="15163514870ntkqjvfy4" name="ADC (Injected Channel)" author="" url="" tags="" ctime="20180119114447" dir="1516351487kau2gynxjp" file="text.html"/>
+       <record id="1516889306iubdb20fo7" name="DAC" author="" url="" tags="" ctime="20180125170826" dir="1516889306skjlw3hu8y" file="text.html"/>
       </recordtable>
      </node>
     </node>
@@ -372,6 +373,7 @@
      <record id="149138340918dttrpjkp" name="DS3231" author="" url="" tags="" ctime="20170405121009" dir="1491383409vqffrzkrzi" file="text.html"/>
      <record id="14919202192pbw18wox3" name="74HC14N (Schmitt Trigger)" author="" url="" tags="" ctime="20170411171659" dir="14919202191harfz8r0x" file="text.html"/>
      <record id="1510337596tjh3tiqnxd" name="WF43BTIBED0 (TFT Display)" author="" url="" tags="" ctime="20171110211316" dir="1510337596mnsxpmoo5t" file="text.html"/>
+     <record id="1516881693o55kgwvg6z" name="ILI9341 (2.2 TFT Display)" author="" url="" tags="" ctime="20180125150133" dir="1516881693deg99j0mqn" file="text.html"/>
     </recordtable>
    </node>
    <node crypt="" id="148914926872tr3kszrm" name="Eagle CAD">
