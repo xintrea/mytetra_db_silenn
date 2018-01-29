@@ -151,6 +151,7 @@
      <record id="14931081002dkw7gn7do" name="Noises" author="" url="" tags="" ctime="20170510111352" dir="1493108100qkvr2zgfwa" file="text.html"/>
      <record id="1500998742wue9flwv41" name="Buttons &amp; LED with PullUp" author="" url="" tags="" ctime="20170725190542" dir="1500998742ipm6dgy42k" file="text.html"/>
      <record id="1508916075da48ktlrii" name="I2C (TWI)" author="" url="" tags="" ctime="20171025102115" dir="15089160756uozy1k4n2" file="text.html"/>
+     <record id="1517214119k1qn5rp0h8" name="SPI" author="" url="" tags="" ctime="20180129112159" dir="1517214119uqzg7qc1ro" file="text.html"/>
     </recordtable>
     <node crypt="" id="14833823556d5onqo10r" name="AVR8">
      <recordtable>
@@ -306,8 +307,9 @@
     <node crypt="" id="148338311076c5dcu1bg" name="STM32">
      <recordtable>
       <record id="1511869974gwbeghickd" name="CMSIS" author="" url="" tags="" ctime="20171128145254" dir="1511869974c7lk5h1jls" file="text.html"/>
+      <record id="1517236229i8r9v3s00l" name="Мартин Минс - Инсайдерское руководство по STM32" author="" url="" tags="" ctime="20180129173029" dir="1517236229rfwx6c9y18" file="text.html"/>
      </recordtable>
-     <node crypt="" id="15084108276594vk6mqb" name="CMSIS (STM32F407xx)">
+     <node crypt="" id="15084108276594vk6mqb" name="CMSIS">
       <recordtable>
        <record id="15078820139rcvbeuthv" name="LED мигание и кнопка" author="" url="" tags="" ctime="20171019140031" dir="15078820131bydb6tz3n" file="text.html"/>
       </recordtable>
