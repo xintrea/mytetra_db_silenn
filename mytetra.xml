@@ -307,7 +307,7 @@
     <node crypt="" id="148338311076c5dcu1bg" name="STM32">
      <recordtable>
       <record id="1511869974gwbeghickd" name="CMSIS" author="" url="" tags="" ctime="20171128145254" dir="1511869974c7lk5h1jls" file="text.html"/>
-      <record id="1517236229i8r9v3s00l" name="Мартин Минс - Инсайдерское руководство по STM32" author="" url="" tags="" ctime="20180129173029" dir="1517236229rfwx6c9y18" file="text.html"/>
+      <record id="1517236229i8r9v3s00l" name="Insider's Guide STM32" author="" url="" tags="" ctime="20180129173029" dir="1517236229rfwx6c9y18" file="text.html"/>
      </recordtable>
      <node crypt="" id="15084108276594vk6mqb" name="CMSIS">
       <recordtable>
