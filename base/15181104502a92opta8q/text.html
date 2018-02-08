@@ -1,0 +1,315 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">[</span><span style=" font-family:'Sans Serif'; font-size:9pt; font-weight:600;">Глава 4: Типы конечных точек (Endpoint Types)</span><span style=" font-family:'Sans Serif'; font-size:9pt;">] </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Стандарт USB определяет 4 типа конечных точек/передач: </span></p>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a href="http://microsin.ru/content/view/1107/44#Control"><span style=" text-decoration: underline; color:#0000ff;">Control</span></a> </li>
+<li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a href="http://microsin.ru/content/view/1107/44#Interrupt"><span style=" text-decoration: underline; color:#0000ff;">Interrupt</span></a> </li>
+<li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a href="http://microsin.ru/content/view/1107/44#Isochronous"><span style=" text-decoration: underline; color:#0000ff;">Isochronous</span></a> </li>
+<li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><a href="http://microsin.ru/content/view/1107/44#Bulk"><span style=" text-decoration: underline; color:#0000ff;">Bulk</span></a></li></ul>
+<p style="-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;"><br /></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; font-weight:600; color:#339966;">Передачи Control</span><a name="Control"></a><span style=" font-family:'Sans Serif'; font-size:9pt;"> </span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Управляющие передачи (control transfer) обычно используются для команд и операций получения состояния. Основная настройка устройства USB со всеми функциями энумерации происходит с использованием передач control. Это обычно быстрые, случайные по времени пакеты, инициированные хостом, которые имеют наилучший приоритет по доставке (best effort). Максимально допустимая длина полезной нагрузки (payload, или размер пакета) управляющей передачи полноскоростных (full-speed) устройств USB составляет 8, 16, 32 или 64 байта; для высокоскоростных (high-speed) устройств этот размер составляет 64 байта, и для низкоскоростных (low-speed) устройств это 8 байт (только 8 байт, и никаких других вариантов).</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">У передач control могут быть до 3 стадий.</p>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">Setup Stage – стадия установки, определяет, куда посылаются данные. Состоит из трех пакетов. Токен setup отправляется первым, он содержит адрес и номер конечной точки. Пакет данных (data packet) отправляется следующим, и всегда имеет тип PID data0 и включает setup packet, который детализирует тип запроса. Мы позже подробно рассмотрим setup packet. Последний пакет из трех – рукопожатие (handshake), используемое для подтверждения успешности приема или для сообщения об ошибке. Если функция успешно приняла setup data (CRC, PID и т. п. в порядке), она отвечает рукопожатием (handshake) ACK, иначе игнорирует данные, не отправляя пакет handshake. Функция не может послать пакетамы STALL или NAK в ответ на пакет setup.</span> </li>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;"><br /></p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:80px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image437702672.png" /></p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image1480594215.png" /></p></td></tr></table>
+<li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">Data Stage – эта стадия необязательна. Она состоит из одной или нескольких передач IN или OUT. Запрос setup показывает, сколько данных будет передаваться на этой стадии. Если количество данных превышает максимальный размер пакета, данные будут переданы в нескольких передачах, каждая из которых (за исключением последней) имеет размер максимального пакета</span>.</li></ul>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Стадия data stage имеет два различных сценария, в зависимости от направления передачи данных. </p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Сценарий IN</span>: когда хост готов принять данные control data, он выпускает IN Token. Если функция получает IN token с ошибкой, например PID не соответствует инверитрованным битам PID, то она игнорирует пакет. Если токен принят успешно, устройство может либо ответить пакетом DATA, содержащим отправляемые control data, либо stall packet, индицирующий ошибку конечной точки, либо пакет NAK, показывающий хосту, что конечная точка работает, но пока не имеет данных для отправки. </p>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;"><br /></p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image1267649221.png" /></p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image1480594215.png" /></p></td></tr></table>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Сценарий OUT:</span> когда хосту нужно передать устройству пакет с управляющими данными (control data packet), он выпускает OUT token, за которым идет пакет, содержащий control data в качестве полезной нагрузки. Если любая часть – или OUT token, или data packet ошибочны, функция игнорирует пакет. Если буфер конечной точки пуст, она заполняет буфер данными и передает ACK, информирующий хост о том, что данные получены успешно. Если буфер конечной точки не пуст, поскольку идет обработка предыдущего пакета, функция отвечает NAK. Однако, если у оконечной точки была ошибка, и ее бит останова (halt bit) был установлен, она возвращает STALL.<span style=" font-family:'Sans Serif'; font-size:9pt;"> </span></p>
+<ul type="circle" style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#000000;">Status Stage сообщает состояние полного запроса, и меняется в зависимости от направления передачи. Функция всегда возвращает сообщение состояния</span>.</li></ul>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Стадия status stage</span> также имеет два различных сценария, в зависимости от направления передачи данных. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Сценарий IN:</span> если хост отправил токен (токены) IN token(s) во время стадии data stage для приема данных, хост должен подтвердить успешный прием данных. Это делается путем отправки токена OUT, за которым идет пакет data нулевой длины. Функция может теперь сообщить свой статус на стадии handshaking. ACK указывает на то, что функция завершила команду и готова к приему следующей команды. Если во время обработки этой команды произошла ошибка, функция выдает STALL. Однако если пока продолжается обработка команды, функция выдает NAK, указывающий хосту повторить позже стадию status stage.<span style=" font-family:'Sans Serif'; font-size:9pt;"> </span></p>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;"><br /></p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image1409046329.png" /></p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image1480594215.png" /></p></td></tr></table>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Сценарий OUT:</span> если хост отправил токен (токены) OUT на стадии data stage – чтобы отправить данные, функция подтверждает успешный прием данных отправкой пакета нулевой длины в ответ на токен IN. Однако если произошла ошибка, функция должна выдать STALL, или если пока обрабатываются данные, должна выдать NAK, указывая хосту повторить позже status phase.<span style=" font-family:'Sans Serif'; font-size:9pt;"> </span></p>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;"><br /></p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image665687145.png" /></p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image1480594215.png" /></p></td></tr></table>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; font-weight:600; color:#339966;">Передачи Control: общий обзор</span><span style=" font-family:'Sans Serif'; font-size:9pt;"> </span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Теперь, как все это совмещается? Например, хост хочет запросить дескриптор устройства во время энумерации. Пакеты, которые посылают, будут следующими.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Хост отправляет токен Setup, говорящий функции, что следующий пакет будет пакет Setup. Поле адреса будет содержать адрес устройства, от которого главный компьютер просит дескриптор. Номер конечной точки должен быть 0, что указывает канал по умолчанию (default pipe). Затем хост отправит пакет DATA0. Он будет содержать 8 байт полезной нагрузки, которая будет являться запросом <a href="http://microsin.ru/content/view/1108/44#GetDescriptor"><span style=" text-decoration: underline; color:#0000ff;">Device Descriptor Request</span></a>, описанным в Главе 9 спецификации USB. Функция USB подтверждает пакет setup, что он был прочитан корректно, без ошибок. Если пакет принят с ошибкой, устройство просто игнорирует этот пакет. Хост должен отправить пакет позже заново, после короткой задержки.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;"><br /></p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td width="20%">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;"><br />1. Токен Setup</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">Sync</span></p></td>
+<td width="7%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">PID</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">ADDR</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">ENDP</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">CRC5</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">EOP</span></p></td>
+<td width="30%">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Адрес и номер конечной точки</span></p></td></tr>
+<tr>
+<td colspan="8"></td></tr>
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">2. Пакет Data0</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">Sync</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">PID</span></p></td>
+<td colspan="2" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">Data0</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">CRC16</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">EOP</span></p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Device Descriptor Request</span></p></td></tr>
+<tr>
+<td colspan="8"></td></tr>
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">3. Ack Handshake</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">Sync</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">PID</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">EOP</span></p></td>
+<td colspan="3"></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Устройство подтверждает Setup Packet</span></p></td></tr></table>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Три вышеуказанных пакета представляют из себя первую транзакцию USB. Теперь устройство USB будет декодировать 8 принятых байт, и определять по ним, что это device descriptor request (запрос на дескриптор устройства). После этого устройство попытается отправить </span><a href="http://microsin.ru/content/view/1108/44#DeviceDescriptors"><span style=" font-family:'Sans Serif'; font-size:9pt; text-decoration: underline; color:#0000ff;">Device Descriptor</span></a><span style=" font-family:'Sans Serif'; font-size:9pt;">, что произойдет в следующей транзакции USB. </span></p>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;"><br /></p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td width="20%">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;"><br />1. Токен In</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">Sync</span></p></td>
+<td width="7%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">PID</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">ADDR</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">ENDP</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">CRC5</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">EOP</span></p></td>
+<td width="30%">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Адрес и номер конечной точки</span></p></td></tr>
+<tr>
+<td colspan="8"></td></tr>
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">2. Пакет Data1</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">Sync</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">PID</span></p></td>
+<td colspan="2" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">Data1</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">CRC16</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">EOP</span></p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Первые 8 байт дескриптора устройства</span></p></td></tr>
+<tr>
+<td colspan="8"></td></tr>
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">3. Ack Handshake</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">Sync</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">PID</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">EOP</span></p></td>
+<td colspan="3"></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Хост подтверждает пакет</span></p></td></tr></table>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;"><br /></p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td width="20%">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">1. Токен In</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">Sync</span></p></td>
+<td width="7%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">PID</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">ADDR</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">ENDP</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">CRC5</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">EOP</span></p></td>
+<td width="30%">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Адрес и номер конечной точки</span></p></td></tr>
+<tr>
+<td colspan="8"></td></tr>
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">2. Пакет Data0</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">Sync</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">PID</span></p></td>
+<td colspan="2" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">Data0</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">CRC16</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">EOP</span></p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Последние 4 байта + Padding</span></p></td></tr>
+<tr>
+<td colspan="8"></td></tr>
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">3. Ack Handshake</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">Sync</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">PID</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">EOP</span></p></td>
+<td colspan="3"></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Хост подтверждает пакет</span></p></td></tr></table>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">В этом случае мы подразумеваем, что максимальный размер полезной нагрузки 8 байт. Хост отправляет токен IN, чем говорит устройству, что он может теперь отправить данные для этой конечной точки. Поскольку максимальный размер пакета 8 байт, мы должны для отправки разделить 12 байт дескриптора устройства на кусочки. Каждый кусочек должен быть размером по 8 байт, за исключением последней транзакции. Хост подтверждает каждый пакет, который мы посылаем ему. </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Как только дескриптор устройства отправлен, начинается транзакция статуса. Если транзакции были успешны, хост отправляет пакет нулевой длины, показывающий, что полная транзакция была успешна. Функция отвечает на это пакетом нулевой длины, индицирующим её состояние (status). </span></p>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;"><br /></p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td width="20%">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;"><br />1. Токен Out</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">Sync</span></p></td>
+<td width="7%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">PID</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">ADDR</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">ENDP</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">CRC5</span></p></td>
+<td width="9%" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">EOP</span></p></td>
+<td width="30%">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Адрес и номер конечной точки</span></p></td></tr>
+<tr>
+<td colspan="8"></td></tr>
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">2. Пакет Data1</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">Sync</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">PID</span></p></td>
+<td colspan="2" bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">Data1</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">CRC16</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">EOP</span></p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Пакет нулевой длины</span></p></td></tr>
+<tr>
+<td colspan="8"></td></tr>
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">3. Ack Handshake</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">Sync</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">PID</span></p></td>
+<td bgcolor="#999999">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; background-color:#999999;">EOP</span></p></td>
+<td colspan="3"></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Устройство подтверждает всю транзакцию целиком</span></p></td></tr></table>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; font-weight:600; color:#339966;">Передачи Interrupt</span><a name="Interrupt"></a><span style=" font-family:'Sans Serif'; font-size:9pt;"> </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Любой, кто имел дело с запросами на прерывание у микроконтроллеров, знает, что прерывания генерируются устройством (в микроконтроллере). Однако под управлением USB, если устройство требует внимания хоста, оно должно ждать, пока хост его не опросит, чтобы понять, что устройство нуждается в срочном обмене данными! Передачи Interrupt имеют следующие особенности: </span></p>
+<ul type="square" style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Гарантированная латентность (latency) </li>
+<li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Однонаправленный поток канала </li>
+<li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Определение ошибок и последующая повторная попытка передачи.</li></ul>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Передачи Interrupt обычно непериодические, когда USB устройство &quot;инициирует&quot; связь, требующую ограниченного времени ожидания. Запрос на «прерывание» ставится устройством USB в очередь, пока компьютер не опросит устройство USB с целью получения данных. </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Максимальная полезная нагрузка для low-speed устройств - 8 байт. <br />Максимальная полезная нагрузка для full-speed устройств - 64 байта. <br />Максимальная полезная нагрузка для high-speed устройств - 1024 байта. </span></p>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;"><br /></p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image704315501.png" /></p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image1480594215.png" /></p></td></tr></table>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">На диаграмме показан формат транзакций Interrupt IN и Interrupt OUT. </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; font-weight:600;">Interrupt IN</span><span style=" font-family:'Sans Serif'; font-size:9pt;">: хост периодически опрашивает конечную точку interrupt. Скорость опроса указана в описателе конечной точки (</span><a href="http://microsin.ru/content/view/1108/44#EndpointDescriptors"><span style=" font-family:'Sans Serif'; font-size:9pt; text-decoration: underline; color:#0000ff;">endpoint descriptor</span></a><span style=" font-family:'Sans Serif'; font-size:9pt;">), который мы рассмотрим позже. Каждый опрос сопровождается отправкой хостом токена IN. Если токен IN испорчен, функция игнорирует пакет, и продолжает мониторинг шины в ожидании новых токенов. </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Если interrupt поставлено в очередь устройством USB, функция отправит пакет data, содержащий данные, соответствующие interrupt при приеме токена IN. После успешного приема хостом, хост возвратит ACK. Однако, если данные были испорчены, хост не вернет status. Условие прерывания не присутствовало, когда главный компьютер опросил оконечную точку прерывания токеном IN, но функция ответила о своем состоянии NAK. Если на этой конечной точке произошла ошибка, то в ответ на токен IN будет отправлен STALL. </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; font-weight:600;">Interrupt OUT</span><span style=" font-family:'Sans Serif'; font-size:9pt;">: когда хост хочет отправить устройству данные interrupt, он выдает токен OUT, за которым идет пакет data, содержащий данные interrupt. Если любая часть - токен OUT или пакет data ошибочны, функция игнорирует пакет. Если буфер конечной точки функции был пуст, и функция вывела данные в буфер конечной точки, она выдает ACK, информируя хост об успешно принятых данных. Если буфер конечной точки не пуст (еще идет обработка предыдущего пакета), то функция выдает NAK. Однако, если ошибка произошла с конечной точкой и ее бит останова был установлен, то функция выдает STALL. </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; font-weight:600; color:#339966;">Изохронные передачи (Isochronous Transfers)</span><a name="Isochronous"></a><span style=" font-family:'Sans Serif'; font-size:9pt;"> </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Изохронные передачи происходят периодически и продолжительное время. Они обычно содержат информацию, привязанную ко времени (чувствительную к времени доставки), например аудио или видео потоки. Если произойдет задержка или повторная передача данных в аудио потоке, то Вы должны в результате получить искаженный звук. Дополнительная неприятность – может пропасть синхронизация звука. Однако выпадение пакетов или фреймов могут случаться постоянно снова и снова, и это будет менее заметно для слушателя. Изохронные передачи обеспечивают: </span></p>
+<ul type="square" style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Гарантированное выделение полосы пропускания шины USB. </li>
+<li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Ограниченную латентность. </li>
+<li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Однонаправленный поток канала. </li>
+<li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Детектирование ошибок с помощью CRC, но без гарантии доставки (нет повторов при ошибках). </li>
+<li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Работают только на скоростях Full speed и high speed. </li>
+<li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Нет переключения данных.</li></ul>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Для изохронной конечной точки максимальный размер полезной нагрузки по данным указывается в дескрипторе конечной точки (</span><a href="http://microsin.ru/content/view/1108/44#EndpointDescriptors"><span style=" font-family:'Sans Serif'; font-size:9pt; text-decoration: underline; color:#0000ff;">endpoint descriptor</span></a><span style=" font-family:'Sans Serif'; font-size:9pt;">). Этот размер может быть максимум до 1023 байт для full speed и до 1024 байт для high speed. Поскольку максимальный размер полезной нагрузки влияет на требование к шине по полосе пропускания, следует внимательно отнестись к его выбору. Если Вы используете большую полезную нагрузку, то может оказаться хорошим выбором задать серию альтернативных интерфейсов (</span><a href="http://microsin.ru/content/view/1108/44#AlternateSetting"><span style=" font-family:'Sans Serif'; font-size:9pt; text-decoration: underline; color:#0000ff;">alternative interfaces</span></a><span style=" font-family:'Sans Serif'; font-size:9pt;">) с различными изохронными размерами полезной нагрузки. Если во время энумерации хост не может предоставить Вашей изохронной конечной точке привилегированную полосу из-за ограничений полосы пропускания, то у него еще будут другие варианты полосы вместо того, чтобы потерпеть неудачу полностью. Данные, посылаемые через изохронную конечную точку, могут быть меньше предварительно оговоренного размера, и могут измениться по длине от транзакции к транзакции. </span></p>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;"><br /></p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image848934862.png" /></p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image1480594215.png" /></p></td></tr></table>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">На диаграмме показан формат изохронных транзакций IN и OUT. Изохронные транзакции не имеют стадии установления связи (рукопожатия, handshaking stage) и не могут сообщать об ошибках или событиях STALL/HALT. </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; font-weight:600; color:#339966;">Передачи Bulk</span><a name="Bulk"></a><span style=" font-family:'Sans Serif'; font-size:9pt;"> </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Bulk-передачи можно использовать для большого объема быстропередаваемых данных. В качестве примера можно привести задание по выводу на печать, посланное в принтер, или изображение, сгенерированное от сканера. Bulk-передачи предоставляют коррекцию ошибок полезной нагрузки с помощью поля CRC16 и механизмы детектирования ошибок и повторной передачи, гарантирующие отсутствие ошибок в передаваемых или принятых данных. <br />Bulk-передачи будут использовать остаточную полосу пропускания шины после того, как все другие транзакции были распределены. Если шина занята данными isochronous и/или interrupt, то данные bulk могут прередаваться через шину медленно. Следовательно, передачи Bulk должны использоваться только для интенсивных коммуникаций с негарантированным временем доставки. Особенности передачи Bulk: </span></p>
+<ul type="square" style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Используются для передачи большого объема данных на высокой скорости за короткое время. </li>
+<li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Детектирование ошибок с помощью CRC, с гарантией доставки. </li>
+<li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Не гарантируется полоса пропускания или минимальная задержка (минимальная латентность). </li>
+<li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Однонаправленный поток данных канала. </li>
+<li style=" font-family:'Sans Serif'; font-size:9pt;" style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Работает только на скоростях Full speed и high speed.</li></ul>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Bulk-передачи поддерживаются только full speed и high speed устройствами. Для конечных точек full speed максимальный размер пакета bulk бывает 8, 16, 32 или 64 байта длиной. Для конечных точек high speed, максимальный размер пакета может до 512 байт длиной. Если полезная нагрузка данных меньше максимального размера пакета, она не должна быть дополнена нулями. Bulk-передачу считают законченной, когда она передала точное количество запрошенных данных, передала пакет меньше, чем максимальный размер оконечной точки, передала пакет нулевой длины. </span></p>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;"><br /></p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image1267649221.png" /></p></td>
+<td>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image1480594215.png" /></p></td></tr></table>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">На диаграмме показан формат транзакций bulk IN и bulk OUT. </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; font-weight:600;">Bulk IN</span><span style=" font-family:'Sans Serif'; font-size:9pt;">: когда хост готов принять данные bulk, он выдает токен IN. Если функция принимает токен IN с ошибкой, она игнорирует пакет. Если токен принят корректно, функция может ответить либо пакетом DATA (содержащим отправляемые данные bulk), либо пакетом stall, (показывающим, что конечная точка имеет ошибку), либо пакетом NAK (показывающим, что конечная точка в работе, но у нее пока нет данных для отправки). </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt; font-weight:600;">Bulk OUT</span><span style=" font-family:'Sans Serif'; font-size:9pt;">: когда хост хочет отправить функции пакет bulk data, он выдает токен OUT, за которым идет data пакет, содержащий данные bulk. Если любая часть токена OUT или пакета data повреждена, функция игнорирует пакет. Если буфер конечной точки функции пуст, функция вдвигает данные в буфер конечной точки и выдает ACK, информируя хост об успешно принятых данных. Если буфер конечной точки функции не пуст по причине обработки предыдущего пакета, функция возвращает NAK. Однако если конечная точка в состоянии ошибки, и её halt-бит установлен, функция возвращает STALL. </span></p></body></html>

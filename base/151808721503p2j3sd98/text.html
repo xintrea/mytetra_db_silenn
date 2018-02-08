@@ -1,49 +1,228 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
 <html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
 p, li { white-space: pre-wrap; }
-</style></head><body style=" font-family:'Georgia'; font-size:11pt; font-weight:400; font-style:normal;">
-<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">[<span style=" font-weight:600;">Глава 3: протоколы USB</span>] </p>
+</style></head><body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Georgia'; font-size:11pt;">[</span><span style=" font-family:'Georgia'; font-size:11pt; font-weight:600;">Глава 3: протоколы USB</span><span style=" font-family:'Georgia'; font-size:11pt;">] </span></p>
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">В отличие от RS-232 и похожих последовательных интерфейсов, где формат отправляемых данных не задан, USB составлен из нескольких слоев протоколов. Звучит сложно, но не опускайте руки. Как только поймете, что происходит, нужно беспокоиться только о протоколах верхних уровней. Фактически большинство контроллеров USB берет на себя заботу о нижних уровнях протоколов, делая их невидимыми для конечного разработчика.</p>
 <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Каждая транзакция USB состоит из: </p>
-<ul type="circle" style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Token Packet (заголовок, показывающий – что должно передаваться далее) </li>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Каждая транзакция USB состоит из:</p>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Token Packet (заголовок, показывающий – что должно передаваться далее) </li>
 <li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">необязательный Data Packet (содержит полезный payload) </li>
-<li style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Status Packet (используется для подтверждения транзакций и предоставляет средство устранения ошибок)</li></ul>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Как мы уже упоминали - USB является шиной, где главным является хост. Хост начинает все транзакции. Первый пакет, так называемый token, генерируется хостом для описания того, что проследует далее и будет ли это транзакция чтения или записи, и какой адрес устройства и определенная конечная точка (endpoint). Следующий пакет обычно пакет данных, несущий полезную нагрузку, за которым идет пакет рукопожатия (handshaking packet), сообщающий о том, что данные или token были приняты успешно, или конечная точка (endpoint) остановлена (stalled) или недоступна для принятия данных. </p>
+<li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Status Packet (используется для подтверждения транзакций и предоставляет средство устранения ошибок)</li></ul>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Georgia'; font-size:11pt;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Как мы уже упоминали - USB является шиной, где главным является хост. Хост начинает все транзакции. Первый пакет, так называемый token, генерируется хостом для описания того, что проследует далее и будет ли это транзакция чтения или записи, и какой адрес устройства и определенная конечная точка (endpoint). Следующий пакет обычно пакет данных, несущий полезную нагрузку, за которым идет пакет рукопожатия (handshaking packet), сообщающий о том, что данные или token были приняты успешно, или конечная точка (endpoint) остановлена (stalled) или недоступна для принятия данных.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Georgia'; font-size:11pt;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#339966;">Общие поля пакета USB</span> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Данные на шине USB передаются в порядке, когда первым идет LSB (Least Significant Bit, младший значащий бит). Пакеты USB состоят из следующих полей: </p>
+<ul type="circle" style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Sync</span></li></ul>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Все пакеты должны начинаться с поля синхронизации (sync). Поле sync имеет длину 8 бит на low speed и full speed или 32 бита на high speed, и используется для синхронизации тактов приемника с тактами передатчика. Последние 2 бита показывают, где начинается поле PID. </p>
+<ul type="circle" style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">PID</span></li></ul>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">PID означает Packet ID. Это поле используется для обозначения типа пакета, который сейчас отправляется. Следующая таблица показывает возможные значения этого поля.</p>
 <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
 <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td width="24%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Группа</span></p></td>
+<td width="24%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Значение PID</span></p></td>
+<td width="51%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Идентификатор пакета </span></p></td></tr>
+<tr>
+<td rowspan="4" bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">Token</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">0001</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">OUT Token</span></p></td></tr>
+<tr>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">1001</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">IN Token</span></p></td></tr>
+<tr>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">0101</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">SOF Token</span></p></td></tr>
+<tr>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">1101</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">SETUP Token</span></p></td></tr>
+<tr>
+<td rowspan="4" bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">Data</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">0011</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">DATA0</span></p></td></tr>
+<tr>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">1011</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">DATA1</span></p></td></tr>
+<tr>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">0111</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">DATA2</span></p></td></tr>
+<tr>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">1111</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">MDATA</span></p></td></tr>
+<tr>
+<td rowspan="4" bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">Handshake</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">0010</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">ACK Handshake</span></p></td></tr>
+<tr>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">1010</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">NAK Handshake</span></p></td></tr>
+<tr>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">1110</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">STALL Handshake</span></p></td></tr>
+<tr>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">0110</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">NYET (No Response Yet)</span></p></td></tr>
+<tr>
+<td rowspan="4" bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">Special</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">1100</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">PREamble</span></p></td></tr>
+<tr>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">1100</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">ERR</span></p></td></tr>
+<tr>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">1000</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">Split</span></p></td></tr>
+<tr>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">0100</span></p></td>
+<td bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">Ping</span></p></td></tr></table>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Georgia'; font-size:11pt;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">У PID здесь 4 бита, однако чтобы обеспечить его правильный прием, 4 бита дополнены (complemented) и повторены, в результате получился 8-битный PID. Полученный формат показан ниже: </p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td width="12%" bgcolor="#ffff66" style=" vertical-align:top;">
+<p align="center" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">PID0</span></p></td>
+<td width="13%" bgcolor="#ffff66" style=" vertical-align:top;">
+<p align="center" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">PID1</span></p></td>
+<td width="12%" bgcolor="#ffff66" style=" vertical-align:top;">
+<p align="center" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">PID2</span></p></td>
+<td width="13%" bgcolor="#ffff66" style=" vertical-align:top;">
+<p align="center" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">PID3</span></p></td>
+<td width="12%" bgcolor="#ffff66" style=" vertical-align:top;">
+<p align="center" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">nPID0</span></p></td>
+<td width="12%" bgcolor="#ffff66" style=" vertical-align:top;">
+<p align="center" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">nPID1</span></p></td>
+<td width="12%" bgcolor="#ffff66" style=" vertical-align:top;">
+<p align="center" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">nPID2</span></p></td>
+<td width="12%" bgcolor="#ffff66" style=" vertical-align:top;">
+<p align="center" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">nPID3</span></p></td></tr></table>
 <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p></body></html>
+<ul type="circle" style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-family:'Georgia'; font-size:11pt;" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">ADDR</span></li></ul>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Поле адреса указывает, какому из устройств USB предназначен пакет. Адрес имеет длину 7 бит, что позволяет адресовать до 127 поддерживаемых одновременно устройств. Адрес 0 недопустим, он предназначен для устройств, адрес для которых пока не назначен. Любое устройство, которому не назначен адрес, должно отвечать на пакет с адресом 0</p>
+<ul type="circle" style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">ENDP</span></li></ul>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Поле endpoint составлено из 4 бит, что позволяет 16 возможных конечных точек. Однако устройства low speed могут иметь только 2 дополнительные конечные точки сверх заданного по умолчанию канала (4 конечных точки максимум). </p>
+<ul type="circle" style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">CRC</span></li></ul>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Cyclic Redundancy Checks (Циклическая Избыточная проверка) выполняется над данными в пределах полезной нагрузки пакета. Все пакеты token имеют 5 бит CRC, а пакеты data имеют 16 бит CRC. </p>
+<ul type="circle" style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">EOP</span></li></ul>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">End of packet, конец пакета. Сигнализируется несимметричным нулем (Single Ended Zero, SE0) на время примерно 2 бита, и далее следует состояние J длительностью 1 бит.</p>
+<p style="-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#339966;">Типы пакетов USB</span> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">USB имеет 4 разных типа пакета. Пакеты token индицируют тип последующей транзакции, пакеты data содержат payload, пакеты handshake используются для подтверждения данных или сообщений об ошибках, и пакеты start of frame (SOF) показывают начало нового фрейма. </p>
+<ul type="circle" style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">пакеты Token</span></li></ul>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Имеется 3 типа пакетов token: </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">In – информируют устройство USB о том, что хост хочет прочитать информацию. <br />Out - информируют устройство USB о том, что хост хочет отправить информацию. <br />Setup – используется для начала управляющих передач (control transfers). </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Пакеты token должны удовлетворять следующему формату: </p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="3" cellpadding="0">
+<tr>
+<td width="18%" bgcolor="#ffff66">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">Sync</span></p></td>
+<td width="13%" bgcolor="#ffff66">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">PID</span></p></td>
+<td width="17%" bgcolor="#ffff66">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">ADDR</span></p></td>
+<td width="17%" bgcolor="#ffff66">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">ENDP</span></p></td>
+<td width="17%" bgcolor="#ffff66">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">CRC5</span></p></td>
+<td width="17%" bgcolor="#ffff66">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">EOP</span></p></td></tr></table>
+<ul type="circle" style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">пакеты Data</span></li></ul>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Имеется 2 типа пакетов данных, каждый из которых может передать до 1024 байта данных. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Data0 <br />Data1 </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Режим High Speed задает два других data PID - DATA2 и MDATA.<br />Пакеты Data имеют следующий формат: </p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td width="18%" bgcolor="#ffff66">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">Sync</span></p></td>
+<td width="13%" bgcolor="#ffff66">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">PID</span></p></td>
+<td width="35%" bgcolor="#ffff66">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">Data</span></p></td>
+<td width="17%" bgcolor="#ffff66">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">CRC16</span></p></td>
+<td width="17%" bgcolor="#ffff66">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">EOP</span></p></td></tr></table>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Максимальный размер полезной нагрузки (payload) для low-speed устройств составляет 8 байт. Максимальный размер полезной нагрузки для full-speed устройств составляет 1023 байт. Максимальный размер полезной нагрузки для high-speed устройств составляет 1024 байт. Данные нужно послать в единицах байт. </p>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">пакеты Handshake</span></li></ul>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Имеется 3 типа пакетов handshake, которые состоят просто из PID </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">ACK – подтверждение о том, что пакет успешно принят. NAK – сообщение о том, что устройство временно не может отправить или принять данные. Также используется в interrupt транзакциях для информирования хоста о том, что нет никаких данных для передачи. STALL – устройство находится в состоянии, которое требует вмешательства со стороны хоста. </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Пакеты handshake имеют следующий формат: </p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td width="37%" bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">Sync</span></p></td>
+<td width="27%" bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">PID</span></p></td>
+<td width="35%" bgcolor="#ffff66" style=" vertical-align:top;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">EOP</span></p></td></tr></table>
+<ul type="circle" style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">пакеты Start of Frame (SOF)</span></li></ul>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Пакет SOF состоит из 11-битного номера фрейма, отсылаемого хостом каждые 1ms ± 500ns на full speed или каждые 125 µs ± 0.0625 µs на high speed. </p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td width="18%" bgcolor="#ffff66">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">Sync</span></p></td>
+<td width="13%" bgcolor="#ffff66">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">PID</span></p></td>
+<td width="35%" bgcolor="#ffff66">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">Frame Number</span></p></td>
+<td width="17%" bgcolor="#ffff66">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">CRC5</span></p></td>
+<td width="17%" bgcolor="#ffff66">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#ffff66;">EOP</span></p></td></tr></table>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Georgia'; font-size:11pt;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-family:'Sans Serif'; font-size:9pt;">Сейчас мы уже должны знать ряд понятий, составляющих пакет USB. Нет? Вы уже забыли, сколько бит входит в поле PID? Не будьте слишком обеспокоены этим. К счастью, большинство функций USB уже в кремнии (специальных чипах) получают обработку низких уровней протокола USB (до слоя транзакций, который мы рассмотрим в следующей главе). Мы рассматриваем информацию о низких слоях протокола USB потому, что большинство контроллеров функций USB сообщают об ошибках, таких как PID Encoding Error. Не рассмотрев бегло низкий уровень, можно было бы спросить, что означает PID Encoding Error? Если бы Вы предположили, что последние четыре бита PID не соответствовали инверсии первых четырех битов, то Вы были бы правы. </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image1676979867.png" /><span style=" font-family:'Sans Serif'; font-size:9pt;"> </span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">У большинства функций есть серия буферов, обычно 8 байт длиной. Каждый буфер будет принадлежать конечной точке (endpoint) - EP0 IN, EP0 OUT и т. п.. Например, хост отправляет запрос дескриптора устройства (device descriptor request). Функция аппаратно прочитает пакет setup и определит из поля адреса, предназначен ли пакет именно ей, и если да, то скопирует полезную нагрузку (payload) последующего пакета данных в соответствующий буфер конечной точки, заданный величиной в поле endpoint токена setup. Также отправится пакет handshake для подтверждения приема байта и сгенерируется внутреннее прерывание в микроконтроллере для соответствующей конечной точки, обозначающее, что пакет был принят. Все это делается обычно в «железе» (аппаратуре чипа контроллера USB устройства). </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Программное обеспечение (firmware микроконтроллера) получит прерывание, в котором оно должно прочитать содержимое буфера конечной точки и проанализировать запрос на дескриптор устройства (parse device descriptor request). </p>
+<p style="-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#339966;">Конечные точки (endpoints)</span> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Конечные точки могут быть описаны как источники или приемники данных. Поскольку шина является хосториентированной, конечные точки оказываются в конце канала связи, на функции USB. Например, на уровне программного обеспечения Ваш драйвер устройства может отправлять пакет в конечную точку EP1 устройства. Так как данные поступают от хоста, они попадут в OUT буфер EP1. Ваше firmware теперь может не спеша прочитать эти данные. Если устройство хочет вернуть данные, функция не может просто записать их на шину, так как шина полностью управляется хостом. Поэтому firmware помещает данные в буфер EP1 IN, и эти данные находятся в буфере до тех пор, пока хост не отправит пакет IN, которым он запрашивает данные конечной точки. Конечные точки можно также рассматривать как интерфейс между железом функции устройства и firmware, работающем на функции устройства. <br />Все устройства должны поддерживать конечную точку 0. Это конечная точка, которая принимает все управляющие запросы и запросы статуса во время энумерации и в течение всего времени, когда устройство остается работоспособным на шине.</p>
+<p style="-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#339966;">Потоки, или каналы (Pipes, дословно - трубы)</span> </p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Когда устройство отправляет и принимает данные через несколько конечных точек, клиентское программное обеспечение передает данные через потоки. Поток – логическое соединение между хостом и конечной точкой (точками). Потоки также имеют набор параметров – тип передачи (Control, Bulk, Iso или Interrupt), направление потока данных и максимальные размеры пакета/буфера. Например, поток по умолчанию – двунаправленный поток, составленный из IN конечной точки 0 и OUT конечной точки 0 с типом передачи control. <br />USB определяет два типа потоков (pipes) </p>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Stream Pipes</span> не имеют предопределенного USB формата, поэтому Вы можете послать данные любого типа через stream pipe и восстановить данные на другом конце. Потоки данных последовательны и имеют предопределенную направленность – IN или OUT. Stream pipes поддерживают типы передач bulk, isochronous и interrupt. Stream pipes могут управляться либо от хоста, либо от устройства. </li>
+<li style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Message Pipes</span> имеют предопределенный USB формат. Они управляются хостом, инициируются запросом, отправляемым от хоста. Данные пересылаются в нужном направлении, заданном в запросе. Таким образом, message pipes позволяют передавать данные в обоих направлениях, но поддерживают только передачи control.</li></ul>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Georgia'; font-size:11pt;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Georgia'; font-size:11pt;"><br /></p></body></html>
