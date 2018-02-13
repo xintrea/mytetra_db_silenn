@@ -1,0 +1,418 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'Georgia'; font-size:11pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Все устройства USB имеют иерархию дескрипторов, которые описывают информацию для хоста – такую, как например что это за устройство, кто его изготовил, какую версию USB поддерживает устройство, какими способами устройство может быть сконфигурировано, количество конечных точек и их типы и т. д.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Наиболее общие дескрипторы USB следующие:</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Дескрипторы устройства</span></li>
+<li style=" font-weight:600;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Дескрипторы конфигурации</li>
+<li style=" font-weight:600;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Дескрипторы интерфейса</li>
+<li style=" font-weight:600;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Дескрипторы конечной точки</li>
+<li style=" font-weight:600;" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Строковые дескрипторы</li></ul>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Устройства USB могут иметь только один <span style=" font-weight:600;">дескриптор устройства (device descriptor)</span>. Дескриптор устройства включает в себя такую информацию, как поддерживаемую устройством ревизию USB, Product ID (PID, идентификатор продукта), Vendor ID (VID, идентификатор производителя), используемые для загрузки соответствующего устройству драйвера, и количество возможных конфигураций устройства. Число конфигураций указывает, сколько имеется ответвлений по дескрипторам конфигурации.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Дескриптор конфигурации (configuration descriptor)</span> указывает величину потребляемой мощности от шины, питается ли устройство от собственного источника (self powered) либо от шины USB (bus powered) и количество интерфейсов, которые есть у конфигурации. Когда устройство проходит энумерацию, хост читает дескриптор устройства и принимает решение, какую конфигурацию применить. Хост может разрешить только какую-то одну из конфигураций.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Например, возможно существование конфигурации с высоким потреблением мощности от шины, и есть конфигурация с собственным источником питания. Если устройство подсоединено к хосту-десктопу с сетевым блоком питания, драйвер может выбрать конфигурацию с высоким потреблением мощности от шины, несмотря на то, что устройство подключено к собственному источнику, а в случае подсоединения к хосту-ноутбуку (при питании его от аккумулятора) драйвер может принудительно выбрать конфигурацию с собственным блоком питания, что потребует от пользователя обязательного подключения внешнего блока питания для USB-устройств.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Параметры настройки конфигураций не ограничены различиями мощности. Каждая конфигурация может быть настроена на одинаковое питание, но иметь разные интерфейсы или наборы конечных точек. Однако нужно отметить, что изменение конфигурации требует, чтобы вся деятельность по каждой конечной точке остановилась. В то время как USB предлагает эту возможность, у очень немногих устройств есть больше чем 1 конфигурация.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image9576.png" /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Дескриптор интерфейса</span> можно рассматривать как заголовок или группирование конечных точек в функциональную группу, выполняющую единственную особенность (feature) устройства. Например у Вас может быть многофункциональное устройство факса/сканера/принтера. Дескриптор интерфейса 1 может описывать конечные точки функции факса, дескриптор интерфейса 2 может описывать функцию сканера, и дескриптор интерфейса 3 может описывать функцию принтера. В отличие от дескриптора конфигурации, здесь нет ограничений на количество одновременно разрешенных интерфейсов. У устройства могут быть 1 или много интерфейсов, разрешенных одновременно.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Дескрипторы интерфейса имеют поле <span style=" font-weight:600;">bInterfaceNumber</span>, указывающее номер интерфейса, и поле <span style=" font-weight:600;">bAlternateSetting</span><a name="AlternateSetting"></a>, которое разрешает интерфейсу поменять установки на лету. Например, у Вас есть устройство с двумя интерфейсами – интерфейс 1 и интерфейс 2. У интерфейса 1 поле bInterfaceNumber установлено в 0, что показывает – это первый дескриптор интерфейса, и поле bAlternativeSetting, установленное в 0. У интерфейса 2 поле bInterfaceNumber установлено в 1, что показывает - это второй интерфейс, и поле bAlternativeSetting установленное в 0 (значение по умолчанию). Мы могли бы добавить сюда другой дескриптор, у которого поле bInterfaceNumber также установлено в 1 (показывает, что это второй интерфейс), но на этот раз поле bAlternativeSetting установлено в 1, что показывает – дескриптор интерфейса может иметь альтернативную настройку, взятую из другого описателя интерфейса 2.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Когда эта конфигурация разрешена, используются первые два дескриптора интерфейса, у которых поле bAlternativeSettings равно 0. Однако во время работы хост может послать запрос SetInterface, направленный на интерфейс с номером 1 (второй интерфейс) с альтернативной настройкой 1, что разрешает другой дескриптор интерфейса.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image12538.png" /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Это дает преимущество при использовании двух конфигураций – мы можем передавать данные через интерфейс 0, и в то же время менять настройки конечной точки, связанной с интерфейсом 1, не мешая работе интерфейса 0.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Каждый <span style=" font-weight:600;">дескриптор конечной точки</span> используется для указания типа передачи, направления, интервала опроса (polling interval) и максимального размера пакета для каждой конечной точки. Конечная точка 0 всегда подразумевается по умолчанию точкой для управления, и поэтому она не имеет дескриптора.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#339966;">Композиция дескрипторов USB</span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Все дескрипторы имеют общий формат. Первый байт указывает длину дескриптора в байтах, второй байт показывает тип дескриптора. Если длина описателя будет меньшей, чем определено в спецификации, то главный компьютер должен проигнорировать его. Однако, если размер больше ожидаемого, хост будет игнорировать дополнительные байты, и будет искать следующий дескриптор в конце возвращенной действительной длины.</p>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td width="8%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Смещ.</span></p></td>
+<td width="22%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Поле</span></p></td>
+<td width="7%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Размер</span></p></td>
+<td width="12%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Значение</span></p></td>
+<td width="50%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Описание</span></p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bLength</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Число</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Размер дескриптора в байтах</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bDescriptionType</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Константа</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Тип дескриптора</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">...</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">n</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"> </p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Начало параметров дескриптора</p></td></tr></table>
+<p style="-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; color:#339966;"><br /></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#339966;">Дескрипторы устройства</span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Дескриптор устройства для устройства USB представляет само устройство в целом. Как следствие – устройство USB может иметь только один дескриптор устройства. Этот дескриптор указывает некоторые основные (несомненно важные) сведения об устройстве, такие как поддерживаемая версия USB, максимальный размер пакета, идентификаторы ID вендора и продукта (VID и PID) и количество возможных конфигураций, которые может иметь устройство. Формат дескриптора устройства показан далее.</p>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td width="9%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Смещ.</span></p></td>
+<td width="22%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Поле</span></p></td>
+<td width="7%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Размер</span></p></td>
+<td width="12%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Значение</span></p></td>
+<td width="50%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Описание</span></p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bLength</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Число</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Размер дескриптора в байтах (для дескриптора устройства размер 18 байт)</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bDescriptorType</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Константа</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Тип - Device Descriptor (0x01)</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bcdUSB</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">BCD</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Номер спецификации USB, с которой совместимо устройство.</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">4</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bDeviceClass</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Class<br />(класс)</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Код класса (назначается организацией USB Org)<br />Если равно 0, то каждый интерфейс указывает свой собственный код класса.<br />Если равен 0xFF, то код класса определяется вендором.<br />Иначе поле содержит код стандартного класса.</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">5</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bDeviceSubClass</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">SubClass<br />(подкласс)</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Код подкласса (назначается организацией USB Org)</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">6</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bDeviceProtocol</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Протокол</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Код протокола (назначается организацией USB Org)</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">7</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bMaxPacketSize</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Число</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Максимальный размер пакета для конечной точки 0. Допустимые размеры 8, 16, 32, 64</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">8</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">idVendor</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">ID</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Vendor ID, VID (назначается организацией USB Org)</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">10</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">idProduct</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">ID</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Product ID, PID (назначается организацией - производителем)</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">12</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bcdDevice</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">BCD</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Device Release Number (номер версии устройства)</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">14</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">iManufacturer</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Индекс</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Индекс строки, описывающей производителя</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">15</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">iProduct</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Индекс</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Индекс строки, описывающей продукт</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">16</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">iSerialNumber</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Индекс</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Индекс строки, содержащей серийный номер</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">17</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bNumConfigurations</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Целое<br />(Integer)</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Количество возможных конфигураций</p></td></tr></table>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Поле </span><span style=" font-weight:600; font-style:italic;">bcdUSB</span><span style=" font-weight:600; font-style:italic;"> </span><span style=" font-style:italic;">сообщает о самой высокой версии USB, которая поддерживается устройством. Величина кодируется в формате binary coded decimal (BCD, десятичное число, закодированное в двоичном формате) 0xJJMN, где JJ старшая часть номера версии, M младшая часть версии, и N младшая часть подверсии.Например,USB 2.0 кодируется как 0x0200, USB 1.1 как 0x0110 и USB 1.0 как 0x0100.</span></li>
+<li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Поля </span><span style=" font-weight:600; font-style:italic;">bDeviceClass</span><span style=" font-style:italic;">, </span><span style=" font-weight:600; font-style:italic;">bDeviceSubClass</span><span style=" font-weight:600; font-style:italic;"> </span><span style=" font-style:italic;">и </span><span style=" font-weight:600; font-style:italic;">bDeviceProtocol</span><span style=" font-weight:600; font-style:italic;"> </span><span style=" font-style:italic;">используются операционной системой для того, чтобы подобрать драйвер класса (class driver) для Вашего устройства. Обычно только bDeviceClass установлен на уровне устройства. Большинство спецификаций класса хочет идентифицировать себя на уровне интерфейса, в результате bDeviceClass установлен в 0x00. Это позволяет одному устройству поддерживать несколько классов. </span></li>
+<li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Поле </span><span style=" font-weight:600; font-style:italic;">bMaxPacketSize</span><span style=" font-weight:600; font-style:italic;"> </span><span style=" font-style:italic;">сообщает максимальный размер пакета для конечной точки 0. Все устройства USB должны поддерживать конечную точку 0.</span></li>
+<li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Поля  </span><span style=" font-weight:600; font-style:italic;">idVendor</span><span style=" font-weight:600; font-style:italic;"> </span><span style=" font-style:italic;">и </span><span style=" font-weight:600; font-style:italic;">idProduct</span><span style=" font-weight:600; font-style:italic;"> </span><span style=" font-style:italic;">используются операционной системой для нахождения драйвера для устройства, их также использует программа (ПО хоста), работающая с USB-устройством. Vendor ID назначается организацией </span><a href="http://www.usb.org"><span style=" font-style:italic; text-decoration: underline; color:#0000ff;">USB-IF</span></a><span style=" font-style:italic;">.</span></li>
+<li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Поле </span><span style=" font-weight:600; font-style:italic;">bcdDevice</span><span style=" font-weight:600; font-style:italic;"> </span><span style=" font-style:italic;">имеет тот же формат, что и поле bcdUSB, и используется для предоставления номера версии устройства. Его значение присваивается разработчиком устройства USB.</span></li>
+<li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Три строковых дескриптора существуют для предоставления подробной информации о производителе, продукте и серийном номере. Нет обязательных требований по наличию строковых дескрипторов. Если строковых дескрипторов нет, должен использоваться нулевой индекс.</span></li>
+<li style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Поле </span><span style=" font-weight:600; font-style:italic;">bNumConfigurations</span><span style=" font-weight:600; font-style:italic;"> </span><span style=" font-style:italic;">задает количество конфигураций устройства, которые оно поддерживает на текущей скорости.</span></li></ul>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; color:#339966;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#339966;">Дескрипторы конфигурации</span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Устройство USB может иметь несколько различных конфигураций, хотя большинство устройств просты и имеют только одну конфигурацию. Дескриптор конфигурации указывает, как устройство запитывается, какое у него максимальное энергопотребление, количество интерфейсов, которое имеет устройство. Поэтому для устройства возможно иметь 2 конфигурации – одну для питания от шины, другую для питания от основного (внешнего) источника. Поскольку это – заголовок к дескрипторам интерфейса, возможно также иметь разные конфигурации для различных режимов передачи.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Как только все конфигурации прочитаны и проанализированы хостом, он посылает команду SetConfiguration с ненулевым значением, которое соответствует bConfigurationValue одной из конфигураций. Это используется для выбора нужной конфигурации.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td width="8%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Смещ.</span></p></td>
+<td width="21%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Поле</span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Размер</span></p></td>
+<td width="11%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Значение</span></p></td>
+<td width="49%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Описание</span></p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bLength</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Число</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Размер дескриптора в байтах</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bDescriptorType</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Константа</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Дескриптор конфигурации (0x02)</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">wTotalLength</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Число</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Полная длина возвращаемых данных в байтах</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">4</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bNumInterfaces</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Число</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Количество интерфейсов</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">5</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bConfigurationValue</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Число</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Величина, используемая как аргумент для выбора этой конфигурации</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">6</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">iConfiguration</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Индекс</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Индекс строкового дескриптора, описывающего эту конфигурацию</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">7</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bmAttributes</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Набор бит (Bitmap)</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">D7 зарезервировано, установлено в 1. (USB 1.0 Bus Powered) <br />D6 самозапитываемое (Self Powered)<br />D5 удаленное пробуждение (Remote Wakeup)<br />D4..0 зарезервировано, установлено в 0.</p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">8</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bMaxPower</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">мА</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Максимальное энергопотребление в единицах 2 мА</p></td></tr></table>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Когда дескриптор конфигурации прочитан, он возвращает полное дерево иерархии, которое включает все используемые дескрипторы интерфейсов и дескрипторы конечных точек. Поле  </span><span style=" font-weight:600; font-style:italic;">wTotalLength </span><span style=" font-style:italic;">отражает количество байт в иерархии.</span></li></ul>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image319.png" /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; font-style:italic;">bNumInterfaces</span><span style=" font-weight:600; font-style:italic;"> </span><span style=" font-style:italic;">указывает количество интерфейсов, представленных для этой конфигурации.</span></li>
+<li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; font-style:italic;">bConfigurationValue</span><span style=" font-weight:600; font-style:italic;"> </span><span style=" font-style:italic;">используется в запросе SetConfiguration для выбора этой конфигурации.</span></li>
+<li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; font-style:italic;">iConfiguration</span><span style=" font-weight:600; font-style:italic;"> </span><span style=" font-style:italic;">– индекс строкового дескриптора, описывающего конфигурацию в виде, удобном для восприятия человеком.</span></li>
+<li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; font-style:italic;">bmAttributes</span><span style=" font-weight:600; font-style:italic;"> </span><span style=" font-style:italic;">задает параметры питания для конфигурации. Если устройство имеет собственное питание, устанавливается бит D6. Бит D7 ранее использовался в USB 1.0 для указания, что устройство питается от шины, но теперь это делается с помощью поля bMaxPower. Если устройство использует любую мощность, потребляемую от шины, в любом случае – либо это устройство, питаемое от шины, либо имеющее отдельный источник питания – устройство должно сообщить о своей максимальной потребляемой мощности в поле bMaxPower. Устройство может также поддерживать удаленное пробуждение (remote wakeup), которое позволяет устройству пробуждать хост, когда он находится в режиме приостановки.</span></li>
+<li style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; font-style:italic;">bMaxPower</span><span style=" font-weight:600; font-style:italic;"> </span><span style=" font-style:italic;">задает максимальную потребляемую мощность устройством от шины USB. Величина указывается в единицах 2 мА. Таким образом, может быть указан максимум потребления примерно 500 мА. Спецификация позволяет устройству, питающемуся от шины, потреблять ток не более 500 мА от провода Vbus. Если устройство теряет внешнее питание (приходящее не от Vbus), оно не должно потреблять больше, чем указано в bMaxPower. Это должно прервать по ошибке любую операцию, которую устройство не может выполнить без внешнего источника питания.</span></li></ul>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p></body></html>
