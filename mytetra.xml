@@ -353,7 +353,6 @@
      <record id="1490252529t0kla0yo9k" name="Проходные выключатели" author="" url="" tags="" ctime="20170323100209" dir="14902525297c0tapsu71" file="text.html"/>
      <record id="1503742957jm1t2t13ik" name="Датчик звука / хлопка" author="" url="" tags="" ctime="20170826132237" dir="1503742957qgen7r03il" file="text.html"/>
      <record id="15121165384y12fmb57e" name="Память" author="" url="" tags="" ctime="20171201112218" dir="1512116538vzyrpltmwk" file="text.html"/>
-     <record id="151429712028kg8w6p8f" name="Микроконтроллер и Android" author="" url="" tags="" ctime="20171226170520" dir="1514297120idu0vmprey" file="text.html"/>
     </recordtable>
     <node crypt="" id="1486021899us896bwgh9" name="Physics"/>
     <node crypt="" id="1486021934ocakj3ovg0" name="Digital">
@@ -370,8 +369,15 @@
       <record id="1518012389wyh1s8up0v" name="Прелюдия" author="" url="" tags="" ctime="20180207170629" dir="1518012389bfikbzufrh" file="text.html"/>
       <record id="1518087215sxfndkhx6m" name="Протоколы USB" author="" url="" tags="" ctime="20180208135335" dir="151808721503p2j3sd98" file="text.html"/>
       <record id="1518110450lb389juu4c" name="Endpoints" author="" url="" tags="" ctime="20180208202050" dir="15181104502a92opta8q" file="text.html"/>
-      <record id="1518524830h47fflqt87" name="Descriptor" author="" url="" tags="" ctime="20180213152710" dir="1518524830uqyncbv0uv" file="text.html"/>
+      <record id="1518524830h47fflqt87" name="Descriptors" author="" url="" tags="" ctime="20180213152710" dir="1518524830uqyncbv0uv" file="text.html"/>
+      <record id="1518688323fmuismqn9n" name="Запросы USB" author="" url="" tags="" ctime="20180215125203" dir="1518688323o6nrvy6r48" file="text.html"/>
+      <record id="1518690613278he613tv" name="Generic USB Driver" author="" url="" tags="" ctime="20180215133013" dir="1518690613nvhhgpwar7" file="text.html"/>
      </recordtable>
+     <node crypt="" id="1518699544yrp0938m69" name="HID">
+      <recordtable>
+       <record id="15186996679tzxrsnvpg" name="Упарвление" author="" url="http://www.microterm.ru/d/20158/d/hid_rus.pdf" tags="" ctime="20180215160107" dir="1518699667hkabs16jmd" file="text.html"/>
+      </recordtable>
+     </node>
     </node>
    </node>
    <node crypt="" id="1488902784fe0kavpl5i" name="Components">

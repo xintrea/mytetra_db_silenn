@@ -1,0 +1,555 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'Georgia'; font-size:11pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">[<span style=" font-weight:600;">Глава 6: запросы USB</span>]</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#339966;">Пакет Setup</span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Любое устройство USB должно ответить на пакеты установки (setup) по каналу по умолчанию (default pipe, конечная точка 0). Пакеты setup используются для обнаружения и конфигурирования устройства, и выполняют общие функции, такие как установка адреса устройства USB, запрос описателя устройства или проверка состояния конечной точки.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">USB-совместимый хост предполагает, что все запросы будут обработаны в пределах максимального периода 5 секунд. Также определены более строгие лимиты времени для определенных запросов:</p>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Standard Device request (стандартный запрос к устройству) без стадии данных должен быть завершен в течение 50 мс.</li>
+<li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Standard Device request со стадией данных должен начать передавать данные не позже чем через 500 мс после запроса.</li>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:1; text-indent:0px;">Каждый пакет данных должен быть отправлен в течение 500 мс после успешного завершения передачи предыдущего пакета. Стадия состояния должна быть завершена в течение 50 мс после передачи последнего пакета данных. </p>
+<li style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Команда SetAddress (которая содержит фазу данных) должна быть обработана и вернуть статус в течение 50 мс. Устройство тогда имеет 2 мс, чтобы изменить адрес прежде, чем будет послан следующий запрос.</li></ul>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Эти периоды времени ожидания являются весьма приемлемыми для даже самого медленного из устройств, но могут быть ограничением во время отладки. Невозможно обеспечить 50 мс для многих отладочных символов, отправляемых на скорости 9600 bps через асинхронный последовательный порт, или во внутрисхемных отладчиках/эмуляторах при выполнении программы по шагам или при остановке по точке останова для просмотра внутренних регистров и переменных. Поэтому USB требует специальной техники отладки в отличие от других проектов на микроконтроллерах.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Бегло просматривая XP DDK, я заметил, что Host Controller Driver теперь имеет команду USBUSER_OP_SEND_ONE_PACKET, которая прокомментирована так:&quot;Это API используется для реализации 'пошаговой отладки' в инструменте разработки транзакций USB (USB transaction development tool).&quot; Такой инструмент еще не был выпущен. Мы можем только надеяться, что скоро его увидим. </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Каждый запрос начинается с пакета Setup длиной 8 байт, который имеет следующий формат:</p>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td width="9%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Смещ.</span></p></td>
+<td width="21%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Поле</span></p></td>
+<td width="7%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Размер</span></p></td>
+<td width="13%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Значение</span></p></td>
+<td width="44%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Описание</span></p></td></tr>
+<tr>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bmRequestType</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Набор битов (BitMap)</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">D7 направление передачи фазы данных </span><br />0 = хост передает в устройство <br />1 = устройство передает на хост<br /><span style=" font-weight:600;">D6..5 тип</span><br />0 = Standard<br />1 = Class<br />2 = Vendor<br />3 = зарезервировано<br /><span style=" font-weight:600;">D4..0</span> получатель<br />0 = устройство<br />1 = интерфейс<br />2 = конечная точка<br />3 = другое<br />4..31 = зарезервировано</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">bRequest</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Значение</p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Запрос</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">wValue</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Значение</p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Значение</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">4</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">wIndex</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Индекс или смещение</p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Индекс</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">6</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">wLength</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Счетчик</p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Если это фаза данных, то количество байт данных для передачи</p></td></tr></table>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Поле <span style=" font-weight:600;">bmRequestType </span>определит направление запроса, тип запроса и назначенного получателя. Поле <span style=" font-weight:600;">bRequest </span>определит делаемый запрос. Поле bmRequestType анализируется, и выполнение ответвляется на несколько обработчиков, таких как Standard Device request handler (стандартный обработчик запроса устройства), Standard Interface request handler (стандартный обработчик запроса интерфейса), Standard Endpoint request handler (стандартный обработчик запроса конечной точки), Class Device request handler (классовый обработчик запроса устройства) и т. п. То, как Вы проанализируете пакет setup, зависит только от Ваших предпочтений. Кто-то еще может захотеть сначала анализировать bRequest и потом определить тип запроса и его получателя на основании каждого запроса.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Стандартные запросы являются общими для всех устройств USB и подробно рассмотрены далее. Классовые запросы являются общими для классов драйверов. Например, все устройства, относящиеся к классу HID, будут иметь единый набор запросов, специфичных для класса. Они будут отличаться от запросов устройства, относящегося к классу communication или относящегося к классу mass storage.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">И наконец – запросы, определенные вендором (производителем). Это запросы, которые Вы как разработчик устройства USB, можете назначить сами. Эти запросы отличаются от устройства к устройству (что нормально), но это все делается исключительно под Вашу реализацию алгоритма работы устройства.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Общие запросы могут быть перенаправлены на различных получателей, и в зависимости от конкретного получателя выполнять разные функции. Например, стандартный запрос GetStatus может быть направлен на устройство, интерфейс или конечную точку. Когда он направлен на устройство, он возвращает флаги, показывающие статус удаленного пробуждения (remote wakeup), и является ли устройство самопитаемым. Однако тот же запрос, направленный к интерфейсу, всегда вернет 0, или если запрос будет направлен на конечную точку, то он вернет состояние флага halt (флаг останова) для конечной точки.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Поля <span style=" font-weight:600;">wValue </span>и <span style=" font-weight:600;">wIndex </span>позволяют передавать параметры вместе с запросом, а поле wLength используется для указания количества байт, которые должны быть переданы на фазе данных.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#999999;">Примечание переводчика: иногда поля wValue и wIndex применяют для передачи данных без участия специальной фазы данных (в поле wLength указывают 0), в этом случае можно передать не больше 4 байт. Пример использования таких управляющих запросов для передачи данных в обе стороны можно найти в примере hid-custom-rq из библиотеки V-USB (</span><a href="http://ru.wikipedia.org/wiki/V-USB"><span style=" text-decoration: underline; color:#0000ff;">http://ru.wikipedia.org/wiki/V-USB</span></a><span style=" color:#999999;">), или в статье «V-USB и libusb: обмен с устройством USB HID с помощью управляющих сообщений (USB control messages)» </span><a href="http://microsin.net/content/view/1084/44/"><span style=" text-decoration: underline; color:#0000ff;">http://microsin.ru/content/view/1084/44/</span></a><span style=" color:#999999;">.</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#999999;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#339966;">Стандартные запросы </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Секция 9.4 спецификации USB подробно описывают запросы &quot;Standard Device&quot;, которые необходимо реализовать для каждого устройства USB. Стандарт предоставляет одну таблицу, группирующую запросы. Приняв во внимание, что большинство firmware анализирует пакет setup packet по получателю, мы можем разбить запросы на основе получателя для более простой обработки и реализации.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#339966;">Стандартные запросы к устройству </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">В настоящий момент имеется 8 стандартных запросов к устройству.</p>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td width="17%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">bmRequestType </span></p></td>
+<td width="24%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">bRequest </span></p></td>
+<td width="15%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">wValue </span></p></td>
+<td width="15%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">wIndex </span></p></td>
+<td width="15%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">wLength </span></p></td>
+<td width="15%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Data </span></p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1000 0000b</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">GET_STATUS (0x00)</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Статус устройства</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0000 0000b</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">CLEAR_FEATURE (0x01)</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Селектор фичи</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Нет</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0000 0000b</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">SET_FEATURE (0x03)</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Селектор фичи</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Нет</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0000 0000b</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">SET_ADDRESS (0x05)</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Адрес устройства</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Нет</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1000 0000b</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">GET_DESCRIPTOR (0x06)</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Тип дескриптора и индекс</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0 или ID языка</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Длина дескриптора</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Дескриптор</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0000 0000b</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">SET_DESCRIPTOR (0x07)</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Тип дескриптора и индекс</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0 или ID языка</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Длина дескриптора</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Дескриптор</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1000 0000b</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">GET_CONFIGURATION (0x08)</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Значение конфигурации</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0000 0000b</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">SET_CONFIGURATION (0x09)</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Configuration Value</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Нет</p></td></tr></table>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Запрос  </span><span style=" font-weight:600; font-style:italic;">Get Status</span><span style=" font-style:italic;">, направленный на устройство, вернет 2 байта на стадии данных в следующем формате:</span></li></ul>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D15 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D14 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D13 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D12 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D11 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D10 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D9 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D8 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D7 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D6 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D5 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D4 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D3 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D2 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D1 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D0 </span></p></td></tr>
+<tr>
+<td colspan="14">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Зарезервировано</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Remote Wakeup</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Self Powered</p></td></tr></table>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Если бит </span><span style=" font-weight:600; font-style:italic;">D0 (Self Powered)</span><span style=" font-style:italic;"> установлен, то это указывает на самопитаемое устройство (у устройства имеется собственный источник питания, и оно ничего не потребляет от шины USB), а если очищен, то устройство bus powered (питается от провода Vbus шины USB). Если бит D1 установлен, то у устройства разрешена возможность удаленного пробуждения хоста от спячки или приостановки (Remote Wakeup). Бит remote wakeup может быть изменен запросами SetFeature и ClearFeature с селектором фичи равным DEVICE_REMOTE_WAKEUP (0x01)</span></li>
+<li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Запросы </span><span style=" font-weight:600; font-style:italic;">Clear Feature</span><span style=" font-style:italic;"> и </span><span style=" font-weight:600; font-style:italic;">Set Feature</span><span style=" font-style:italic;"> могут использоваться для сброса или установки булевых (boolean) фич. Когда получатель – устройство, то возможны только два селектора фичи DEVICE_REMOTE_WAKEUP и TEST_MODE. Режим тестирования позволяет устройству выдавать (показывать) некоторые условия. Они позже были документированы в Ревизии 2.0 спецификации USB.</span></li>
+<li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Запрос </span><span style=" font-weight:600; font-style:italic;">Set Address</span><span style=" font-style:italic;"> используется во время энумерации для того, чтобы назначить уникальный адрес устройству USB. Адрес указывается в поле wValue и может принимать значение не более 127. Этот запрос уникален тем, что устройство не меняет свой адрес, пока не завершится стадия статуса (см. </span><a href="http://microsin.net/content/view/1107/44#Control"><span style=" font-style:italic; text-decoration: underline; color:#0000ff;">Control Transfers</span></a><span style=" font-style:italic;">). Все другие запросы должны выполниться до стадии статуса.</span></li>
+<li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Запросы </span><span style=" font-weight:600; font-style:italic;">Set Descriptor</span><span style=" font-style:italic;">/</span><a name="GetDescriptor"></a><span style=" font-weight:600; font-style:italic;">G</span><span style=" font-weight:600; font-style:italic;">et Descriptor</span><span style=" font-style:italic;"> используются для возврата дескриптора, указанного в wValue. Запрос для дескриптора конфигурации вернет дескриптор устройства и все дескрипторы интерфейса и конечной точки в одном запросе. </span><a href="http://microsin.net/content/view/1108/44#EndpointDescriptors"><span style=" font-style:italic; text-decoration: underline; color:#0000ff;">Endpoint Descriptors</span></a><span style=" font-style:italic;"> (дескрипторы конечной точки) не могут быть запрошены напрямую запросами GetDescriptor/SetDescriptor. </span><a href="http://microsin.net/content/view/1108/44#InterfaceDescriptors"><span style=" font-style:italic; text-decoration: underline; color:#0000ff;">Interface Descriptors</span></a><span style=" font-style:italic;"> (дескрипторы интерфейса) не могут быть запрошены напрямую запросами GetDescriptor/SetDescriptor. </span><a href="http://microsin.net/content/view/1108/44#StringDescriptors"><span style=" font-style:italic; text-decoration: underline; color:#0000ff;">String Descriptors</span></a><span style=" font-style:italic;"> (строковые дескрипторы) включают Language ID (идентификатор языка) в поле wIndex – для поддержки нескольких языков.</span></li>
+<li style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Запросы </span><span style=" font-weight:600; font-style:italic;">Get Configuration</span><span style=" font-style:italic;">/</span><span style=" font-weight:600; font-style:italic;">Set Configuration</span><span style=" font-style:italic;"> используются для запроса или установки текущей конфигурации устройства. В случае запроса Get Configuration будет возвращен байт на стадии данных, показывающий статус устройства. Нулевая величина показывает, что устройство не сконфигурировано, и ненулевое значение показывает, что устройство сконфигурировано. Set Configuration используется для разрешения (enable) устройства. Этот запрос должен содержать величину поля bConfigurationValue желаемого </span><a href="http://microsin.net/content/view/1108/44#ConfigurationDescriptors"><span style=" font-style:italic; text-decoration: underline; color:#0000ff;">configuration descriptor</span></a><span style=" font-style:italic;"> (дескриптора конфигурации) в младшем байте wValue – для выбора разрешаемой конфигурации.</span></li></ul>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#339966;">Стандартные запросы к интерфейсу</span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Спецификация в настоящий момент задает 5 стандартных запросов к интерфейсу, показанные в таблице ниже. Что интересно - только два запроса делают что-нибудь понятное.</p>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td width="17%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">bmRequestType</span></p></td>
+<td width="24%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">bRequest </span></p></td>
+<td width="15%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">wValue </span></p></td>
+<td width="15%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">wIndex </span></p></td>
+<td width="15%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">wLength </span></p></td>
+<td width="15%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Data </span></p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1000 0001b</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">GET_STATUS (0x00)</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Интерфейс</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Состояние интерфейса</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0000 0001b</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">CLEAR_FEATURE (0x01)</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Селектор фичи</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Интерфейс</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Нет</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0000 0001b</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">SET_FEATURE (0x03)</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Селектор фичи</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Интерфейс</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Нет</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1000 0001b</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">GET_INTERFACE (0x0A)</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Интерфейс</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Альтернативный интерфейс</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0000 0001b</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">SET_INTERFACE (0x0B)</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Альтернативная установка</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Интерфейс</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Нет</p></td></tr></table>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Поле </span><span style=" font-weight:600; font-style:italic;">wIndex </span><span style=" font-style:italic;">используется для указания ссылки на нужный интерфейс для запросов, направленных к интерфейсу. Формат поля следующий:</span></li></ul>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D15 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D14 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D13 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D12 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D11 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D10 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D9 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D8 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D7 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D6 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D5 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D4 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D3 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D2 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D1 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D0 </span></p></td></tr>
+<tr>
+<td colspan="8" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Зарезервировано</p></td>
+<td colspan="8" bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Номер интерфейса</p></td></tr></table>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Запрос </span><span style=" font-weight:600; font-style:italic;">Get Status</span><span style=" font-style:italic;"> используется для возврата статуса (состояния интерфейса). Такой запрос к интерфейсу должен возвратить два байта 0x00, 0x00 (оба байта зарезервированы для использования в будущем).</span></li>
+<li style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Запросы </span><span style=" font-weight:600; font-style:italic;">Clear Feature</span><span style=" font-style:italic;"> и </span><span style=" font-weight:600; font-style:italic;">Set Feature</span><span style=" font-style:italic;"> могут использоваться для очистки и сброса булевых фич. Когда назначенный получатель – интерфейс, спецификация USB ревизии 2 не указывает конкретных фич интерфейса.</span></li>
+<li style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Запросы </span><span style=" font-weight:600; font-style:italic;">Get Interface</span><span style=" font-style:italic;"> и </span><span style=" font-weight:600; font-style:italic;">Set Interface</span><a name="SetInterface"></a><span style=" font-style:italic;"> </span><span style=" font-style:italic;">получают и устанавливают </span><a href="http://microsin.net/content/view/1108/44#AlternateSetting"><span style=" font-style:italic; text-decoration: underline; color:#0000ff;">Alternative Interface</span></a><span style=" font-style:italic;"> (альтернативный интерфейс), который более подробно описан </span><a href="http://microsin.net/content/view/1108/44#InterfaceDescriptors"><span style=" font-style:italic; text-decoration: underline; color:#0000ff;">Interface Descriptor</span></a><span style=" font-style:italic;"> (дескриптором интерфейса).</span></li></ul>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#339966;">Стандартные запросы к конечной точке </span></p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Запросы Standard Endpoint бывают 4-х видов, перечисленных в таблице ниже.</p>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td width="17%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">bmRequestType</span></p></td>
+<td width="24%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">bRequest </span></p></td>
+<td width="15%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">wValue </span></p></td>
+<td width="15%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Windex </span></p></td>
+<td width="15%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">wLength </span></p></td>
+<td width="15%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Data </span></p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1000 0010b</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">GET_STATUS (0x00)</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Конечная точка</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Состояние конечной точки</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0000 0010b</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">CLEAR_FEATURE (0x01)</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Селектор фичи</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Конечная точка</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Нет</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0000 0010b</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">SET_FEATURE (0x03)</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Селектор фичи</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Конечная точка</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Нет</p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1000 0010b</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">SYNCH_FRAME (0x0С)</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Конечная точка</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">2</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Номер фрейма</p></td></tr></table>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Поле </span><span style=" font-weight:600; font-style:italic;">wIndex </span><span style=" font-style:italic;">в запросах к конечной точке используется для указания целевой конечной точки и направления запросов. Формат поля следующий:</span></li></ul>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D15 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D14 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D13 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D12 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D11 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D10 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D9 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D8 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D7 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D6 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D5 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D4 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D3 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D2 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D1 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D0 </span></p></td></tr>
+<tr>
+<td colspan="8" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Зарезервировано</p></td>
+<td bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Dir<br />(направление)</p></td>
+<td colspan="3" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Зарезервировано</p></td>
+<td colspan="4" bgcolor="#fafad2" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Номер конечной точки</p></td></tr></table>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Запрос </span><span style=" font-weight:600; font-style:italic;">Get Status</span><span style=" font-style:italic;"> возвращает 2 байта, в которых возвращается статус конечной точки (пока только бит Halted/Stalled, т. е. бит приостановки). Формат двух возвращаемых байт показан ниже:</span></li></ul>
+<p align="center" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="1" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" align="center" cellspacing="2" cellpadding="0">
+<tr>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D15 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D14 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D13 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D12 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D11 </span></p></td>
+<td width="6%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D10 </span></p></td>
+<td width="5%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D9 </span></p></td>
+<td width="5%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D8 </span></p></td>
+<td width="5%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D7 </span></p></td>
+<td width="5%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D6 </span></p></td>
+<td width="5%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D5 </span></p></td>
+<td width="5%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D4 </span></p></td>
+<td width="5%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D3 </span></p></td>
+<td width="5%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D2 </span></p></td>
+<td width="9%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D1 </span></p></td>
+<td width="5%" bgcolor="#0000ff" style=" vertical-align:top;">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#ffffff;">D0 </span></p></td></tr>
+<tr>
+<td colspan="15">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Зарезервировано</p></td>
+<td bgcolor="#fafad2">
+<p align="center" style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Halt</p></td></tr></table>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Запрос </span><span style=" font-weight:600; font-style:italic;">Clear Feature</span><span style=" font-style:italic;"> и </span><span style=" font-weight:600; font-style:italic;">Set Feature</span><span style=" font-style:italic;"> используется для установки фич конечной точки. Стандарт в настоящее время определяет один селектор фичи конечной точки ENDPOINT_HALT (0x00), который позволяет хосту приостановить и очистить конечную точку. Только оконечным точкам, кроме заданной по умолчанию конечной точки (конечная точка 0) рекомендуют иметь эти функциональные возможности.</span></li>
+<li style=" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-style:italic;">Запрос </span><span style=" font-weight:600; font-style:italic;">Synch Frame</span><span style=" font-style:italic;"> используется, чтобы сообщить о кадре синхронизации конечной точки.</span></li></ul>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Здесь (да и у автора USB in a nutshell) ВРОДЕ неправильно указаны коды для стандартных запросов к интерфейсу конечной точки. SET_INTERFACE(0 x11) SYNCH_FRAME(0x12). Должно SET_INTERFACE(11 или 0x0B) SYNCH_FRAME(12 или 0x0C).</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">- исправил в таблицах (c) phara</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p></body></html>
