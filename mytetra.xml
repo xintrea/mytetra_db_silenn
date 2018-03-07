@@ -328,7 +328,9 @@
        <record id="15160253298w1u9xorfb" name="ADC (Regular Channel)" author="" url="" tags="" ctime="20180115170849" dir="1516025329nfabx2m0f6" file="text.html"/>
        <record id="15163514870ntkqjvfy4" name="ADC (Injected Channel)" author="" url="" tags="" ctime="20180119114447" dir="1516351487kau2gynxjp" file="text.html"/>
        <record id="1516889306iubdb20fo7" name="DAC" author="" url="" tags="" ctime="20180125170826" dir="1516889306skjlw3hu8y" file="text.html"/>
-       <record id="1517487985grwoblwgcx" name="USB (FS)" author="" url="" tags="" ctime="20180201152625" dir="1517487985gz7plxchok" file="text.html"/>
+       <record id="1517487985grwoblwgcx" name="USB - Virtual Com Port &amp; HID" author="" url="" tags="" ctime="20180201152625" dir="1517487985gz7plxchok" file="text.html"/>
+       <record id="1520421848boum6oio5e" name="USB - Mass Storage" author="" url="" tags="" ctime="20180307142408" dir="1520421848k3fsn8uqi8" file="text.html"/>
+       <record id="15204229930ymemcw7eu" name="ILI9341 (240x320 SPI TFT LCD)" author="" url="" tags="" ctime="20180307144313" dir="15204229931sb9b8fuwr" file="text.html"/>
       </recordtable>
      </node>
     </node>
@@ -388,7 +390,7 @@
      <record id="149138340918dttrpjkp" name="DS3231" author="" url="" tags="" ctime="20170405121009" dir="1491383409vqffrzkrzi" file="text.html"/>
      <record id="14919202192pbw18wox3" name="74HC14N (Schmitt Trigger)" author="" url="" tags="" ctime="20170411171659" dir="14919202191harfz8r0x" file="text.html"/>
      <record id="1510337596tjh3tiqnxd" name="WF43BTIBED0 (TFT Display)" author="" url="" tags="" ctime="20171110211316" dir="1510337596mnsxpmoo5t" file="text.html"/>
-     <record id="1516881693o55kgwvg6z" name="ILI9341 (2.2 TFT Display)" author="" url="" tags="" ctime="20180125150133" dir="1516881693deg99j0mqn" file="text.html"/>
+     <record id="1516881693o55kgwvg6z" name="ILI9341 (2.2 TFT Display Controller)" author="" url="" tags="" ctime="20180125150133" dir="1516881693deg99j0mqn" file="text.html"/>
     </recordtable>
    </node>
    <node crypt="" id="148914926872tr3kszrm" name="Eagle CAD">
