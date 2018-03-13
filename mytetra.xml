@@ -314,6 +314,7 @@
      <node crypt="" id="15084108276594vk6mqb" name="CMSIS">
       <recordtable>
        <record id="15078820139rcvbeuthv" name="LED мигание и кнопка" author="" url="" tags="" ctime="20171019140031" dir="15078820131bydb6tz3n" file="text.html"/>
+       <record id="1520846521g6n7goft70" name="Ручная сборка проета" author="" url="https://www.youtube.com/watch?v=xXGXn9D04nE" tags="stm32 cmsis lesson" ctime="20180312122201" dir="1520846521tf0dmihbuc" file="text.html"/>
       </recordtable>
      </node>
      <node crypt="" id="1515236460uh1aiis6ay" name="HAL">
