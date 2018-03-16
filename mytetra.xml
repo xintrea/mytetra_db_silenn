@@ -340,7 +340,6 @@
       <record id="1504012373nl01rz2pnk" name="Development Kits" author="" url="" tags="" ctime="20170829161253" dir="15040123735d7rrcog80" file="text.html"/>
      </recordtable>
     </node>
-    <node crypt="" id="1521118075n8kzs5k25b" name="FreeRTOS"/>
    </node>
    <node crypt="" id="1484036595ktssl9bxyh" name="FPGA">
     <node crypt="" id="1484049489faje6japcx" name="Xilinx">
@@ -404,6 +403,11 @@
    <node crypt="" id="15035831320h55ji9lhj" name="Real-Time Systems">
     <recordtable>
      <record id="1503583144dyse00sg7y" name="PID controller in C" author="" url="" tags="" ctime="20170824165904" dir="1503583144daqf2ww7cp" file="text.html"/>
+    </recordtable>
+   </node>
+   <node crypt="" id="15212159653leqsu63ft" name="FreeRTOS">
+    <recordtable>
+     <record id="15212160188avolt8195" name="Основные функции" author="" url="http://microsin.ru/content/view/1304/44/" tags="freertos rtos" ctime="20180316190018" dir="15212160185jjxqfu9lm" file="text.html"/>
     </recordtable>
    </node>
   </node>
