@@ -341,6 +341,13 @@
       <record id="1504012373nl01rz2pnk" name="Development Kits" author="" url="" tags="" ctime="20170829161253" dir="15040123735d7rrcog80" file="text.html"/>
      </recordtable>
     </node>
+    <node crypt="" id="1522154596y4ymupdwst" name="FreeRTOS">
+     <recordtable>
+      <record id="1522154596q7emws6kp3" name="1. Основные функции" author="" url="http://microsin.ru/content/view/1304/44/" tags="freertos rtos" ctime="20180327154316" dir="1522154596i9e5j9s0xc" file="text.html"/>
+      <record id="1522154596w90by01ud2" name="1.10 Алгоритмы шедулинга" author="" url="" tags="" ctime="20180327154316" dir="1522154596nu2l9o83zy" file="text.html"/>
+      <record id="1522154596geceuxzvny" name="2. Управление очередями" author="" url="http://microsin.net/programming/arm/freertos-part2.html" tags="freertos rtos" ctime="20180327154316" dir="1522154596nop934iy4s" file="text.html"/>
+     </recordtable>
+    </node>
    </node>
    <node crypt="" id="1484036595ktssl9bxyh" name="FPGA">
     <node crypt="" id="1484049489faje6japcx" name="Xilinx">
@@ -404,11 +411,6 @@
    <node crypt="" id="15035831320h55ji9lhj" name="Real-Time Systems">
     <recordtable>
      <record id="1503583144dyse00sg7y" name="PID controller in C" author="" url="" tags="" ctime="20170824165904" dir="1503583144daqf2ww7cp" file="text.html"/>
-    </recordtable>
-   </node>
-   <node crypt="" id="15212159653leqsu63ft" name="FreeRTOS">
-    <recordtable>
-     <record id="15212160188avolt8195" name="Основные функции" author="" url="http://microsin.ru/content/view/1304/44/" tags="freertos rtos" ctime="20180316190018" dir="15212160185jjxqfu9lm" file="text.html"/>
     </recordtable>
    </node>
   </node>
