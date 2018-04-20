@@ -349,6 +349,9 @@
       <record id="1522154596geceuxzvny" name="2. Управление очередями" author="" url="http://microsin.net/programming/arm/freertos-part2.html" tags="freertos rtos" ctime="20180327154316" dir="1522154596nop934iy4s" file="text.html"/>
       <record id="1523452821izduy1txqr" name="3. Практическое применение" author="" url="http://microsin.net/programming/arm/freertos-part3.html" tags="freertos rtos" ctime="20180411162021" dir="1523452821q16pu3uurw" file="text.html"/>
       <record id="1523534284fghot1mmv7" name="4. Управление ресурсами" author="" url="http://microsin.net/programming/arm/freertos-part4.html" tags="rtos freertos" ctime="20180412145804" dir="1523534284hqee4r3nif" file="text.html"/>
+      <record id="152422284624r94dc88h" name="5. Управление памятью" author="" url="http://microsin.net/programming/arm/freertos-part5.html" tags="rtos freertos" ctime="20180420141406" dir="15242228460nzesfmoic" file="text.html"/>
+      <record id="1524224375re35vdxj1h" name="6. Устранение проблем" author="" url="http://microsin.net/programming/arm/freertos-part6.html" tags="rtos freertos" ctime="20180420143935" dir="1524224375kyikajzw7c" file="text.html"/>
+      <record id="1524225658yl6mprhvzc" name="7. Дополнения" author="" url="http://microsin.net/programming/arm/freertos-appendix.html" tags="rtos freertos" ctime="20180420150058" dir="152422565851gcclggyr" file="text.html"/>
      </recordtable>
     </node>
    </node>
