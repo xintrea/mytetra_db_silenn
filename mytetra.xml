@@ -317,6 +317,8 @@
       <recordtable>
        <record id="15078820139rcvbeuthv" name="LED мигание и кнопка" author="" url="" tags="" ctime="20171019140031" dir="15078820131bydb6tz3n" file="text.html"/>
        <record id="1520846521g6n7goft70" name="Ручная сборка проекта" author="" url="https://www.youtube.com/watch?v=xXGXn9D04nE" tags="stm32 cmsis lesson" ctime="20180312122201" dir="1520846521tf0dmihbuc" file="text.html"/>
+       <record id="1524470618mj96e49la2" name="FreeRTOS. Задачи и приоритеты" author="" url="" tags="" ctime="20180423110338" dir="1524470618qt3cbfsnwb" file="text.html"/>
+       <record id="1524485714xwrsyrcfji" name="FreeRTOS. Система тактирования RCC" author="" url="" tags="" ctime="20180423151514" dir="1524485714lo7wn3mvx4" file="text.html"/>
       </recordtable>
      </node>
      <node crypt="" id="1515236460uh1aiis6ay" name="HAL">
@@ -344,6 +346,7 @@
     </node>
     <node crypt="" id="1522154596y4ymupdwst" name="FreeRTOS">
      <recordtable>
+      <record id="152448122685sai8im1h" name="Памятка" author="" url="" tags="" ctime="20180423140026" dir="1524481226r7dxjm2uvb" file="text.html"/>
       <record id="1522154596q7emws6kp3" name="1. Основные функции" author="" url="http://microsin.ru/content/view/1304/44/" tags="freertos rtos" ctime="20180327154316" dir="1522154596i9e5j9s0xc" file="text.html"/>
       <record id="1522154596w90by01ud2" name="1.10 Алгоритмы шедулинга" author="" url="" tags="" ctime="20180327154316" dir="1522154596nu2l9o83zy" file="text.html"/>
       <record id="1522154596geceuxzvny" name="2. Управление очередями" author="" url="http://microsin.net/programming/arm/freertos-part2.html" tags="freertos rtos" ctime="20180327154316" dir="1522154596nop934iy4s" file="text.html"/>
