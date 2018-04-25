@@ -4,6 +4,148 @@ p, li { white-space: pre-wrap; }
 </style></head><body style=" font-family:'Georgia'; font-size:11pt; font-weight:400; font-style:normal;">
 <p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image26580.png" /></p>
 <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Версия для кварца на 16 МГц:</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image22716.png" /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Для 25 МГц:</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image11433.png" /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Здесь приведен перевод аптноута <span style=" font-weight:600;">AN3988</span> &quot;Clock configuration tool for STM32F40xx/41xx/427x/437x microcontrollers&quot; компании ST.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Для STM32F4xx поддерживается следующая функциональность:</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">• Конфигурирование системной частоты (system clock), источника тактов HCLK и выходная частота.<br />• Конфигурирование быстродействия FLASH (latency), т. е. количество тактов ожидания (wait states) в зависимости от частоты HCLK.<br />• Установка частот PCLK1, PCLK2, TIMCLK (частоты таймера), USBCLK и I2SCLK.<br />• Генерирование готового к использованию модуля кода system_stm32f4xx.c, который содержит в себе все вышеперечисленные установки (системный исходный файл слоя доступа к периферии, STM32F4xx CMSIS Cortex-M4 Device Peripheral Access Layer).</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Схема тактирования микроконтроллеров STM32F4xx</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">В этой секции описывается схема системной частоты, которая зависит от требований к напряжению питания (V<span style=" vertical-align:sub;">DD</span>) против значения системной тактовой частоты и латентности Flash против значения системной тактовой частоты. Можно использовать три разные источника тактовой частоты, чтобы получить системные такты (SYSCLK):</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">1</span>. Такты генератора HSI (16 МГц).<br /><span style=" font-weight:600;">2</span>. Такты генератора HSE (4..26 МГц).<br /><span style=" font-weight:600;">3</span>. Основная петля ФАПЧ (phase-locked loop, PLL) для получения тактов, с генератором, управляемым напряжением в петле PLL (PLLVCO). Входная частота системы PLL должна быть между 1 и 2 МГц (рекомендуется использовать 2 МГц, чтобы ограничить джиттер PLL). В PLL участвуют коэффициенты умножения и деления M, N, P и Q.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Все тактовые частоты для периферийных устройств микроконтроллера производятся от частоты SYSCLK, за исключением:</p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">1</span>. Тактовые частоты USB OTG FS clock (48 МГц), RNG (48 МГц) и SDIO (48 МГц), которая приходит от специального выхода PLL (PLL48CLK).<br /><span style=" font-weight:600;">2</span>. Тактовая частота I2S. Чтобы достичь высокого качества звука, такты I2S могут быть получены либо от отдельного узла PLL (PLLI2S), либо от внешней тактовой частоты, которая подключена к ножке I2S_CKIN.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image23933.png" /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Рис. 1. Схема тактирования STM32F4xx.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Ethernet PTP clock</span> тактовая частота Precision time protocol для Ethernet.<br /><span style=" font-weight:600;">HSE_RTC</span> тактовая частота RTC (HSE, поделенная на коэффициент программируемого делителя).<br /><span style=" font-weight:600;">independent watchdog</span> независимый сторожевой таймер.<br /><span style=" font-weight:600;">LSE OSC</span> Low Speed External, внешний низкоскоростной RC-генератор 32.768 кГц (к которому подключается отдельный низкочастотный кварцевый резонатор).<br /><span style=" font-weight:600;">LSI RC</span> Low Speed Internal, внутренний низкоскоростной RC-генератор 32 кГц.<br /><span style=" font-weight:600;">MCO1</span>, <span style=" font-weight:600;">MCO2</span> Microcontroller clock output, выходы тактов 1 и 2.<br /><span style=" font-weight:600;">OSC_OUT</span>, <span style=" font-weight:600;">OSC_IN</span> выводы для подключения высокочастотного кварцевого резонатора (4..26 МГц).<br /><span style=" font-weight:600;">Watchdog enable</span> разрешение сторожевого таймера.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Таблица 2. Количество циклов wait states в зависимости от тактовой частоты CPU HCLK, частота HCLK указана в МГц.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+<tr>
+<td bgcolor="#0000ff">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">Wait states WS (LATENCY)</span></p></td>
+<td bgcolor="#0000ff">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">V</span><span style=" font-weight:600; color:#ffffff; vertical-align:sub;">DD</span><span style=" font-weight:600; color:#ffffff;"> 2.7V .. 3.6V</span></p></td>
+<td bgcolor="#0000ff">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">V</span><span style=" font-weight:600; color:#ffffff; vertical-align:sub;">DD</span><span style=" font-weight:600; color:#ffffff;"> 2.4V .. 2.7V</span></p></td>
+<td bgcolor="#0000ff">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">V</span><span style=" font-weight:600; color:#ffffff; vertical-align:sub;">DD</span><span style=" font-weight:600; color:#ffffff;"> 2.1V .. 2.4V</span></p></td>
+<td bgcolor="#0000ff">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600; color:#ffffff;">V</span><span style=" font-weight:600; color:#ffffff; vertical-align:sub;">DD</span><span style=" font-weight:600; color:#ffffff;"> 1.8V .. 2.1V</span><br /><span style=" font-weight:600; color:#ffffff;">Prefetch OFF</span></p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">0 WS (1 CPU cycle)</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">0 &lt; HCLK ≤ 30</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">0 &lt; HCLK ≤ 24</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">0 &lt; HCLK ≤ 22</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">0 &lt; HCLK ≤ 20</span></p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">1 WS (2 CPU cycles)</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">30 &lt; HCLK ≤ 60</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">24 &lt; HCLK ≤ 48</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">22 &lt; HCLK ≤ 44</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">20 &lt; HCLK ≤ 40</span></p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">2 WS (3 CPU cycles)</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">60 &lt; HCLK ≤ 90</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">48 &lt; HCLK ≤ 72</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">44 &lt; HCLK ≤ 66</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">40 &lt; HCLK ≤ 60</span></p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">3 WS (4 CPU cycles)</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">90 &lt; HCLK ≤ 120</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">72 &lt; HCLK ≤ 96</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">66 &lt; HCLK ≤ 88</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">60 &lt; HCLK ≤ 80</span></p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">4 WS (5 CPU cycles)</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">120 &lt; HCLK ≤ 150</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">96 &lt; HCLK ≤ 120</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">88 &lt; HCLK ≤ 110</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">80 &lt; HCLK ≤ 100</span></p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">5 WS (6 CPU cycles)</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">150 &lt; HCLK ≤ 168</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">120 &lt; HCLK ≤ 144</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">110 &lt; HCLK ≤ 132</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">100 &lt; HCLK ≤ 120</span></p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">6 WS (7 CPU cycles)</span></p></td>
+<td bgcolor="#fafad2"></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">144 &lt; HCLK ≤ 168</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">132 &lt; HCLK ≤ 154</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">120 &lt; HCLK ≤ 140</span></p></td></tr>
+<tr>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">7 WS (8 CPU cycles)</span></p></td>
+<td bgcolor="#fafad2"></td>
+<td bgcolor="#fafad2"></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">154 &lt; HCLK ≤ 168</span></p></td>
+<td bgcolor="#fafad2">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" background-color:#fafad2;">140 &lt; HCLK ≤ 160</span></p></td></tr></table>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-weight:600;">Генератор тактов I2S</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Генерация тактов для интерфейса I2S зависит от наличия частоты MCLK (разрешена она или запрещена), ширины фрейма, и от периферийной частоты I2S (I2SCLK).</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><img src="image14495.png" /></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Рис. 2. Архитектура генератора тактов I2S.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Частота аудиовыборок может быть 192 кГц, 96 кГц, 48 кГц, 44.1 кГц, 32 кГц, 22.05 кГц, 16 кГц, 11.025 кГц или 8 кГц. Чтобы достичь нужной частоты, линейный делитель (DIV) должен быть запрограммирован по формулам ниже.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Когда генерируется MCLK (установлен бит MCKOE в регистре SPI_I2SPR):<br />• Fs = I2SxCLK/[(16*2)*((2*I2SDIV)+ODD)*8)] когда фрейм канала шириной 16 бит.<br />• Fs = I2SxCLK/[(32*2)*((2*I2SDIV)+ODD)*4)] когда фрейм канала шириной 32 бит.</p>
+<p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">ODD является множителем нечетности для прескалера. Когда MCLK запрещена (очищен бит MCKOE):<br />• FS = I2SxCLK/[(16*2)*((2*I2SDIV)+ODD))] когда фрейм канала шириной 16 бит.<br />• FS = I2SxCLK/[(32*2)*((2*I2SDIV)+ODD))] когда фрейм канала шириной 32 бит.</p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
 <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
 <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
 <p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
