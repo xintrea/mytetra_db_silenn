@@ -312,7 +312,7 @@
       <record id="1517236229i8r9v3s00l" name="Insider's Guide STM32 (part 1)" author="" url="" tags="memory map bit banding interrupts " ctime="20180129173029" dir="1517236229rfwx6c9y18" file="text.html"/>
       <record id="15196510783884lfv1d8" name="Insider's Guide STM32 (part 2)" author="" url="" tags="adc, timer, pwm, usart, usb, can, i2c, spi" ctime="20180226161758" dir="1519651078i9g8t96505" file="text.html"/>
       <record id="15203386404poj0miv7w" name="Insider's Guide STM32 (part 3)" author="" url="" tags="" ctime="20180306151720" dir="1520338640fgswz7unj8" file="text.html"/>
-      <record id="1524563034m19f6rpkx4" name="RCC (apnote AN3988)" author="" url="" tags="" ctime="20180424124354" dir="1524563034sdbdkdp51q" file="text.html"/>
+      <record id="1524563034m19f6rpkx4" name="RCC" author="" url="" tags="" ctime="20180424124354" dir="1524563034sdbdkdp51q" file="text.html"/>
      </recordtable>
      <node crypt="" id="15084108276594vk6mqb" name="CMSIS">
       <recordtable>
