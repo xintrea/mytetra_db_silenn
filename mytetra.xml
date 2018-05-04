@@ -320,6 +320,8 @@
        <record id="1520846521g6n7goft70" name="Ручная сборка проекта" author="" url="https://www.youtube.com/watch?v=xXGXn9D04nE" tags="stm32 cmsis lesson" ctime="20180312122201" dir="1520846521tf0dmihbuc" file="text.html"/>
        <record id="1524470618mj96e49la2" name="FreeRTOS. Задачи и приоритеты" author="" url="" tags="" ctime="20180423110338" dir="1524470618qt3cbfsnwb" file="text.html"/>
        <record id="1524485714xwrsyrcfji" name="FreeRTOS. Система тактирования RCC" author="" url="" tags="" ctime="20180423151514" dir="1524485714lo7wn3mvx4" file="text.html"/>
+       <record id="1525421883q5avmym80p" name="FreeRTOS. Обработка нажатия кнопки" author="" url="" tags="" ctime="20180504111803" dir="1525421883gmp8bicmmq" file="text.html"/>
+       <record id="1525423546p1prfvm65b" name="FreeRTOS. USART" author="" url="" tags="" ctime="20180504114546" dir="1525423546djp9kljbay" file="text.html"/>
       </recordtable>
      </node>
      <node crypt="" id="1515236460uh1aiis6ay" name="HAL">
