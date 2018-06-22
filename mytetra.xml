@@ -429,6 +429,13 @@
     </recordtable>
    </node>
   </node>
+  <node crypt="" id="1529655555yltoineohf" name="ASUTP">
+   <node crypt="" id="1529655565e9jpidn04m" name="ProfiNET">
+    <recordtable>
+     <record id="152965558759942egwz7" name="Вебинар" author="" url="" tags="" ctime="20180622111947" dir="1529655587sqaoz6f351" file="text.html"/>
+    </recordtable>
+   </node>
+  </node>
   <node crypt="" id="1481013724inr39junfd" name="Language">
    <node crypt="" id="148130524392pip6ipv2" name="English">
     <recordtable>
