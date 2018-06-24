@@ -342,6 +342,7 @@
        <record id="1517487985grwoblwgcx" name="USB - Virtual Com Port &amp; HID" author="" url="" tags="" ctime="20180201152625" dir="1517487985gz7plxchok" file="text.html"/>
        <record id="1520421848boum6oio5e" name="USB - Mass Storage" author="" url="" tags="" ctime="20180307142408" dir="1520421848k3fsn8uqi8" file="text.html"/>
        <record id="15204229930ymemcw7eu" name="ILI9341 (240x320 SPI TFT LCD)" author="" url="" tags="" ctime="20180307144313" dir="15204229931sb9b8fuwr" file="text.html"/>
+       <record id="1529841270jmz74mjfo7" name="LAN8720" author="" url="" tags="" ctime="20180624145430" dir="1529841270lh8sceka6v" file="text.html"/>
       </recordtable>
      </node>
     </node>
