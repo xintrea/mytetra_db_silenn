@@ -306,6 +306,11 @@
         </node>
        </node>
       </node>
+      <node crypt="" id="1530643725xv4sbricpi" name="AT90USB162">
+       <recordtable>
+        <record id="1530643735egjyzy0kmt" name="Template" author="" url="" tags="" ctime="20180703214855" dir="15306437359p0dib5gou" file="text.html"/>
+       </recordtable>
+      </node>
      </node>
     </node>
     <node crypt="" id="148338311076c5dcu1bg" name="STM32">
