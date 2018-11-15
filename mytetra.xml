@@ -380,6 +380,7 @@
       <record id="1524225658yl6mprhvzc" name="7. Дополнения" author="" url="http://microsin.net/programming/arm/freertos-appendix.html" tags="rtos freertos" ctime="20180420150058" dir="152422565851gcclggyr" file="text.html"/>
      </recordtable>
     </node>
+    <node crypt="" id="15422743811bbach7lw7" name="LWIP"/>
    </node>
    <node crypt="" id="1484036595ktssl9bxyh" name="FPGA">
     <node crypt="" id="1484049489faje6japcx" name="Xilinx">
