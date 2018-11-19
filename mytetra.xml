@@ -331,6 +331,7 @@
       <record id="15196510783884lfv1d8" name="Insider's Guide STM32 (part 2)" author="" url="" tags="adc, timer, pwm, usart, usb, can, i2c, spi" ctime="20180226161758" dir="1519651078i9g8t96505" file="text.html"/>
       <record id="15203386404poj0miv7w" name="Insider's Guide STM32 (part 3)" author="" url="" tags="" ctime="20180306151720" dir="1520338640fgswz7unj8" file="text.html"/>
       <record id="1524563034m19f6rpkx4" name="RCC" author="" url="" tags="" ctime="20180424124354" dir="1524563034sdbdkdp51q" file="text.html"/>
+      <record id="1542634563drfone842u" name="Оптимизация энергопотребления" author="" url="" tags="" ctime="20181119163603" dir="1542634563y1xz6pdssf" file="text.html"/>
      </recordtable>
      <node crypt="" id="15084108276594vk6mqb" name="CMSIS">
       <recordtable>
@@ -403,6 +404,7 @@
      <record id="1490252529t0kla0yo9k" name="Проходные выключатели" author="" url="" tags="" ctime="20170323100209" dir="14902525297c0tapsu71" file="text.html"/>
      <record id="1503742957jm1t2t13ik" name="Датчик звука / хлопка" author="" url="" tags="" ctime="20170826132237" dir="1503742957qgen7r03il" file="text.html"/>
      <record id="15121165384y12fmb57e" name="Память" author="" url="" tags="" ctime="20171201112218" dir="1512116538vzyrpltmwk" file="text.html"/>
+     <record id="1542636435fvx70n4pun" name="Как делать не надо" author="" url="" tags="" ctime="20181119170715" dir="1542636435xtm55q39ql" file="text.html"/>
     </recordtable>
     <node crypt="" id="1486021899us896bwgh9" name="Physics"/>
     <node crypt="" id="1486021934ocakj3ovg0" name="Digital">
