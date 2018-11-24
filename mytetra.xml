@@ -366,6 +366,12 @@
       <node crypt="" id="1542975956b3dax3dpkt" name="v3.1">
        <recordtable>
         <record id="15429759659jrsabwgo4" name="server.c" author="" url="" tags="" ctime="20181123152605" dir="15429759652cx0moz8h9" file="text.html"/>
+        <record id="1543056595fp5a2neguy" name="server.h" author="" url="" tags="" ctime="20181124134955" dir="1543056595t8ov2g28i8" file="text.html"/>
+        <record id="1543056946noob1d6uw8" name="client.c" author="" url="" tags="" ctime="20181124135546" dir="15430569469upewnyo3u" file="text.html"/>
+        <record id="1543056955x28buwh1ml" name="client.h" author="" url="" tags="" ctime="20181124135555" dir="1543056955d0aw7a68y6" file="text.html"/>
+        <record id="1543056969jmqug654cm" name="net.c" author="" url="" tags="" ctime="20181124135609" dir="1543056969hlzdq37ezb" file="text.html"/>
+        <record id="1543056977eu1yfpl2zo" name="net.h" author="" url="" tags="" ctime="20181124135617" dir="15430569771wqqa6gcab" file="text.html"/>
+        <record id="15430569949g0v453bk6" name="main.c" author="" url="" tags="" ctime="20181124135634" dir="1543056994hy4l8t4pdq" file="text.html"/>
        </recordtable>
       </node>
      </node>
