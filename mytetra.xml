@@ -339,6 +339,8 @@
       <record id="15203386404poj0miv7w" name="Insider's Guide STM32 (part 3)" author="" url="" tags="" ctime="20180306151720" dir="1520338640fgswz7unj8" file="text.html"/>
       <record id="1524563034m19f6rpkx4" name="RCC" author="" url="" tags="" ctime="20180424124354" dir="1524563034sdbdkdp51q" file="text.html"/>
       <record id="1542634563drfone842u" name="Оптимизация энергопотребления" author="" url="" tags="" ctime="20181119163603" dir="1542634563y1xz6pdssf" file="text.html"/>
+      <record id="1568111826ftcd5f5e96" name="Stack and Heap" author="" url="http://microsin.net/programming/arm/mastering-stack-and-heap-for-system-reliability.html" tags="stack, heap, stm" ctime="20190910133706" dir="1568111826czvwlmqzg2" file="text.html"/>
+      <record id="1568112007lna52oshmb" name="Минимальная обвязка (AN4488)" author="" url="AN4488" tags="AN4488, stm" ctime="20190910134007" dir="1568112007cur4krh70v" file="text.html"/>
      </recordtable>
      <node crypt="" id="15084108276594vk6mqb" name="CMSIS">
       <recordtable>
