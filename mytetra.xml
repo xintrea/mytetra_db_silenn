@@ -354,6 +354,7 @@
        <record id="1525421883q5avmym80p" name="FreeRTOS. Обработка нажатия кнопки" author="" url="" tags="" ctime="20180504111803" dir="1525421883gmp8bicmmq" file="text.html"/>
        <record id="1525423546p1prfvm65b" name="FreeRTOS. USART" author="" url="" tags="" ctime="20180504114546" dir="1525423546djp9kljbay" file="text.html"/>
        <record id="1526988633xo8bysbigo" name="FreeRTOS. PWM" author="" url="" tags="" ctime="20180522143033" dir="1526988633fe3plm5nc2" file="text.html"/>
+       <record id="15737263847whbdq7xfw" name="DAC" author="" url="" tags="dac" ctime="20191114131304" dir="1573726384ubfscec6d8" file="text.html"/>
       </recordtable>
       <node crypt="" id="1561541550pjowbtslux" name="STM32H7">
        <recordtable>
