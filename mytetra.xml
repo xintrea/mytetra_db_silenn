@@ -355,6 +355,7 @@
        <record id="1525423546p1prfvm65b" name="FreeRTOS. USART" author="" url="" tags="" ctime="20180504114546" dir="1525423546djp9kljbay" file="text.html"/>
        <record id="1526988633xo8bysbigo" name="FreeRTOS. PWM" author="" url="" tags="" ctime="20180522143033" dir="1526988633fe3plm5nc2" file="text.html"/>
        <record id="15737263847whbdq7xfw" name="DAC" author="" url="" tags="dac" ctime="20191114131304" dir="1573726384ubfscec6d8" file="text.html"/>
+       <record id="1573820450xcan9up990" name="Flash Memory" author="" url="" tags="flash, stm32" ctime="20191115152050" dir="1573820450q99164au94" file="text.html"/>
       </recordtable>
       <node crypt="" id="1561541550pjowbtslux" name="STM32H7">
        <recordtable>
