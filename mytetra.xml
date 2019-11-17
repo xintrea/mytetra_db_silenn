@@ -594,6 +594,7 @@
    <node crypt="" id="1538050069dwfw5hn5wx" name="Audi A4 B5">
     <recordtable>
      <record id="1538050080x78bszzzpy" name="Передняя подвеска" author="" url="" tags="" ctime="20180927150800" dir="1538050080hwu32efho4" file="text.html"/>
+     <record id="1574005883wl3qciqa55" name="Расходомер (ДМРВ)" author="" url="" tags="" ctime="20191117185123" dir="15740058833eua5lmwi9" file="text.html"/>
     </recordtable>
    </node>
   </node>
