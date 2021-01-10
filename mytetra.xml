@@ -492,6 +492,13 @@
      <record id="1510337596tjh3tiqnxd" name="WF43BTIBED0 (TFT Display)" author="" url="" tags="" ctime="20171110211316" dir="1510337596mnsxpmoo5t" file="text.html"/>
      <record id="1516881693o55kgwvg6z" name="ILI9341 (2.2 TFT Display Controller)" author="" url="" tags="" ctime="20180125150133" dir="1516881693deg99j0mqn" file="text.html"/>
     </recordtable>
+    <node crypt="" id="16103078447hyusawnp7" name="DC-DC StepDown">
+     <recordtable>
+      <record id="1610307886weza718658" name="XL4015" author="" url="" tags="" ctime="20210110224446" dir="1610307886stpjh9x5rv" file="text.html"/>
+      <record id="161030809992rkw1b92e" name="Noname 5-40V to 2-35V" author="" url="https://aliexpress.ru/item/32859386096.html?spm=a2g0o.detail.0.0.434956f3iclxvB&amp;gps-id=pcDetailBottomMoreThisSeller&amp;scm=1007.13339.169870.0&amp;scm_id=1007.13339.169870.0&amp;scm-url=1007.13339.169870.0&amp;pvid=fdf3e7e0-59e7-46e6-9d90-8cb3c6775272&amp;_t=gps-id:pcDetailBottomMoreThisSeller,scm-url:1007.13339.169870.0,pvid:fdf3e7e0-59e7-46e6-9d90-8cb3c6775272,tpp_buckets:21387%230%23183380%230&amp;sku_id=65340178721" tags="" ctime="20210110224819" dir="1610308099i8cr8gkh1n" file="text.html"/>
+      <record id="16103082351azoro8qrk" name="LM2596" author="" url="https://aliexpress.ru/item/1PC-LM2596-LED-Driver-DC-DC-Step-down-Adjustable-CC-CV-Power-Supply-Module/32580214850.html?spm=a2g0s.9042311.0.0.264d33edBsu9CL&amp;sku_id=58717650933" tags="" ctime="20210110225035" dir="1610308235c0p7yvtnko" file="text.html"/>
+     </recordtable>
+    </node>
    </node>
    <node crypt="" id="148914926872tr3kszrm" name="Eagle CAD">
     <recordtable>
