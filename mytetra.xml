@@ -344,6 +344,7 @@
       <record id="1542634563drfone842u" name="Оптимизация энергопотребления" author="" url="" tags="" ctime="20181119163603" dir="1542634563y1xz6pdssf" file="text.html"/>
       <record id="1568111826ftcd5f5e96" name="Stack and Heap" author="" url="http://microsin.net/programming/arm/mastering-stack-and-heap-for-system-reliability.html" tags="stack, heap, stm" ctime="20190910133706" dir="1568111826czvwlmqzg2" file="text.html"/>
       <record id="1568112007lna52oshmb" name="Минимальная обвязка (AN4488)" author="" url="AN4488" tags="AN4488, stm" ctime="20190910134007" dir="1568112007cur4krh70v" file="text.html"/>
+      <record id="1610656163ak4ga8ms4f" name="Timers" author="" url="" tags="" ctime="20210114232923" dir="1610656163qci9rv8uva" file="text.html"/>
       <record id="1605206695mh1ym45hbb" name="FSMC" author="" url="" tags="" ctime="20201112214455" dir="160520669571xmiedw5q" file="text.html"/>
      </recordtable>
      <node crypt="" id="15084108276594vk6mqb" name="CMSIS">
