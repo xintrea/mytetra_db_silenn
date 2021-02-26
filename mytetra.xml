@@ -493,6 +493,7 @@
      <record id="1510337596tjh3tiqnxd" name="WF43BTIBED0 (TFT Display)" author="" url="" tags="" ctime="20171110211316" dir="1510337596mnsxpmoo5t" file="text.html"/>
      <record id="1516881693o55kgwvg6z" name="ILI9341 (2.2 TFT Display Controller)" author="" url="" tags="" ctime="20180125150133" dir="1516881693deg99j0mqn" file="text.html"/>
      <record id="161038718049divvurqc" name="ILI9486 (3.5'' 480x320 TFT LCD)" author="" url="" tags="" ctime="20210111204620" dir="16103871803p981wpdfd" file="text.html"/>
+     <record id="1614343739ylynmuzos4" name="HD44780" author="" url="" tags="" ctime="20210226154859" dir="1614343739t5gy4hsrbt" file="text.html"/>
     </recordtable>
     <node crypt="" id="16103078447hyusawnp7" name="DC-DC StepDown">
      <recordtable>
