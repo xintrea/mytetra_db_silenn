@@ -346,6 +346,7 @@
       <record id="1568112007lna52oshmb" name="Минимальная обвязка (AN4488)" author="" url="AN4488" tags="AN4488, stm" ctime="20190910134007" dir="1568112007cur4krh70v" file="text.html"/>
       <record id="1610656163ak4ga8ms4f" name="Timers" author="" url="" tags="" ctime="20210114232923" dir="1610656163qci9rv8uva" file="text.html"/>
       <record id="1605206695mh1ym45hbb" name="FSMC" author="" url="" tags="" ctime="20201112214455" dir="160520669571xmiedw5q" file="text.html"/>
+      <record id="1622124775qs8h7fmhw5" name="STM32 Family" author="" url="" tags="" ctime="20210527171255" dir="16221247756g6xif9tvm" file="text.html"/>
      </recordtable>
      <node crypt="" id="15084108276594vk6mqb" name="CMSIS">
       <recordtable>
