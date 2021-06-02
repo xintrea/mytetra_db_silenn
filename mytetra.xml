@@ -442,6 +442,9 @@
     </node>
    </node>
    <node crypt="" id="1484036595ktssl9bxyh" name="FPGA">
+    <recordtable>
+     <record id="1622641726xg170kvd2h" name="Logical Elements" author="" url="" tags="" ctime="20210602164846" dir="16226417261y6u6ok414" file="text.html"/>
+    </recordtable>
     <node crypt="" id="1484049489faje6japcx" name="Xilinx">
      <recordtable>
       <record id="1495707953jsdqs4kit9" name="Начало" author="" url="" tags="" ctime="20170525132553" dir="1495707953xeqrlzle75" file="text.html"/>
