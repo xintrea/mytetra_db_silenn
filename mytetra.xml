@@ -348,7 +348,13 @@
       <record id="1610656163ak4ga8ms4f" name="Timers" author="" url="" tags="" ctime="20210114232923" dir="1610656163qci9rv8uva" file="text.html"/>
       <record id="1605206695mh1ym45hbb" name="FSMC" author="" url="" tags="" ctime="20201112214455" dir="160520669571xmiedw5q" file="text.html"/>
       <record id="1622124775qs8h7fmhw5" name="STM32 Family" author="" url="" tags="" ctime="20210527171255" dir="16221247756g6xif9tvm" file="text.html"/>
+      <record id="16342362136ys7kvsf67" name="Reset (NRST)" author="" url="" tags="" ctime="20211014213013" dir="1634236213g4k0br97ue" file="text.html"/>
      </recordtable>
+     <node crypt="" id="1634230879fuh6skzyus" name="F0">
+      <recordtable>
+       <record id="1634230922utonugl3td" name="STM32F030F4-v.2 Board" author="" url="" tags="" ctime="20211014200202" dir="1634230922x84jveaqpm" file="text.html"/>
+      </recordtable>
+     </node>
      <node crypt="" id="15084108276594vk6mqb" name="CMSIS">
       <recordtable>
        <record id="15078820139rcvbeuthv" name="LED мигание и кнопка" author="" url="" tags="" ctime="20171019140031" dir="15078820131bydb6tz3n" file="text.html"/>
