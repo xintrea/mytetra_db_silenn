@@ -4,6 +4,9 @@
  <format version="1" subversion="2"/>
  <content>
   <node crypt="1" icon="" id="1637248158eh6v5gv3c9" name="UkM1U0lNUANUUqIDXYpFfdrw9ltdCb44/NgOgpw/xwr0gcgNI5X/9SD+gvu0YPqp">
+   <recordtable>
+    <record id="16374244871es8fkbo2u" name="UkM1U0lNUAMnn4DzhIMgaNl0cc0bSNEbMr6vPD4Xg6yBh04c56Gb/YqR6poa+yqN" author="" url="" tags="" ctime="20211120190807" dir="1637424487ghrgyjhuwu" file="text.html" crypt="1"/>
+   </recordtable>
    <node crypt="1" icon="" id="16372484030ql4utuzgu" name="UkM1U0lNUANovOlazg6rLlXkIOxpQib29abix44BFcWrf4kiYkzH3uW/LV6vMeDD">
     <recordtable>
      <record id="1634230922utonugl3td" name="UkM1U0lNUAP+4KvnigcQZUpOH6glIJYCmayPjn6pTa1lb7hVlnPTE+3LA+zBJozUFV8BFZIdSIbuQh5/dUlaMw==" author="" url="" tags="" ctime="20211118181323" dir="1634230922x84jveaqpm" file="text.html" crypt="1"/>
@@ -29,11 +32,6 @@
       <record id="15737263847whbdq7xfw" name="UkM1U0lNUANIU28QRJRN1tcZl4pUwiPCMB8Fgk1B8cvRD5u7KC7AceF6Z4tzepl0" author="" url="" tags="UkM1U0lNUAPdGveYPC1yR5XTiMNNUZClY+640cEuKqgOSsqJ/bx0pSWekCRWZub7" ctime="20211118181615" dir="1573726384ubfscec6d8" file="text.html" crypt="1"/>
       <record id="1573820450xcan9up990" name="UkM1U0lNUAMWoUHNU/RlRN1eE0ztNZFLeqFvfJzd7FlE/2Tz8NHqgTP945Z6HtAOlZhKxeACX1k=" author="" url="" tags="UkM1U0lNUAMdIL4ewUNsE4pf/Pl48/g35QasCE2xbpjk7Tizp+xL5RSfaKeObg7VGIb+obPbtBs=" ctime="20211118181615" dir="1573820450q99164au94" file="text.html" crypt="1"/>
      </recordtable>
-     <node crypt="1" icon="" id="1637248575l1t4t5gpq5" name="UkM1U0lNUAOrXivE7NF3MRhnbPhz9cjCFfB+AKxzQAPsuNj9eqvXGD0wO3p8YPRc">
-      <recordtable>
-       <record id="1561541571wr1gzuvw2o" name="UkM1U0lNUAOznbKnHuhq7oNSXfZ0cphEfpNt4fx9qAMMFLwf72U7yMh4H/HOvxhu02Npnm0tY5s4nSFQZSnXM2cWOYIfsfngYLcGzQdLo8kya2FIyBq3+Q==" author="" url="UkM1U0lNUAOcCWBvN3G938q0bc+e1dA8mzTjUz/oqZUvFyPvRJhh42LDk5pQec57sCGkDtDUfHfF3Z1CtNzY6/LvYns+Gy/r" tags="" ctime="20211118181615" dir="1561541571acb34649di" file="text.html" crypt="1"/>
-      </recordtable>
-     </node>
     </node>
     <node crypt="1" icon="" id="1637248575006quflwuy" name="UkM1U0lNUAOfrY84/WFOpSxrdOXnofS898VyIL01l9kVYTh9K3Gj3X+oq4xUutDh">
      <recordtable>
@@ -53,6 +51,11 @@
       <record id="1529841270jmz74mjfo7" name="UkM1U0lNUAMCuYMLrzueD1FaRgr0db4FVyuDryPzuw72WtqBB0R3V+684KY92bz9" author="" url="" tags="" ctime="20211118181615" dir="1529841270lh8sceka6v" file="text.html" crypt="1"/>
      </recordtable>
     </node>
+   </node>
+   <node crypt="1" icon="" id="1637424185db9ttz6ajm" name="UkM1U0lNUAOPdV+CaPQBeIGNWZwkNka8x4QQrIA75AShKByyVrP/CxqugHXBjdLI">
+    <recordtable>
+     <record id="1561541571wr1gzuvw2o" name="UkM1U0lNUAOznbKnHuhq7oNSXfZ0cphEfpNt4fx9qAMMFLwf72U7yMh4H/HOvxhu02Npnm0tY5s4nSFQZSnXM2cWOYIfsfngYLcGzQdLo8kya2FIyBq3+Q==" author="" url="UkM1U0lNUAOcCWBvN3G938q0bc+e1dA8mzTjUz/oqZUvFyPvRJhh42LDk5pQec57sCGkDtDUfHfF3Z1CtNzY6/LvYns+Gy/r" tags="" ctime="20211120190305" dir="1561541571acb34649di" file="text.html" crypt="1"/>
+    </recordtable>
    </node>
    <node crypt="1" icon="" id="1637248225tp08bh4ib7" name="UkM1U0lNUANeS2XlqYO0WAXphFjbcSd7EmGjPR2LQly6xbO3rR0xOnMgBxHHxtoQ">
     <recordtable>
@@ -419,7 +422,6 @@
     </node>
     <node crypt="" id="148338311076c5dcu1bg" name="STM32">
      <recordtable>
-      <record id="1511869974gwbeghickd" name="Registers for CMSIS" author="" url="" tags="" ctime="20171128145254" dir="1511869974c7lk5h1jls" file="text.html"/>
       <record id="1517236229i8r9v3s00l" name="Insider's Guide STM32 (part 1)" author="" url="" tags="memory map bit banding interrupts " ctime="20180129173029" dir="1517236229rfwx6c9y18" file="text.html"/>
       <record id="15196510783884lfv1d8" name="Insider's Guide STM32 (part 2)" author="" url="" tags="adc, timer, pwm, usart, usb, can, i2c, spi" ctime="20180226161758" dir="1519651078i9g8t96505" file="text.html"/>
       <record id="15203386404poj0miv7w" name="Insider's Guide STM32 (part 3)" author="" url="" tags="" ctime="20180306151720" dir="1520338640fgswz7unj8" file="text.html"/>
@@ -585,7 +587,7 @@
   </node>
   <node crypt="" id="1500386806c8ht1fm2vw" name="Math">
    <recordtable>
-    <record id="1500386828mhyz8wr826" name="Квадратное уровнение" author="" url="" tags="" ctime="20170718170708" dir="1500386828uq0inb79b3" file="text.html"/>
+    <record id="1500386828mhyz8wr826" name="Квадратное уравнение" author="" url="" tags="" ctime="20170718170708" dir="1500386828uq0inb79b3" file="text.html"/>
     <record id="1500484599qos99awfps" name="Алгоритм Евклида (НОД)" author="" url="" tags="" ctime="20170719201639" dir="1500484599f4sap533lo" file="text.html"/>
    </recordtable>
   </node>
