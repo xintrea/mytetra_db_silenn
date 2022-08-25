@@ -433,6 +433,11 @@
       <record id="1640089987n61lba64iq" name="UkM1U0lNUAMhQw5GSPDfjQDw+8gq5PCk8z15tDPFpQlWgFk1ZYYMRivqWCXwIGjfcWEN8v3YxO7+X8v7FTY+RA==" author="" url="" tags="" ctime="20211221153307" dir="1640089987qwcigd1fmn" file="text.html" crypt="1"/>
      </recordtable>
     </node>
+    <node crypt="1" icon="" id="1661444305wmcmfyxtw5" name="UkM1U0lNUAMb1F3aiLtf6T8NybsOCSKnoQdJzu1Fq4kubsHPAWwkPmY2WuP0eahA">
+     <recordtable>
+      <record id="1661444318y8qe3z93tj" name="UkM1U0lNUAMtvxSlNPXUhhAb8511peZOHeU4axYyFeEQfhF7/4BX9gkQUs99BfVl" author="" url="" tags="" ctime="20220825191838" dir="1661444318uvdkgmqn05" file="text.html" crypt="1"/>
+     </recordtable>
+    </node>
    </node>
    <node crypt="1" icon="" id="148914926872tr3kszrm" name="UkM1U0lNUANbNnATJTOsB5JgBjoNoMQFhvLUA7pWcN4CsFuRgqTX4YcQnAcsJaJYijJ2xOqxCSA=">
     <recordtable>
@@ -697,6 +702,7 @@
      <record id="15771679684q8bh1wv38" name="ДТОЖ" author="" url="" tags="" ctime="20191224091248" dir="1577167968m3auy67e6c" file="text.html"/>
      <record id="162850595851wkmmg7bx" name="Ремни" author="" url="" tags="" ctime="20210809134558" dir="1628505958xm5xkzphqy" file="text.html"/>
      <record id="1636364177qtzf1vs3s9" name="Сцепление" author="" url="" tags="" ctime="20211108123617" dir="1636364177cm1hup9ynl" file="text.html"/>
+     <record id="1661429723he1fxzphh5" name="МКПП передаточные" author="" url="" tags="" ctime="20220825151523" dir="1661429723cj6uuwhq1d" file="text.html"/>
     </recordtable>
    </node>
   </node>
